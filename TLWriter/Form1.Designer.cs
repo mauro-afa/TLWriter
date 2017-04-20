@@ -28,19 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.DeleteTSButton = new System.Windows.Forms.Button();
+            this.OpenTSButton = new System.Windows.Forms.Button();
+            this.UploadTSButton = new System.Windows.Forms.Button();
+            this.CreateTSButton = new System.Windows.Forms.Button();
+            this.TestSuiteGrid = new System.Windows.Forms.DataGridView();
+            this.testsDataSet = new TLWriter.TestsDataSet();
+            this.testSuitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.testSuitesTableAdapter = new TLWriter.TestsDataSetTableAdapters.TestSuitesTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.networkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uploadDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updateDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TestSuiteGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -81,49 +97,141 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button4);
-            this.splitContainer1.Panel1.Controls.Add(this.button3);
-            this.splitContainer1.Panel1.Controls.Add(this.button2);
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.DeleteTSButton);
+            this.splitContainer1.Panel1.Controls.Add(this.OpenTSButton);
+            this.splitContainer1.Panel1.Controls.Add(this.UploadTSButton);
+            this.splitContainer1.Panel1.Controls.Add(this.CreateTSButton);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.TestSuiteGrid);
             this.splitContainer1.Size = new System.Drawing.Size(954, 489);
             this.splitContainer1.SplitterDistance = 318;
             this.splitContainer1.TabIndex = 1;
             // 
-            // button4
+            // DeleteTSButton
             // 
-            this.button4.Location = new System.Drawing.Point(66, 243);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(155, 42);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.DeleteTSButton.Location = new System.Drawing.Point(66, 243);
+            this.DeleteTSButton.Name = "DeleteTSButton";
+            this.DeleteTSButton.Size = new System.Drawing.Size(155, 42);
+            this.DeleteTSButton.TabIndex = 3;
+            this.DeleteTSButton.Text = "Delete test suite";
+            this.DeleteTSButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // OpenTSButton
             // 
-            this.button3.Location = new System.Drawing.Point(66, 195);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(155, 42);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.OpenTSButton.Location = new System.Drawing.Point(66, 195);
+            this.OpenTSButton.Name = "OpenTSButton";
+            this.OpenTSButton.Size = new System.Drawing.Size(155, 42);
+            this.OpenTSButton.TabIndex = 2;
+            this.OpenTSButton.Text = "Open test suite";
+            this.OpenTSButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // UploadTSButton
             // 
-            this.button2.Location = new System.Drawing.Point(66, 147);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 42);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.UploadTSButton.Location = new System.Drawing.Point(66, 147);
+            this.UploadTSButton.Name = "UploadTSButton";
+            this.UploadTSButton.Size = new System.Drawing.Size(155, 42);
+            this.UploadTSButton.TabIndex = 1;
+            this.UploadTSButton.Text = "Upload test suite";
+            this.UploadTSButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // CreateTSButton
             // 
-            this.button1.Location = new System.Drawing.Point(66, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 42);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Create";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CreateTSButton.Location = new System.Drawing.Point(66, 99);
+            this.CreateTSButton.Name = "CreateTSButton";
+            this.CreateTSButton.Size = new System.Drawing.Size(155, 42);
+            this.CreateTSButton.TabIndex = 0;
+            this.CreateTSButton.Text = "Create test suite";
+            this.CreateTSButton.UseVisualStyleBackColor = true;
+            this.CreateTSButton.Click += new System.EventHandler(this.CreateTSButton_Click);
+            // 
+            // TestSuiteGrid
+            // 
+            this.TestSuiteGrid.AllowUserToAddRows = false;
+            this.TestSuiteGrid.AllowUserToDeleteRows = false;
+            this.TestSuiteGrid.AutoGenerateColumns = false;
+            this.TestSuiteGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TestSuiteGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TestSuiteGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.networkDataGridViewTextBoxColumn,
+            this.versionDataGridViewTextBoxColumn,
+            this.creationDateDataGridViewTextBoxColumn,
+            this.uploadDateDataGridViewTextBoxColumn,
+            this.updateDateDataGridViewTextBoxColumn});
+            this.TestSuiteGrid.DataSource = this.testSuitesBindingSource;
+            this.TestSuiteGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TestSuiteGrid.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TestSuiteGrid.Location = new System.Drawing.Point(0, 0);
+            this.TestSuiteGrid.Name = "TestSuiteGrid";
+            this.TestSuiteGrid.ReadOnly = true;
+            this.TestSuiteGrid.Size = new System.Drawing.Size(632, 489);
+            this.TestSuiteGrid.TabIndex = 0;
+            // 
+            // testsDataSet
+            // 
+            this.testsDataSet.DataSetName = "TestsDataSet";
+            this.testsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // testSuitesBindingSource
+            // 
+            this.testSuitesBindingSource.DataMember = "TestSuites";
+            this.testSuitesBindingSource.DataSource = this.testsDataSet;
+            // 
+            // testSuitesTableAdapter
+            // 
+            this.testSuitesTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // networkDataGridViewTextBoxColumn
+            // 
+            this.networkDataGridViewTextBoxColumn.DataPropertyName = "Network";
+            this.networkDataGridViewTextBoxColumn.HeaderText = "Network";
+            this.networkDataGridViewTextBoxColumn.Name = "networkDataGridViewTextBoxColumn";
+            this.networkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // versionDataGridViewTextBoxColumn
+            // 
+            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
+            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
+            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
+            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // creationDateDataGridViewTextBoxColumn
+            // 
+            this.creationDateDataGridViewTextBoxColumn.DataPropertyName = "CreationDate";
+            this.creationDateDataGridViewTextBoxColumn.HeaderText = "CreationDate";
+            this.creationDateDataGridViewTextBoxColumn.Name = "creationDateDataGridViewTextBoxColumn";
+            this.creationDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // uploadDateDataGridViewTextBoxColumn
+            // 
+            this.uploadDateDataGridViewTextBoxColumn.DataPropertyName = "UploadDate";
+            this.uploadDateDataGridViewTextBoxColumn.HeaderText = "UploadDate";
+            this.uploadDateDataGridViewTextBoxColumn.Name = "uploadDateDataGridViewTextBoxColumn";
+            this.uploadDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // updateDateDataGridViewTextBoxColumn
+            // 
+            this.updateDateDataGridViewTextBoxColumn.DataPropertyName = "UpdateDate";
+            this.updateDateDataGridViewTextBoxColumn.HeaderText = "UpdateDate";
+            this.updateDateDataGridViewTextBoxColumn.Name = "updateDateDataGridViewTextBoxColumn";
+            this.updateDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Form1
             // 
@@ -135,11 +243,16 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TestSuiteGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,10 +265,21 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button DeleteTSButton;
+        private System.Windows.Forms.Button OpenTSButton;
+        private System.Windows.Forms.Button UploadTSButton;
+        private System.Windows.Forms.Button CreateTSButton;
+        private System.Windows.Forms.DataGridView TestSuiteGrid;
+        private TestsDataSet testsDataSet;
+        private System.Windows.Forms.BindingSource testSuitesBindingSource;
+        private TestsDataSetTableAdapters.TestSuitesTableAdapter testSuitesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn networkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn creationDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uploadDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updateDateDataGridViewTextBoxColumn;
     }
 }
 
