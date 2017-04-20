@@ -42,8 +42,8 @@ namespace TLWriter
 
         private void addTestSuite()
         {
-            MessageBox.Show(ExecutionCB.SelectedItem.ToString());
-            //translateResult = cf.translateStep(ExecutionCB.SelectedItem.ToString, ImportanceCB.SelectedItem);
+            translateResult = cf.translateStep(ExecutionCB.SelectedItem.ToString(), ImportanceCB.SelectedItem.ToString());
+            foreach
         }
     }
 }
