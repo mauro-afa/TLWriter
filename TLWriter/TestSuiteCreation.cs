@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace TLWriter
@@ -8,6 +9,10 @@ namespace TLWriter
         int newTestSuite = 0;
         string[] translateResult;
         CommonFunctions cf;
+        SqlConnection scn;
+        SqlDataAdapter adapter;
+        SqlCommand scmd;
+        SqlDataReader sdr;
 
         public Form parent
         {
@@ -43,7 +48,16 @@ namespace TLWriter
         private void addTestSuite()
         {
             translateResult = cf.translateStep(ExecutionCB.SelectedItem.ToString(), ImportanceCB.SelectedItem.ToString());
-            foreach
+            scn.Open();
+            scmd.Connection = scn;
+            scmd.CommandText = "INSERT INTO TestSuites (Name, Network, Version, UploadDate) VALUES(@TestSuiteName, @Network, @Version, getdate())";
+            scmd.Parameters.AddWithValue("TestSuiteName", TestSuiteTB.Text);
+            scmd.Parameters.AddWithValue("Network", NetworkCB.Text);
+            scmd.Parameters.AddWithValue("Version", VersionCB.Text);
+
+            scmd.ExecuteNonQuery();
+
         }
     }
 }
+        

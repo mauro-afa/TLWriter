@@ -42,25 +42,18 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TestCaseTB = new System.Windows.Forms.TextBox();
             this.ExecutionCB = new System.Windows.Forms.ComboBox();
             this.ImportanceCB = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ObjTB = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.PreconTB = new System.Windows.Forms.TextBox();
+            this.ActionTB = new System.Windows.Forms.TextBox();
+            this.ExpecReTB = new System.Windows.Forms.TextBox();
+            this.KeywordLB = new System.Windows.Forms.CheckedListBox();
             this.ChangeTSButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.AddTCButton = new System.Windows.Forms.Button();
-            this.UpdateTCButton = new System.Windows.Forms.Button();
-            this.RemoveTCButton = new System.Windows.Forms.Button();
-            this.CancelSelect = new System.Windows.Forms.Button();
-            this.testsDataSet = new TLWriter.TestsDataSet();
-            this.testCasesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testCasesTableAdapter = new TLWriter.TestsDataSetTableAdapters.TestCasesTableAdapter();
             this.tCIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testCaseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testObjectiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,10 +63,20 @@
             this.keywordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exectypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testCasesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.testsDataSet = new TLWriter.TestsDataSet();
+            this.AddTCButton = new System.Windows.Forms.Button();
+            this.UpdateTCButton = new System.Windows.Forms.Button();
+            this.RemoveTCButton = new System.Windows.Forms.Button();
+            this.CancelSelect = new System.Windows.Forms.Button();
+            this.testCasesTableAdapter = new TLWriter.TestsDataSetTableAdapters.TestCasesTableAdapter();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -185,12 +188,12 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "Importance";
             // 
-            // textBox1
+            // TestCaseTB
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 113);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(685, 20);
-            this.textBox1.TabIndex = 3;
+            this.TestCaseTB.Location = new System.Drawing.Point(16, 113);
+            this.TestCaseTB.Name = "TestCaseTB";
+            this.TestCaseTB.Size = new System.Drawing.Size(685, 20);
+            this.TestCaseTB.TabIndex = 3;
             // 
             // ExecutionCB
             // 
@@ -215,13 +218,13 @@
             this.ImportanceCB.Size = new System.Drawing.Size(121, 21);
             this.ImportanceCB.TabIndex = 5;
             // 
-            // textBox2
+            // ObjTB
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 183);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(214, 143);
-            this.textBox2.TabIndex = 7;
+            this.ObjTB.Location = new System.Drawing.Point(12, 183);
+            this.ObjTB.Multiline = true;
+            this.ObjTB.Name = "ObjTB";
+            this.ObjTB.Size = new System.Drawing.Size(214, 143);
+            this.ObjTB.TabIndex = 7;
             // 
             // label8
             // 
@@ -235,40 +238,40 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(197, 153);
+            this.label9.Location = new System.Drawing.Point(246, 153);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.Size = new System.Drawing.Size(71, 13);
             this.label9.TabIndex = 17;
-            this.label9.Text = "Objective";
+            this.label9.Text = "Preconditions";
             // 
-            // textBox3
+            // PreconTB
             // 
-            this.textBox3.Location = new System.Drawing.Point(249, 183);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(214, 143);
-            this.textBox3.TabIndex = 8;
+            this.PreconTB.Location = new System.Drawing.Point(249, 183);
+            this.PreconTB.Multiline = true;
+            this.PreconTB.Name = "PreconTB";
+            this.PreconTB.Size = new System.Drawing.Size(214, 143);
+            this.PreconTB.TabIndex = 8;
             // 
-            // textBox4
+            // ActionTB
             // 
-            this.textBox4.Location = new System.Drawing.Point(487, 183);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(214, 143);
-            this.textBox4.TabIndex = 9;
+            this.ActionTB.Location = new System.Drawing.Point(487, 183);
+            this.ActionTB.Multiline = true;
+            this.ActionTB.Name = "ActionTB";
+            this.ActionTB.Size = new System.Drawing.Size(214, 143);
+            this.ActionTB.TabIndex = 9;
             // 
-            // textBox5
+            // ExpecReTB
             // 
-            this.textBox5.Location = new System.Drawing.Point(729, 183);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(214, 143);
-            this.textBox5.TabIndex = 10;
+            this.ExpecReTB.Location = new System.Drawing.Point(729, 183);
+            this.ExpecReTB.Multiline = true;
+            this.ExpecReTB.Name = "ExpecReTB";
+            this.ExpecReTB.Size = new System.Drawing.Size(214, 143);
+            this.ExpecReTB.TabIndex = 10;
             // 
-            // checkedListBox1
+            // KeywordLB
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.KeywordLB.FormattingEnabled = true;
+            this.KeywordLB.Items.AddRange(new object[] {
             "1GENAC",
             "2 Wire Over IP",
             "7-ELEVEN",
@@ -308,10 +311,10 @@
             "SITE SERVER",
             "SMOKE TEST",
             "WORLDPAY"});
-            this.checkedListBox1.Location = new System.Drawing.Point(964, 183);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(214, 139);
-            this.checkedListBox1.TabIndex = 11;
+            this.KeywordLB.Location = new System.Drawing.Point(964, 183);
+            this.KeywordLB.Name = "KeywordLB";
+            this.KeywordLB.Size = new System.Drawing.Size(214, 139);
+            this.KeywordLB.TabIndex = 11;
             // 
             // ChangeTSButton
             // 
@@ -351,57 +354,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1162, 150);
             this.dataGridView1.TabIndex = 23;
-            // 
-            // AddTCButton
-            // 
-            this.AddTCButton.Location = new System.Drawing.Point(99, 349);
-            this.AddTCButton.Name = "AddTCButton";
-            this.AddTCButton.Size = new System.Drawing.Size(127, 23);
-            this.AddTCButton.TabIndex = 12;
-            this.AddTCButton.Text = "Add Test Case";
-            this.AddTCButton.UseVisualStyleBackColor = true;
-            this.AddTCButton.Click += new System.EventHandler(this.AddTCButton_Click);
-            // 
-            // UpdateTCButton
-            // 
-            this.UpdateTCButton.Location = new System.Drawing.Point(336, 349);
-            this.UpdateTCButton.Name = "UpdateTCButton";
-            this.UpdateTCButton.Size = new System.Drawing.Size(127, 23);
-            this.UpdateTCButton.TabIndex = 13;
-            this.UpdateTCButton.Text = "Update Test Case";
-            this.UpdateTCButton.UseVisualStyleBackColor = true;
-            // 
-            // RemoveTCButton
-            // 
-            this.RemoveTCButton.Location = new System.Drawing.Point(574, 349);
-            this.RemoveTCButton.Name = "RemoveTCButton";
-            this.RemoveTCButton.Size = new System.Drawing.Size(127, 23);
-            this.RemoveTCButton.TabIndex = 14;
-            this.RemoveTCButton.Text = "Remove Test Case";
-            this.RemoveTCButton.UseVisualStyleBackColor = true;
-            // 
-            // CancelSelect
-            // 
-            this.CancelSelect.Location = new System.Drawing.Point(816, 349);
-            this.CancelSelect.Name = "CancelSelect";
-            this.CancelSelect.Size = new System.Drawing.Size(127, 23);
-            this.CancelSelect.TabIndex = 15;
-            this.CancelSelect.Text = "Cancel selection";
-            this.CancelSelect.UseVisualStyleBackColor = true;
-            // 
-            // testsDataSet
-            // 
-            this.testsDataSet.DataSetName = "TestsDataSet";
-            this.testsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // testCasesBindingSource
-            // 
-            this.testCasesBindingSource.DataMember = "TestCases";
-            this.testCasesBindingSource.DataSource = this.testsDataSet;
-            // 
-            // testCasesTableAdapter
-            // 
-            this.testCasesTableAdapter.ClearBeforeFill = true;
             // 
             // tCIDDataGridViewTextBoxColumn
             // 
@@ -457,27 +409,108 @@
             this.importanceDataGridViewTextBoxColumn.HeaderText = "Importance";
             this.importanceDataGridViewTextBoxColumn.Name = "importanceDataGridViewTextBoxColumn";
             // 
+            // testCasesBindingSource
+            // 
+            this.testCasesBindingSource.DataMember = "TestCases";
+            this.testCasesBindingSource.DataSource = this.testsDataSet;
+            // 
+            // testsDataSet
+            // 
+            this.testsDataSet.DataSetName = "TestsDataSet";
+            this.testsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // AddTCButton
+            // 
+            this.AddTCButton.Location = new System.Drawing.Point(99, 349);
+            this.AddTCButton.Name = "AddTCButton";
+            this.AddTCButton.Size = new System.Drawing.Size(127, 23);
+            this.AddTCButton.TabIndex = 12;
+            this.AddTCButton.Text = "Add Test Case";
+            this.AddTCButton.UseVisualStyleBackColor = true;
+            this.AddTCButton.Click += new System.EventHandler(this.AddTCButton_Click);
+            // 
+            // UpdateTCButton
+            // 
+            this.UpdateTCButton.Location = new System.Drawing.Point(336, 349);
+            this.UpdateTCButton.Name = "UpdateTCButton";
+            this.UpdateTCButton.Size = new System.Drawing.Size(127, 23);
+            this.UpdateTCButton.TabIndex = 13;
+            this.UpdateTCButton.Text = "Update Test Case";
+            this.UpdateTCButton.UseVisualStyleBackColor = true;
+            // 
+            // RemoveTCButton
+            // 
+            this.RemoveTCButton.Location = new System.Drawing.Point(574, 349);
+            this.RemoveTCButton.Name = "RemoveTCButton";
+            this.RemoveTCButton.Size = new System.Drawing.Size(127, 23);
+            this.RemoveTCButton.TabIndex = 14;
+            this.RemoveTCButton.Text = "Remove Test Case";
+            this.RemoveTCButton.UseVisualStyleBackColor = true;
+            // 
+            // CancelSelect
+            // 
+            this.CancelSelect.Location = new System.Drawing.Point(816, 349);
+            this.CancelSelect.Name = "CancelSelect";
+            this.CancelSelect.Size = new System.Drawing.Size(127, 23);
+            this.CancelSelect.TabIndex = 15;
+            this.CancelSelect.Text = "Cancel selection";
+            this.CancelSelect.UseVisualStyleBackColor = true;
+            // 
+            // testCasesTableAdapter
+            // 
+            this.testCasesTableAdapter.ClearBeforeFill = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(484, 153);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Actions";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(736, 153);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(85, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Expected results";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(961, 153);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 13);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Keywords";
+            // 
             // TestSuiteCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 571);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.CancelSelect);
             this.Controls.Add(this.RemoveTCButton);
             this.Controls.Add(this.UpdateTCButton);
             this.Controls.Add(this.AddTCButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.ChangeTSButton);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.KeywordLB);
+            this.Controls.Add(this.ExpecReTB);
+            this.Controls.Add(this.ActionTB);
+            this.Controls.Add(this.PreconTB);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.ObjTB);
             this.Controls.Add(this.ImportanceCB);
             this.Controls.Add(this.ExecutionCB);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TestCaseTB);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -498,8 +531,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,16 +553,16 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TestCaseTB;
         private System.Windows.Forms.ComboBox ExecutionCB;
         private System.Windows.Forms.ComboBox ImportanceCB;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ObjTB;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.TextBox PreconTB;
+        private System.Windows.Forms.TextBox ActionTB;
+        private System.Windows.Forms.TextBox ExpecReTB;
+        private System.Windows.Forms.CheckedListBox KeywordLB;
         private System.Windows.Forms.Button ChangeTSButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button AddTCButton;
@@ -548,5 +581,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn keywordDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn exectypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn importanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
