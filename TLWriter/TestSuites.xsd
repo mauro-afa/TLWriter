@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="TestsConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TestsConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TLWriter.Properties.Settings.GlobalReference.Default.TestsConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="TestsConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TestsConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QSM.Properties.Settings.GlobalReference.Default.TestsConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables />
         <Sources />

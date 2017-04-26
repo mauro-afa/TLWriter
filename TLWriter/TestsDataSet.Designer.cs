@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace TLWriter {
+namespace QSM {
     
     
     /// <summary>
@@ -1406,7 +1406,7 @@ namespace TLWriter {
         }
     }
 }
-namespace TLWriter.TestsDataSetTableAdapters {
+namespace QSM.TestsDataSetTableAdapters {
     
     
     /// <summary>
@@ -1598,7 +1598,7 @@ SELECT TCID, TSID, TestCaseID, TestObjective, Preconditions, Actions, Expec_res,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::TLWriter.Properties.Settings.Default.TestsConnectionString;
+            this._connection.ConnectionString = global::QSM.Properties.Settings.Default.TestsConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2067,7 +2067,7 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::TLWriter.Properties.Settings.Default.TestsConnectionString;
+            this._connection.ConnectionString = global::QSM.Properties.Settings.Default.TestsConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

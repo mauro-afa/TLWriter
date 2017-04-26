@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="TestsConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TestsConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TLWriter.Properties.Settings.GlobalReference.Default.TestsConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="TestsConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TestsConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QSM.Properties.Settings.GlobalReference.Default.TestsConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TestCasesTableAdapter" GeneratorDataComponentClassName="TestCasesTableAdapter" Name="TestCases" UserDataComponentName="TestCasesTableAdapter">
@@ -176,7 +176,7 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
   <xs:element name="TestsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TestsDataSet" msprop:Generator_UserDSName="TestsDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TestCases" msprop:Generator_TableClassName="TestCasesDataTable" msprop:Generator_TableVarName="tableTestCases" msprop:Generator_TablePropName="TestCases" msprop:Generator_RowDeletingName="TestCasesRowDeleting" msprop:Generator_RowChangingName="TestCasesRowChanging" msprop:Generator_RowEvHandlerName="TestCasesRowChangeEventHandler" msprop:Generator_RowDeletedName="TestCasesRowDeleted" msprop:Generator_UserTableName="TestCases" msprop:Generator_RowChangedName="TestCasesRowChanged" msprop:Generator_RowEvArgName="TestCasesRowChangeEvent" msprop:Generator_RowClassName="TestCasesRow">
+        <xs:element name="TestCases" msprop:Generator_TableClassName="TestCasesDataTable" msprop:Generator_TableVarName="tableTestCases" msprop:Generator_RowChangedName="TestCasesRowChanged" msprop:Generator_TablePropName="TestCases" msprop:Generator_RowDeletingName="TestCasesRowDeleting" msprop:Generator_RowChangingName="TestCasesRowChanging" msprop:Generator_RowEvHandlerName="TestCasesRowChangeEventHandler" msprop:Generator_RowDeletedName="TestCasesRowDeleted" msprop:Generator_RowClassName="TestCasesRow" msprop:Generator_UserTableName="TestCases" msprop:Generator_RowEvArgName="TestCasesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TCID" msprop:Generator_ColumnVarNameInTable="columnTCID" msprop:Generator_ColumnPropNameInRow="TCID" msprop:Generator_ColumnPropNameInTable="TCIDColumn" msprop:Generator_UserColumnName="TCID" type="xs:int" />
@@ -229,7 +229,7 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TestSuites" msprop:Generator_TableClassName="TestSuitesDataTable" msprop:Generator_TableVarName="tableTestSuites" msprop:Generator_TablePropName="TestSuites" msprop:Generator_RowDeletingName="TestSuitesRowDeleting" msprop:Generator_RowChangingName="TestSuitesRowChanging" msprop:Generator_RowEvHandlerName="TestSuitesRowChangeEventHandler" msprop:Generator_RowDeletedName="TestSuitesRowDeleted" msprop:Generator_UserTableName="TestSuites" msprop:Generator_RowChangedName="TestSuitesRowChanged" msprop:Generator_RowEvArgName="TestSuitesRowChangeEvent" msprop:Generator_RowClassName="TestSuitesRow">
+        <xs:element name="TestSuites" msprop:Generator_TableClassName="TestSuitesDataTable" msprop:Generator_TableVarName="tableTestSuites" msprop:Generator_RowChangedName="TestSuitesRowChanged" msprop:Generator_TablePropName="TestSuites" msprop:Generator_RowDeletingName="TestSuitesRowDeleting" msprop:Generator_RowChangingName="TestSuitesRowChanging" msprop:Generator_RowEvHandlerName="TestSuitesRowChangeEventHandler" msprop:Generator_RowDeletedName="TestSuitesRowDeleted" msprop:Generator_RowClassName="TestSuitesRow" msprop:Generator_UserTableName="TestSuites" msprop:Generator_RowEvArgName="TestSuitesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />

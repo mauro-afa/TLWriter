@@ -54,29 +54,17 @@
             this.KeywordLB = new System.Windows.Forms.CheckedListBox();
             this.ChangeTSButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tCIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.testCaseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.testObjectiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.preconditionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expecresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.keywordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exectypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.importanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testCasesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testsDataSet = new TLWriter.TestsDataSet();
             this.AddTCButton = new System.Windows.Forms.Button();
             this.UpdateTCButton = new System.Windows.Forms.Button();
             this.RemoveTCButton = new System.Windows.Forms.Button();
             this.CancelSelect = new System.Windows.Forms.Button();
-            this.testCasesTableAdapter = new TLWriter.TestsDataSetTableAdapters.TestCasesTableAdapter();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -85,7 +73,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1286, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1193, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -332,21 +320,9 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.tCIDDataGridViewTextBoxColumn,
-            this.testCaseIDDataGridViewTextBoxColumn,
-            this.testObjectiveDataGridViewTextBoxColumn,
-            this.preconditionsDataGridViewTextBoxColumn,
-            this.actionsDataGridViewTextBoxColumn,
-            this.expecresDataGridViewTextBoxColumn,
-            this.keywordDataGridViewTextBoxColumn,
-            this.exectypeDataGridViewTextBoxColumn,
-            this.importanceDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.testCasesBindingSource;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.Location = new System.Drawing.Point(16, 391);
             this.dataGridView1.Name = "dataGridView1";
@@ -354,70 +330,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1162, 150);
             this.dataGridView1.TabIndex = 23;
-            // 
-            // tCIDDataGridViewTextBoxColumn
-            // 
-            this.tCIDDataGridViewTextBoxColumn.DataPropertyName = "TCID";
-            this.tCIDDataGridViewTextBoxColumn.HeaderText = "TCID";
-            this.tCIDDataGridViewTextBoxColumn.Name = "tCIDDataGridViewTextBoxColumn";
-            // 
-            // testCaseIDDataGridViewTextBoxColumn
-            // 
-            this.testCaseIDDataGridViewTextBoxColumn.DataPropertyName = "TestCaseID";
-            this.testCaseIDDataGridViewTextBoxColumn.HeaderText = "TestCaseID";
-            this.testCaseIDDataGridViewTextBoxColumn.Name = "testCaseIDDataGridViewTextBoxColumn";
-            // 
-            // testObjectiveDataGridViewTextBoxColumn
-            // 
-            this.testObjectiveDataGridViewTextBoxColumn.DataPropertyName = "TestObjective";
-            this.testObjectiveDataGridViewTextBoxColumn.HeaderText = "TestObjective";
-            this.testObjectiveDataGridViewTextBoxColumn.Name = "testObjectiveDataGridViewTextBoxColumn";
-            // 
-            // preconditionsDataGridViewTextBoxColumn
-            // 
-            this.preconditionsDataGridViewTextBoxColumn.DataPropertyName = "Preconditions";
-            this.preconditionsDataGridViewTextBoxColumn.HeaderText = "Preconditions";
-            this.preconditionsDataGridViewTextBoxColumn.Name = "preconditionsDataGridViewTextBoxColumn";
-            // 
-            // actionsDataGridViewTextBoxColumn
-            // 
-            this.actionsDataGridViewTextBoxColumn.DataPropertyName = "Actions";
-            this.actionsDataGridViewTextBoxColumn.HeaderText = "Actions";
-            this.actionsDataGridViewTextBoxColumn.Name = "actionsDataGridViewTextBoxColumn";
-            // 
-            // expecresDataGridViewTextBoxColumn
-            // 
-            this.expecresDataGridViewTextBoxColumn.DataPropertyName = "Expec_res";
-            this.expecresDataGridViewTextBoxColumn.HeaderText = "Expec_res";
-            this.expecresDataGridViewTextBoxColumn.Name = "expecresDataGridViewTextBoxColumn";
-            // 
-            // keywordDataGridViewTextBoxColumn
-            // 
-            this.keywordDataGridViewTextBoxColumn.DataPropertyName = "Keyword";
-            this.keywordDataGridViewTextBoxColumn.HeaderText = "Keyword";
-            this.keywordDataGridViewTextBoxColumn.Name = "keywordDataGridViewTextBoxColumn";
-            // 
-            // exectypeDataGridViewTextBoxColumn
-            // 
-            this.exectypeDataGridViewTextBoxColumn.DataPropertyName = "Exec_type";
-            this.exectypeDataGridViewTextBoxColumn.HeaderText = "Exec_type";
-            this.exectypeDataGridViewTextBoxColumn.Name = "exectypeDataGridViewTextBoxColumn";
-            // 
-            // importanceDataGridViewTextBoxColumn
-            // 
-            this.importanceDataGridViewTextBoxColumn.DataPropertyName = "Importance";
-            this.importanceDataGridViewTextBoxColumn.HeaderText = "Importance";
-            this.importanceDataGridViewTextBoxColumn.Name = "importanceDataGridViewTextBoxColumn";
-            // 
-            // testCasesBindingSource
-            // 
-            this.testCasesBindingSource.DataMember = "TestCases";
-            this.testCasesBindingSource.DataSource = this.testsDataSet;
-            // 
-            // testsDataSet
-            // 
-            this.testsDataSet.DataSetName = "TestsDataSet";
-            this.testsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // AddTCButton
             // 
@@ -456,10 +368,6 @@
             this.CancelSelect.Text = "Cancel selection";
             this.CancelSelect.UseVisualStyleBackColor = true;
             // 
-            // testCasesTableAdapter
-            // 
-            this.testCasesTableAdapter.ClearBeforeFill = true;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -491,7 +399,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1286, 571);
+            this.ClientSize = new System.Drawing.Size(1193, 571);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -532,7 +440,6 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,18 +476,7 @@
         private System.Windows.Forms.Button UpdateTCButton;
         private System.Windows.Forms.Button RemoveTCButton;
         private System.Windows.Forms.Button CancelSelect;
-        private TestsDataSet testsDataSet;
         private System.Windows.Forms.BindingSource testCasesBindingSource;
-        private TestsDataSetTableAdapters.TestCasesTableAdapter testCasesTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tCIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn testCaseIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn testObjectiveDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn preconditionsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn actionsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expecresDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn keywordDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn exectypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn importanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;

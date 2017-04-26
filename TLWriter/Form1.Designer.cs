@@ -39,23 +39,13 @@
             this.UploadTSButton = new System.Windows.Forms.Button();
             this.CreateTSButton = new System.Windows.Forms.Button();
             this.TestSuiteGrid = new System.Windows.Forms.DataGridView();
-            this.testsDataSet = new TLWriter.TestsDataSet();
             this.testSuitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testSuitesTableAdapter = new TLWriter.TestsDataSetTableAdapters.TestSuitesTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.networkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uploadDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TestSuiteGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,14 +143,6 @@
             this.TestSuiteGrid.AutoGenerateColumns = false;
             this.TestSuiteGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TestSuiteGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TestSuiteGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.networkDataGridViewTextBoxColumn,
-            this.versionDataGridViewTextBoxColumn,
-            this.creationDateDataGridViewTextBoxColumn,
-            this.uploadDateDataGridViewTextBoxColumn,
-            this.updateDateDataGridViewTextBoxColumn});
             this.TestSuiteGrid.DataSource = this.testSuitesBindingSource;
             this.TestSuiteGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TestSuiteGrid.GridColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -169,69 +151,6 @@
             this.TestSuiteGrid.ReadOnly = true;
             this.TestSuiteGrid.Size = new System.Drawing.Size(632, 489);
             this.TestSuiteGrid.TabIndex = 0;
-            // 
-            // testsDataSet
-            // 
-            this.testsDataSet.DataSetName = "TestsDataSet";
-            this.testsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // testSuitesBindingSource
-            // 
-            this.testSuitesBindingSource.DataMember = "TestSuites";
-            this.testSuitesBindingSource.DataSource = this.testsDataSet;
-            // 
-            // testSuitesTableAdapter
-            // 
-            this.testSuitesTableAdapter.ClearBeforeFill = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // networkDataGridViewTextBoxColumn
-            // 
-            this.networkDataGridViewTextBoxColumn.DataPropertyName = "Network";
-            this.networkDataGridViewTextBoxColumn.HeaderText = "Network";
-            this.networkDataGridViewTextBoxColumn.Name = "networkDataGridViewTextBoxColumn";
-            this.networkDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // versionDataGridViewTextBoxColumn
-            // 
-            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
-            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
-            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
-            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // creationDateDataGridViewTextBoxColumn
-            // 
-            this.creationDateDataGridViewTextBoxColumn.DataPropertyName = "CreationDate";
-            this.creationDateDataGridViewTextBoxColumn.HeaderText = "CreationDate";
-            this.creationDateDataGridViewTextBoxColumn.Name = "creationDateDataGridViewTextBoxColumn";
-            this.creationDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // uploadDateDataGridViewTextBoxColumn
-            // 
-            this.uploadDateDataGridViewTextBoxColumn.DataPropertyName = "UploadDate";
-            this.uploadDateDataGridViewTextBoxColumn.HeaderText = "UploadDate";
-            this.uploadDateDataGridViewTextBoxColumn.Name = "uploadDateDataGridViewTextBoxColumn";
-            this.uploadDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updateDateDataGridViewTextBoxColumn
-            // 
-            this.updateDateDataGridViewTextBoxColumn.DataPropertyName = "UpdateDate";
-            this.updateDateDataGridViewTextBoxColumn.HeaderText = "UpdateDate";
-            this.updateDateDataGridViewTextBoxColumn.Name = "updateDateDataGridViewTextBoxColumn";
-            this.updateDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Form1
             // 
@@ -251,7 +170,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TestSuiteGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -270,16 +188,7 @@
         private System.Windows.Forms.Button UploadTSButton;
         private System.Windows.Forms.Button CreateTSButton;
         private System.Windows.Forms.DataGridView TestSuiteGrid;
-        private TestsDataSet testsDataSet;
         private System.Windows.Forms.BindingSource testSuitesBindingSource;
-        private TestsDataSetTableAdapters.TestSuitesTableAdapter testSuitesTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn networkDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn creationDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uploadDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updateDateDataGridViewTextBoxColumn;
     }
 }
 
