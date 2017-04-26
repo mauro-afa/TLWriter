@@ -40,13 +40,6 @@ namespace TLWriter
             addTestCase();
         }
 
-        private void TestSuiteCreation_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'testsDataSet.TestCases' table. You can move, or remove it, as needed.
-            //this.testCasesTableAdapter.Fill(this.testsDataSet.TestCases);
-
-        }
-
         private void addTestSuite()
         {
             scmd.Connection = scn;
@@ -86,6 +79,13 @@ namespace TLWriter
             //scmd.Parameters.AddWithValue("result2", PreconTB.Text);
             scmd.ExecuteNonQuery();
             scn.Close();
+        }
+
+        private void TestSuiteCreation_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'testsDataSet.TestCases' table. You can move, or remove it, as needed.
+            this.testCasesTableAdapter.Fill(this.testsDataSet.TestCases);
+
         }
     }
 }

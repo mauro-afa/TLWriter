@@ -62,9 +62,25 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.testsDataSet = new QSM.TestsDataSet();
+            this.testCasesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.testCasesTableAdapter = new QSM.TestsDataSetTableAdapters.TestCasesTableAdapter();
+            this.tCIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tSIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testCaseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testObjectiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.preconditionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actionsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expecresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.keywordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exectypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.importanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -320,9 +336,23 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tCIDDataGridViewTextBoxColumn,
+            this.tSIDDataGridViewTextBoxColumn,
+            this.testCaseIDDataGridViewTextBoxColumn,
+            this.testObjectiveDataGridViewTextBoxColumn,
+            this.preconditionsDataGridViewTextBoxColumn,
+            this.actionsDataGridViewTextBoxColumn,
+            this.expecresDataGridViewTextBoxColumn,
+            this.keywordDataGridViewTextBoxColumn,
+            this.exectypeDataGridViewTextBoxColumn,
+            this.importanceDataGridViewTextBoxColumn,
+            this.statDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.testCasesBindingSource1;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.Location = new System.Drawing.Point(16, 391);
             this.dataGridView1.Name = "dataGridView1";
@@ -395,6 +425,86 @@
             this.label12.TabIndex = 26;
             this.label12.Text = "Keywords";
             // 
+            // testsDataSet
+            // 
+            this.testsDataSet.DataSetName = "TestsDataSet";
+            this.testsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // testCasesBindingSource1
+            // 
+            this.testCasesBindingSource1.DataMember = "TestCases";
+            this.testCasesBindingSource1.DataSource = this.testsDataSet;
+            // 
+            // testCasesTableAdapter
+            // 
+            this.testCasesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tCIDDataGridViewTextBoxColumn
+            // 
+            this.tCIDDataGridViewTextBoxColumn.DataPropertyName = "TCID";
+            this.tCIDDataGridViewTextBoxColumn.HeaderText = "TCID";
+            this.tCIDDataGridViewTextBoxColumn.Name = "tCIDDataGridViewTextBoxColumn";
+            // 
+            // tSIDDataGridViewTextBoxColumn
+            // 
+            this.tSIDDataGridViewTextBoxColumn.DataPropertyName = "TSID";
+            this.tSIDDataGridViewTextBoxColumn.HeaderText = "TSID";
+            this.tSIDDataGridViewTextBoxColumn.Name = "tSIDDataGridViewTextBoxColumn";
+            // 
+            // testCaseIDDataGridViewTextBoxColumn
+            // 
+            this.testCaseIDDataGridViewTextBoxColumn.DataPropertyName = "TestCaseID";
+            this.testCaseIDDataGridViewTextBoxColumn.HeaderText = "TestCaseID";
+            this.testCaseIDDataGridViewTextBoxColumn.Name = "testCaseIDDataGridViewTextBoxColumn";
+            // 
+            // testObjectiveDataGridViewTextBoxColumn
+            // 
+            this.testObjectiveDataGridViewTextBoxColumn.DataPropertyName = "TestObjective";
+            this.testObjectiveDataGridViewTextBoxColumn.HeaderText = "TestObjective";
+            this.testObjectiveDataGridViewTextBoxColumn.Name = "testObjectiveDataGridViewTextBoxColumn";
+            // 
+            // preconditionsDataGridViewTextBoxColumn
+            // 
+            this.preconditionsDataGridViewTextBoxColumn.DataPropertyName = "Preconditions";
+            this.preconditionsDataGridViewTextBoxColumn.HeaderText = "Preconditions";
+            this.preconditionsDataGridViewTextBoxColumn.Name = "preconditionsDataGridViewTextBoxColumn";
+            // 
+            // actionsDataGridViewTextBoxColumn
+            // 
+            this.actionsDataGridViewTextBoxColumn.DataPropertyName = "Actions";
+            this.actionsDataGridViewTextBoxColumn.HeaderText = "Actions";
+            this.actionsDataGridViewTextBoxColumn.Name = "actionsDataGridViewTextBoxColumn";
+            // 
+            // expecresDataGridViewTextBoxColumn
+            // 
+            this.expecresDataGridViewTextBoxColumn.DataPropertyName = "Expec_res";
+            this.expecresDataGridViewTextBoxColumn.HeaderText = "Expec_res";
+            this.expecresDataGridViewTextBoxColumn.Name = "expecresDataGridViewTextBoxColumn";
+            // 
+            // keywordDataGridViewTextBoxColumn
+            // 
+            this.keywordDataGridViewTextBoxColumn.DataPropertyName = "Keyword";
+            this.keywordDataGridViewTextBoxColumn.HeaderText = "Keyword";
+            this.keywordDataGridViewTextBoxColumn.Name = "keywordDataGridViewTextBoxColumn";
+            // 
+            // exectypeDataGridViewTextBoxColumn
+            // 
+            this.exectypeDataGridViewTextBoxColumn.DataPropertyName = "Exec_type";
+            this.exectypeDataGridViewTextBoxColumn.HeaderText = "Exec_type";
+            this.exectypeDataGridViewTextBoxColumn.Name = "exectypeDataGridViewTextBoxColumn";
+            // 
+            // importanceDataGridViewTextBoxColumn
+            // 
+            this.importanceDataGridViewTextBoxColumn.DataPropertyName = "Importance";
+            this.importanceDataGridViewTextBoxColumn.HeaderText = "Importance";
+            this.importanceDataGridViewTextBoxColumn.Name = "importanceDataGridViewTextBoxColumn";
+            // 
+            // statDataGridViewTextBoxColumn
+            // 
+            this.statDataGridViewTextBoxColumn.DataPropertyName = "Stat";
+            this.statDataGridViewTextBoxColumn.HeaderText = "Stat";
+            this.statDataGridViewTextBoxColumn.Name = "statDataGridViewTextBoxColumn";
+            // 
             // TestSuiteCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,6 +550,8 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,5 +592,19 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private QSM.TestsDataSet testsDataSet;
+        private System.Windows.Forms.BindingSource testCasesBindingSource1;
+        private QSM.TestsDataSetTableAdapters.TestCasesTableAdapter testCasesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tCIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tSIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testCaseIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testObjectiveDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn preconditionsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actionsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expecresDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn keywordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn exectypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn importanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statDataGridViewTextBoxColumn;
     }
 }
