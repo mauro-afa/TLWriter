@@ -22,6 +22,10 @@ namespace TLWriter
         {
             // TODO: This line of code loads data into the 'testsDataSet.TestSuites' table. You can move, or remove it, as needed.
             this.testSuitesTableAdapter.Fill(this.testsDataSet.TestSuites);
+            // TODO: This line of code loads data into the 'testsDataSet.TestSuites' table. You can move, or remove it, as needed.
+            this.testSuitesTableAdapter.Fill(this.testsDataSet.TestSuites);
+            // TODO: This line of code loads data into the 'testsDataSet.TestSuites' table. You can move, or remove it, as needed.
+            this.testSuitesTableAdapter.Fill(this.testsDataSet.TestSuites);
 
         }
 

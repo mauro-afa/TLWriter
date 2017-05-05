@@ -71,9 +71,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestsDataSet.cs">
-      <DependentUpon>TestsDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="TestsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,11 +81,6 @@
     </Compile>
     <Compile Include="TestSuiteCreation.Designer.cs">
       <DependentUpon>TestSuiteCreation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TestSuites.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestSuites.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -127,17 +119,6 @@
     <None Include="TestsDataSet.xss">
       <DependentUpon>TestsDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TestSuites.xsc">
-      <DependentUpon>TestSuites.xsd</DependentUpon>
-    </None>
-    <None Include="TestSuites.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TestSuites.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="TestSuites.xss">
-      <DependentUpon>TestSuites.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -153,6 +134,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tests.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests_log.ldf">
+      <DependentUpon>Tests.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

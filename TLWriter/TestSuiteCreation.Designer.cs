@@ -35,7 +35,7 @@
             this.TestSuiteTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.JiraLinkTB = new System.Windows.Forms.TextBox();
-            this.NetworkCB = new System.Windows.Forms.ComboBox();
+            this.BrandCB = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.VersionCB = new System.Windows.Forms.ComboBox();
@@ -54,17 +54,6 @@
             this.KeywordLB = new System.Windows.Forms.CheckedListBox();
             this.ChangeTSButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.testCasesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.AddTCButton = new System.Windows.Forms.Button();
-            this.UpdateTCButton = new System.Windows.Forms.Button();
-            this.RemoveTCButton = new System.Windows.Forms.Button();
-            this.CancelSelect = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.testsDataSet = new QSM.TestsDataSet();
-            this.testCasesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.testCasesTableAdapter = new QSM.TestsDataSetTableAdapters.TestCasesTableAdapter();
             this.tCIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tSIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testCaseIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,11 +65,22 @@
             this.exectypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testCasesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.testsDataSet = new QSM.TestsDataSet();
+            this.testCasesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AddTCButton = new System.Windows.Forms.Button();
+            this.UpdateTCButton = new System.Windows.Forms.Button();
+            this.RemoveTCButton = new System.Windows.Forms.Button();
+            this.CancelSelect = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.testCasesTableAdapter = new QSM.TestsDataSetTableAdapters.TestCasesTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -131,22 +131,47 @@
             this.JiraLinkTB.Size = new System.Drawing.Size(456, 20);
             this.JiraLinkTB.TabIndex = 1;
             // 
-            // NetworkCB
+            // BrandCB
             // 
-            this.NetworkCB.FormattingEnabled = true;
-            this.NetworkCB.Location = new System.Drawing.Point(964, 44);
-            this.NetworkCB.Name = "NetworkCB";
-            this.NetworkCB.Size = new System.Drawing.Size(105, 21);
-            this.NetworkCB.TabIndex = 2;
+            this.BrandCB.FormattingEnabled = true;
+            this.BrandCB.Items.AddRange(new object[] {
+            "HPS-Cigado",
+            "Concord",
+            "Sunoco",
+            "Valero",
+            "HPS-Dallas",
+            "Citgo",
+            "Citgo-Unbranded",
+            "Marathon",
+            "Marathon-Unbranded",
+            "Conoco-Phillips",
+            "Chevron",
+            "Chevron Canada",
+            "Chevron-Unbranded",
+            "Texaco",
+            "Shell",
+            "Exxon",
+            "mobil",
+            "BP",
+            "Esso",
+            "Cenex",
+            "Cenex-Unbranded",
+            "NBS",
+            "RBS",
+            "WorldPay"});
+            this.BrandCB.Location = new System.Drawing.Point(964, 44);
+            this.BrandCB.Name = "BrandCB";
+            this.BrandCB.Size = new System.Drawing.Size(105, 21);
+            this.BrandCB.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(961, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Network";
+            this.label3.Text = "Brand";
             // 
             // label4
             // 
@@ -328,6 +353,7 @@
             this.ChangeTSButton.TabIndex = 6;
             this.ChangeTSButton.Text = "Change test suite info";
             this.ChangeTSButton.UseVisualStyleBackColor = true;
+            this.ChangeTSButton.Visible = false;
             // 
             // dataGridView1
             // 
@@ -360,84 +386,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1162, 150);
             this.dataGridView1.TabIndex = 23;
-            // 
-            // AddTCButton
-            // 
-            this.AddTCButton.Location = new System.Drawing.Point(99, 349);
-            this.AddTCButton.Name = "AddTCButton";
-            this.AddTCButton.Size = new System.Drawing.Size(127, 23);
-            this.AddTCButton.TabIndex = 12;
-            this.AddTCButton.Text = "Add Test Case";
-            this.AddTCButton.UseVisualStyleBackColor = true;
-            this.AddTCButton.Click += new System.EventHandler(this.AddTCButton_Click);
-            // 
-            // UpdateTCButton
-            // 
-            this.UpdateTCButton.Location = new System.Drawing.Point(336, 349);
-            this.UpdateTCButton.Name = "UpdateTCButton";
-            this.UpdateTCButton.Size = new System.Drawing.Size(127, 23);
-            this.UpdateTCButton.TabIndex = 13;
-            this.UpdateTCButton.Text = "Update Test Case";
-            this.UpdateTCButton.UseVisualStyleBackColor = true;
-            // 
-            // RemoveTCButton
-            // 
-            this.RemoveTCButton.Location = new System.Drawing.Point(574, 349);
-            this.RemoveTCButton.Name = "RemoveTCButton";
-            this.RemoveTCButton.Size = new System.Drawing.Size(127, 23);
-            this.RemoveTCButton.TabIndex = 14;
-            this.RemoveTCButton.Text = "Remove Test Case";
-            this.RemoveTCButton.UseVisualStyleBackColor = true;
-            // 
-            // CancelSelect
-            // 
-            this.CancelSelect.Location = new System.Drawing.Point(816, 349);
-            this.CancelSelect.Name = "CancelSelect";
-            this.CancelSelect.Size = new System.Drawing.Size(127, 23);
-            this.CancelSelect.TabIndex = 15;
-            this.CancelSelect.Text = "Cancel selection";
-            this.CancelSelect.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(484, 153);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 13);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Actions";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(736, 153);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 13);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Expected results";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(961, 153);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 13);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "Keywords";
-            // 
-            // testsDataSet
-            // 
-            this.testsDataSet.DataSetName = "TestsDataSet";
-            this.testsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // testCasesBindingSource1
-            // 
-            this.testCasesBindingSource1.DataMember = "TestCases";
-            this.testCasesBindingSource1.DataSource = this.testsDataSet;
-            // 
-            // testCasesTableAdapter
-            // 
-            this.testCasesTableAdapter.ClearBeforeFill = true;
             // 
             // tCIDDataGridViewTextBoxColumn
             // 
@@ -505,6 +453,87 @@
             this.statDataGridViewTextBoxColumn.HeaderText = "Stat";
             this.statDataGridViewTextBoxColumn.Name = "statDataGridViewTextBoxColumn";
             // 
+            // testCasesBindingSource1
+            // 
+            this.testCasesBindingSource1.DataMember = "TestCases";
+            this.testCasesBindingSource1.DataSource = this.testsDataSet;
+            // 
+            // testsDataSet
+            // 
+            this.testsDataSet.DataSetName = "TestsDataSet";
+            this.testsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // AddTCButton
+            // 
+            this.AddTCButton.Location = new System.Drawing.Point(99, 349);
+            this.AddTCButton.Name = "AddTCButton";
+            this.AddTCButton.Size = new System.Drawing.Size(127, 23);
+            this.AddTCButton.TabIndex = 12;
+            this.AddTCButton.Text = "Add Test Case";
+            this.AddTCButton.UseVisualStyleBackColor = true;
+            this.AddTCButton.Click += new System.EventHandler(this.AddTCButton_Click);
+            // 
+            // UpdateTCButton
+            // 
+            this.UpdateTCButton.Location = new System.Drawing.Point(336, 349);
+            this.UpdateTCButton.Name = "UpdateTCButton";
+            this.UpdateTCButton.Size = new System.Drawing.Size(127, 23);
+            this.UpdateTCButton.TabIndex = 13;
+            this.UpdateTCButton.Text = "Update Test Case";
+            this.UpdateTCButton.UseVisualStyleBackColor = true;
+            this.UpdateTCButton.Visible = false;
+            // 
+            // RemoveTCButton
+            // 
+            this.RemoveTCButton.Location = new System.Drawing.Point(574, 349);
+            this.RemoveTCButton.Name = "RemoveTCButton";
+            this.RemoveTCButton.Size = new System.Drawing.Size(127, 23);
+            this.RemoveTCButton.TabIndex = 14;
+            this.RemoveTCButton.Text = "Remove Test Case";
+            this.RemoveTCButton.UseVisualStyleBackColor = true;
+            this.RemoveTCButton.Visible = false;
+            // 
+            // CancelSelect
+            // 
+            this.CancelSelect.Location = new System.Drawing.Point(816, 349);
+            this.CancelSelect.Name = "CancelSelect";
+            this.CancelSelect.Size = new System.Drawing.Size(127, 23);
+            this.CancelSelect.TabIndex = 15;
+            this.CancelSelect.Text = "Cancel selection";
+            this.CancelSelect.UseVisualStyleBackColor = true;
+            this.CancelSelect.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(484, 153);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Actions";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(736, 153);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(85, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Expected results";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(961, 153);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 13);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Keywords";
+            // 
+            // testCasesTableAdapter
+            // 
+            this.testCasesTableAdapter.ClearBeforeFill = true;
+            // 
             // TestSuiteCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,7 +564,7 @@
             this.Controls.Add(this.VersionCB);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.NetworkCB);
+            this.Controls.Add(this.BrandCB);
             this.Controls.Add(this.JiraLinkTB);
             this.Controls.Add(this.TestSuiteTB);
             this.Controls.Add(this.label1);
@@ -549,9 +578,9 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -565,7 +594,7 @@
         private System.Windows.Forms.TextBox TestSuiteTB;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox JiraLinkTB;
-        private System.Windows.Forms.ComboBox NetworkCB;
+        private System.Windows.Forms.ComboBox BrandCB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox VersionCB;

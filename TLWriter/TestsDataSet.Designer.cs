@@ -733,7 +733,7 @@ namespace QSM {
             
             private global::System.Data.DataColumn columnName;
             
-            private global::System.Data.DataColumn columnNetwork;
+            private global::System.Data.DataColumn columnBrand;
             
             private global::System.Data.DataColumn columnVersion;
             
@@ -794,9 +794,9 @@ namespace QSM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NetworkColumn {
+            public global::System.Data.DataColumn BrandColumn {
                 get {
-                    return this.columnNetwork;
+                    return this.columnBrand;
                 }
             }
             
@@ -869,12 +869,12 @@ namespace QSM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TestSuitesRow AddTestSuitesRow(string Name, string Network, string Version, System.DateTime CreationDate, System.DateTime UploadDate, System.DateTime UpdateDate) {
+            public TestSuitesRow AddTestSuitesRow(string Name, string Brand, string Version, System.DateTime CreationDate, System.DateTime UploadDate, System.DateTime UpdateDate) {
                 TestSuitesRow rowTestSuitesRow = ((TestSuitesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
-                        Network,
+                        Brand,
                         Version,
                         CreationDate,
                         UploadDate,
@@ -910,7 +910,7 @@ namespace QSM {
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
                 this.columnName = base.Columns["Name"];
-                this.columnNetwork = base.Columns["Network"];
+                this.columnBrand = base.Columns["Brand"];
                 this.columnVersion = base.Columns["Version"];
                 this.columnCreationDate = base.Columns["CreationDate"];
                 this.columnUploadDate = base.Columns["UploadDate"];
@@ -924,8 +924,8 @@ namespace QSM {
                 base.Columns.Add(this.columnId);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
-                this.columnNetwork = new global::System.Data.DataColumn("Network", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNetwork);
+                this.columnBrand = new global::System.Data.DataColumn("Brand", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBrand);
                 this.columnVersion = new global::System.Data.DataColumn("Version", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVersion);
                 this.columnCreationDate = new global::System.Data.DataColumn("CreationDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -944,8 +944,8 @@ namespace QSM {
                 this.columnId.Unique = true;
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 100;
-                this.columnNetwork.AllowDBNull = false;
-                this.columnNetwork.MaxLength = 20;
+                this.columnBrand.AllowDBNull = false;
+                this.columnBrand.MaxLength = 20;
                 this.columnVersion.AllowDBNull = false;
                 this.columnVersion.MaxLength = 10;
                 this.columnCreationDate.AllowDBNull = false;
@@ -1249,12 +1249,12 @@ namespace QSM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Network {
+            public string Brand {
                 get {
-                    return ((string)(this[this.tableTestSuites.NetworkColumn]));
+                    return ((string)(this[this.tableTestSuites.BrandColumn]));
                 }
                 set {
-                    this[this.tableTestSuites.NetworkColumn] = value;
+                    this[this.tableTestSuites.BrandColumn] = value;
                 }
             }
             
@@ -2010,7 +2010,7 @@ SELECT TCID, TSID, TestCaseID, TestObjective, Preconditions, Actions, Expec_res,
             tableMapping.DataSetTable = "TestSuites";
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("Network", "Network");
+            tableMapping.ColumnMappings.Add("Brand", "Brand");
             tableMapping.ColumnMappings.Add("Version", "Version");
             tableMapping.ColumnMappings.Add("CreationDate", "CreationDate");
             tableMapping.ColumnMappings.Add("UploadDate", "UploadDate");
@@ -2018,11 +2018,11 @@ SELECT TCID, TSID, TestCaseID, TestObjective, Preconditions, Actions, Expec_res,
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[TestSuites] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Network] = @Original_Network) AND ([Version] = @Original_Version) AND ([CreationDate] = @Original_CreationDate) AND ((@IsNull_UploadDate = 1 AND [UploadDate] IS NULL) OR ([UploadDate] = @Original_UploadDate)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[TestSuites] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Brand] = @Original_Brand) AND ([Version] = @Original_Version) AND ([CreationDate] = @Original_CreationDate) AND ((@IsNull_UploadDate = 1 AND [UploadDate] IS NULL) OR ([UploadDate] = @Original_UploadDate)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Network", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Network", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Brand", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Version", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CreationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreationDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UploadDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UploadDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -2031,29 +2031,29 @@ SELECT TCID, TSID, TestCaseID, TestObjective, Preconditions, Actions, Expec_res,
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UpdateDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TestSuites] ([Name], [Network], [Version], [CreationDate], [UploadDate], [UpdateDate]) VALUES (@Name, @Network, @Version, @CreationDate, @UploadDate, @UpdateDate);
-SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM TestSuites WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TestSuites] ([Name], [Brand], [Version], [CreationDate], [UploadDate], [UpdateDate]) VALUES (@Name, @Brand, @Version, @CreationDate, @UploadDate, @UpdateDate);
+SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestSuites WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Network", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Network", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Brand", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Version", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreationDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UploadDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UploadDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UpdateDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[TestSuites] SET [Name] = @Name, [Network] = @Network, [Version] = @Version, [CreationDate] = @CreationDate, [UploadDate] = @UploadDate, [UpdateDate] = @UpdateDate WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Network] = @Original_Network) AND ([Version] = @Original_Version) AND ([CreationDate] = @Original_CreationDate) AND ((@IsNull_UploadDate = 1 AND [UploadDate] IS NULL) OR ([UploadDate] = @Original_UploadDate)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)));
-SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM TestSuites WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[TestSuites] SET [Name] = @Name, [Brand] = @Brand, [Version] = @Version, [CreationDate] = @CreationDate, [UploadDate] = @UploadDate, [UpdateDate] = @UpdateDate WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([Brand] = @Original_Brand) AND ([Version] = @Original_Version) AND ([CreationDate] = @Original_CreationDate) AND ((@IsNull_UploadDate = 1 AND [UploadDate] IS NULL) OR ([UploadDate] = @Original_UploadDate)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)));
+SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestSuites WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Network", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Network", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Brand", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Version", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreationDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UploadDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UploadDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UpdateDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Network", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Network", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Brand", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Version", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CreationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreationDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UploadDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UploadDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -2076,8 +2076,8 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM dbo." +
-                "TestSuites";
+            this._commandCollection[0].CommandText = "SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM dbo.Te" +
+                "stSuites";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2138,7 +2138,7 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_Name, string Original_Network, string Original_Version, System.DateTime Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate) {
+        public virtual int Delete(int Original_Id, string Original_Name, string Original_Brand, string Original_Version, System.DateTime Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
@@ -2146,11 +2146,11 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Name));
             }
-            if ((Original_Network == null)) {
-                throw new global::System.ArgumentNullException("Original_Network");
+            if ((Original_Brand == null)) {
+                throw new global::System.ArgumentNullException("Original_Brand");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Network));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Brand));
             }
             if ((Original_Version == null)) {
                 throw new global::System.ArgumentNullException("Original_Version");
@@ -2195,18 +2195,18 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, string Network, string Version, System.DateTime CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate) {
+        public virtual int Insert(string Name, string Brand, string Version, System.DateTime CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
-            if ((Network == null)) {
-                throw new global::System.ArgumentNullException("Network");
+            if ((Brand == null)) {
+                throw new global::System.ArgumentNullException("Brand");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Network));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Brand));
             }
             if ((Version == null)) {
                 throw new global::System.ArgumentNullException("Version");
@@ -2247,18 +2247,18 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string Network, string Version, System.DateTime CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate, int Original_Id, string Original_Name, string Original_Network, string Original_Version, System.DateTime Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate, int Id) {
+        public virtual int Update(string Name, string Brand, string Version, System.DateTime CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate, int Original_Id, string Original_Name, string Original_Brand, string Original_Version, System.DateTime Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate, int Id) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
             }
-            if ((Network == null)) {
-                throw new global::System.ArgumentNullException("Network");
+            if ((Brand == null)) {
+                throw new global::System.ArgumentNullException("Brand");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Network));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Brand));
             }
             if ((Version == null)) {
                 throw new global::System.ArgumentNullException("Version");
@@ -2286,11 +2286,11 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Name));
             }
-            if ((Original_Network == null)) {
-                throw new global::System.ArgumentNullException("Original_Network");
+            if ((Original_Brand == null)) {
+                throw new global::System.ArgumentNullException("Original_Brand");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Network));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Brand));
             }
             if ((Original_Version == null)) {
                 throw new global::System.ArgumentNullException("Original_Version");
@@ -2336,8 +2336,8 @@ SELECT Id, Name, Network, Version, CreationDate, UploadDate, UpdateDate FROM Tes
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string Network, string Version, System.DateTime CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate, int Original_Id, string Original_Name, string Original_Network, string Original_Version, System.DateTime Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate) {
-            return this.Update(Name, Network, Version, CreationDate, UploadDate, UpdateDate, Original_Id, Original_Name, Original_Network, Original_Version, Original_CreationDate, Original_UploadDate, Original_UpdateDate, Original_Id);
+        public virtual int Update(string Name, string Brand, string Version, System.DateTime CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate, int Original_Id, string Original_Name, string Original_Brand, string Original_Version, System.DateTime Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate) {
+            return this.Update(Name, Brand, Version, CreationDate, UploadDate, UpdateDate, Original_Id, Original_Name, Original_Brand, Original_Version, Original_CreationDate, Original_UploadDate, Original_UpdateDate, Original_Id);
         }
     }
     
