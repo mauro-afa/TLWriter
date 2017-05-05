@@ -20,6 +20,8 @@ namespace TLWriter
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'testsDataSet1.TestSuites' table. You can move, or remove it, as needed.
+            this.testSuitesTableAdapter1.Fill(this.testsDataSet1.TestSuites);
             // TODO: This line of code loads data into the 'testsDataSet.TestSuites' table. You can move, or remove it, as needed.
             this.testSuitesTableAdapter.Fill(this.testsDataSet.TestSuites);
             // TODO: This line of code loads data into the 'testsDataSet.TestSuites' table. You can move, or remove it, as needed.

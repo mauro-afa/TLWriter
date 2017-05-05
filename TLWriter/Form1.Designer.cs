@@ -39,9 +39,10 @@
             this.UploadTSButton = new System.Windows.Forms.Button();
             this.CreateTSButton = new System.Windows.Forms.Button();
             this.TestSuiteGrid = new System.Windows.Forms.DataGridView();
-            this.testsDataSet = new QSM.TestsDataSet();
             this.testSuitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testSuitesTableAdapter = new QSM.TestsDataSetTableAdapters.TestSuitesTableAdapter();
+            this.testsDataSet1 = new QSM.TestsDataSet();
+            this.testSuitesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.testSuitesTableAdapter1 = new QSM.TestsDataSetTableAdapters.TestSuitesTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,8 +56,9 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TestSuiteGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -162,7 +164,7 @@
             this.creationDateDataGridViewTextBoxColumn,
             this.uploadDateDataGridViewTextBoxColumn,
             this.updateDateDataGridViewTextBoxColumn});
-            this.TestSuiteGrid.DataSource = this.testSuitesBindingSource;
+            this.TestSuiteGrid.DataSource = this.testSuitesBindingSource1;
             this.TestSuiteGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TestSuiteGrid.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TestSuiteGrid.Location = new System.Drawing.Point(0, 0);
@@ -172,19 +174,23 @@
             this.TestSuiteGrid.TabIndex = 0;
             this.TestSuiteGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TestSuiteGrid_CellContentClick);
             // 
-            // testsDataSet
-            // 
-            this.testsDataSet.DataSetName = "TestsDataSet";
-            this.testsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // testSuitesBindingSource
             // 
             this.testSuitesBindingSource.DataMember = "TestSuites";
-            this.testSuitesBindingSource.DataSource = this.testsDataSet;
             // 
-            // testSuitesTableAdapter
+            // testsDataSet1
             // 
-            this.testSuitesTableAdapter.ClearBeforeFill = true;
+            this.testsDataSet1.DataSetName = "TestsDataSet";
+            this.testsDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // testSuitesBindingSource1
+            // 
+            this.testSuitesBindingSource1.DataMember = "TestSuites";
+            this.testSuitesBindingSource1.DataSource = this.testsDataSet1;
+            // 
+            // testSuitesTableAdapter1
+            // 
+            this.testSuitesTableAdapter1.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -253,8 +259,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TestSuiteGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,10 +279,12 @@
         private System.Windows.Forms.Button UploadTSButton;
         private System.Windows.Forms.Button CreateTSButton;
         private System.Windows.Forms.DataGridView TestSuiteGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn networkDataGridViewTextBoxColumn;
         private QSM.TestsDataSet testsDataSet;
         private System.Windows.Forms.BindingSource testSuitesBindingSource;
         private QSM.TestsDataSetTableAdapters.TestSuitesTableAdapter testSuitesTableAdapter;
+        private QSM.TestsDataSet testsDataSet1;
+        private System.Windows.Forms.BindingSource testSuitesBindingSource1;
+        private QSM.TestsDataSetTableAdapters.TestSuitesTableAdapter testSuitesTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
