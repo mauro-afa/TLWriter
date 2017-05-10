@@ -52,7 +52,7 @@
             this.ExpecReTB = new System.Windows.Forms.TextBox();
             this.KeywordLB = new System.Windows.Forms.CheckedListBox();
             this.ChangeTSButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TestCaseGrid = new System.Windows.Forms.DataGridView();
             this.AddTCButton = new System.Windows.Forms.Button();
             this.UpdateTCButton = new System.Windows.Forms.Button();
             this.RemoveTCButton = new System.Windows.Forms.Button();
@@ -60,8 +60,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.FinishButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TestCaseGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -341,27 +342,28 @@
             this.ChangeTSButton.UseVisualStyleBackColor = true;
             this.ChangeTSButton.Visible = false;
             // 
-            // dataGridView1
+            // TestCaseGrid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 391);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1162, 150);
-            this.dataGridView1.TabIndex = 23;
+            this.TestCaseGrid.AllowUserToAddRows = false;
+            this.TestCaseGrid.AllowUserToDeleteRows = false;
+            this.TestCaseGrid.AllowUserToOrderColumns = true;
+            this.TestCaseGrid.AllowUserToResizeColumns = false;
+            this.TestCaseGrid.AllowUserToResizeRows = false;
+            this.TestCaseGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TestCaseGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TestCaseGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TestCaseGrid.GridColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TestCaseGrid.Location = new System.Drawing.Point(16, 391);
+            this.TestCaseGrid.Name = "TestCaseGrid";
+            this.TestCaseGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.TestCaseGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TestCaseGrid.Size = new System.Drawing.Size(1162, 150);
+            this.TestCaseGrid.TabIndex = 23;
+            this.TestCaseGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // AddTCButton
             // 
-            this.AddTCButton.Location = new System.Drawing.Point(99, 349);
+            this.AddTCButton.Location = new System.Drawing.Point(55, 347);
             this.AddTCButton.Name = "AddTCButton";
             this.AddTCButton.Size = new System.Drawing.Size(127, 23);
             this.AddTCButton.TabIndex = 12;
@@ -371,33 +373,36 @@
             // 
             // UpdateTCButton
             // 
-            this.UpdateTCButton.Location = new System.Drawing.Point(336, 349);
+            this.UpdateTCButton.Location = new System.Drawing.Point(292, 347);
             this.UpdateTCButton.Name = "UpdateTCButton";
             this.UpdateTCButton.Size = new System.Drawing.Size(127, 23);
             this.UpdateTCButton.TabIndex = 13;
             this.UpdateTCButton.Text = "Update Test Case";
             this.UpdateTCButton.UseVisualStyleBackColor = true;
             this.UpdateTCButton.Visible = false;
+            this.UpdateTCButton.Click += new System.EventHandler(this.UpdateTCButton_Click);
             // 
             // RemoveTCButton
             // 
-            this.RemoveTCButton.Location = new System.Drawing.Point(574, 349);
+            this.RemoveTCButton.Location = new System.Drawing.Point(530, 347);
             this.RemoveTCButton.Name = "RemoveTCButton";
             this.RemoveTCButton.Size = new System.Drawing.Size(127, 23);
             this.RemoveTCButton.TabIndex = 14;
             this.RemoveTCButton.Text = "Remove Test Case";
             this.RemoveTCButton.UseVisualStyleBackColor = true;
             this.RemoveTCButton.Visible = false;
+            this.RemoveTCButton.Click += new System.EventHandler(this.RemoveTCButton_Click);
             // 
             // CancelSelect
             // 
-            this.CancelSelect.Location = new System.Drawing.Point(816, 349);
+            this.CancelSelect.Location = new System.Drawing.Point(772, 347);
             this.CancelSelect.Name = "CancelSelect";
             this.CancelSelect.Size = new System.Drawing.Size(127, 23);
             this.CancelSelect.TabIndex = 15;
             this.CancelSelect.Text = "Cancel selection";
             this.CancelSelect.UseVisualStyleBackColor = true;
             this.CancelSelect.Visible = false;
+            this.CancelSelect.Click += new System.EventHandler(this.CancelSelect_Click);
             // 
             // label10
             // 
@@ -426,11 +431,22 @@
             this.label12.TabIndex = 26;
             this.label12.Text = "Keywords";
             // 
+            // FinishButton
+            // 
+            this.FinishButton.Location = new System.Drawing.Point(1009, 347);
+            this.FinishButton.Name = "FinishButton";
+            this.FinishButton.Size = new System.Drawing.Size(125, 23);
+            this.FinishButton.TabIndex = 27;
+            this.FinishButton.Text = "Finish";
+            this.FinishButton.UseVisualStyleBackColor = true;
+            this.FinishButton.Click += new System.EventHandler(this.FinishButton_Click);
+            // 
             // TestSuiteCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 571);
+            this.Controls.Add(this.FinishButton);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -438,7 +454,7 @@
             this.Controls.Add(this.RemoveTCButton);
             this.Controls.Add(this.UpdateTCButton);
             this.Controls.Add(this.AddTCButton);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.TestCaseGrid);
             this.Controls.Add(this.ChangeTSButton);
             this.Controls.Add(this.KeywordLB);
             this.Controls.Add(this.ExpecReTB);
@@ -469,7 +485,7 @@
             this.Load += new System.EventHandler(this.TestSuiteCreation_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TestCaseGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -501,7 +517,7 @@
         private System.Windows.Forms.TextBox ExpecReTB;
         private System.Windows.Forms.CheckedListBox KeywordLB;
         private System.Windows.Forms.Button ChangeTSButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView TestCaseGrid;
         private System.Windows.Forms.Button AddTCButton;
         private System.Windows.Forms.Button UpdateTCButton;
         private System.Windows.Forms.Button RemoveTCButton;
@@ -509,8 +525,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private QSM.TestsDataSet testsDataSet;
-        private QSM.TestsDataSetTableAdapters.TestCasesTableAdapter testCasesTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn tCIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tSIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn testCaseIDDataGridViewTextBoxColumn;
@@ -522,5 +536,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn exectypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn importanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button FinishButton;
     }
 }

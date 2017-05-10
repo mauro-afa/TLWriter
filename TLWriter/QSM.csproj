@@ -71,10 +71,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestsDataSet.Designer.cs">
+    <Compile Include="QSMTCDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TestsDataSet.xsd</DependentUpon>
+      <DependentUpon>QSMTCDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="TestSuiteCreation.cs">
       <SubType>Form</SubType>
@@ -108,16 +108,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="TestsDataSet.xsc">
-      <DependentUpon>TestsDataSet.xsd</DependentUpon>
+    <None Include="QSMTCDataSet.xsc">
+      <DependentUpon>QSMTCDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TestsDataSet.xsd">
+    <None Include="QSMTCDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TestsDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>QSMTCDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="TestsDataSet.xss">
-      <DependentUpon>TestsDataSet.xsd</DependentUpon>
+    <None Include="QSMTCDataSet.xss">
+      <DependentUpon>QSMTCDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -136,12 +136,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Tests.mdf">
+    <Content Include="QSMTC.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tests_log.ldf">
-      <DependentUpon>Tests.mdf</DependentUpon>
+    <Content Include="QSMTC_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>QSMTC.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
