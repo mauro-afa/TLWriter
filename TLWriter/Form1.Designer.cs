@@ -39,12 +39,6 @@
             this.UploadTSButton = new System.Windows.Forms.Button();
             this.CreateTSButton = new System.Windows.Forms.Button();
             this.TestSuiteGrid = new System.Windows.Forms.DataGridView();
-            this.qSMTCDataSet = new QSM.QSMTCDataSet();
-            this.testCasesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testCasesTableAdapter = new QSM.QSMTCDataSetTableAdapters.TestCasesTableAdapter();
-            this.qSMTCDataSet1 = new QSM.QSMTCDataSet();
-            this.testSuitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testSuitesTableAdapter = new QSM.QSMTCDataSetTableAdapters.TestSuitesTableAdapter();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,16 +46,22 @@
             this.uploadDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updateDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testSuitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qSMTCDataSet1 = new QSM.QSMTCDataSet();
+            this.qSMTCDataSet = new QSM.QSMTCDataSet();
+            this.testCasesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.testCasesTableAdapter = new QSM.QSMTCDataSetTableAdapters.TestCasesTableAdapter();
+            this.testSuitesTableAdapter = new QSM.QSMTCDataSetTableAdapters.TestSuitesTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TestSuiteGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qSMTCDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qSMTCDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qSMTCDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -122,6 +122,7 @@
             this.DeleteTSButton.TabIndex = 3;
             this.DeleteTSButton.Text = "Delete test suite";
             this.DeleteTSButton.UseVisualStyleBackColor = true;
+            this.DeleteTSButton.Visible = false;
             // 
             // OpenTSButton
             // 
@@ -131,6 +132,7 @@
             this.OpenTSButton.TabIndex = 2;
             this.OpenTSButton.Text = "Open test suite";
             this.OpenTSButton.UseVisualStyleBackColor = true;
+            this.OpenTSButton.Visible = false;
             // 
             // UploadTSButton
             // 
@@ -140,6 +142,7 @@
             this.UploadTSButton.TabIndex = 1;
             this.UploadTSButton.Text = "Upload test suite";
             this.UploadTSButton.UseVisualStyleBackColor = true;
+            this.UploadTSButton.Visible = false;
             // 
             // CreateTSButton
             // 
@@ -155,8 +158,10 @@
             // 
             this.TestSuiteGrid.AllowUserToAddRows = false;
             this.TestSuiteGrid.AllowUserToDeleteRows = false;
-            this.TestSuiteGrid.AllowUserToOrderColumns = true;
+            this.TestSuiteGrid.AllowUserToResizeColumns = false;
+            this.TestSuiteGrid.AllowUserToResizeRows = false;
             this.TestSuiteGrid.AutoGenerateColumns = false;
+            this.TestSuiteGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TestSuiteGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TestSuiteGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TestSuiteGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -169,41 +174,18 @@
             this.idDataGridViewTextBoxColumn});
             this.TestSuiteGrid.DataSource = this.testSuitesBindingSource;
             this.TestSuiteGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TestSuiteGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.TestSuiteGrid.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TestSuiteGrid.Location = new System.Drawing.Point(0, 0);
             this.TestSuiteGrid.Name = "TestSuiteGrid";
             this.TestSuiteGrid.ReadOnly = true;
+            this.TestSuiteGrid.RowHeadersVisible = false;
+            this.TestSuiteGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TestSuiteGrid.ShowCellErrors = false;
+            this.TestSuiteGrid.ShowRowErrors = false;
             this.TestSuiteGrid.Size = new System.Drawing.Size(632, 489);
             this.TestSuiteGrid.TabIndex = 0;
-            this.TestSuiteGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TestSuiteGrid_CellContentClick);
-            // 
-            // qSMTCDataSet
-            // 
-            this.qSMTCDataSet.DataSetName = "QSMTCDataSet";
-            this.qSMTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // testCasesBindingSource
-            // 
-            this.testCasesBindingSource.DataMember = "TestCases";
-            this.testCasesBindingSource.DataSource = this.qSMTCDataSet;
-            // 
-            // testCasesTableAdapter
-            // 
-            this.testCasesTableAdapter.ClearBeforeFill = true;
-            // 
-            // qSMTCDataSet1
-            // 
-            this.qSMTCDataSet1.DataSetName = "QSMTCDataSet";
-            this.qSMTCDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // testSuitesBindingSource
-            // 
-            this.testSuitesBindingSource.DataMember = "TestSuites";
-            this.testSuitesBindingSource.DataSource = this.qSMTCDataSet1;
-            // 
-            // testSuitesTableAdapter
-            // 
-            this.testSuitesTableAdapter.ClearBeforeFill = true;
+            this.TestSuiteGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TestSuiteGrid_CellClick);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -254,6 +236,34 @@
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // testSuitesBindingSource
+            // 
+            this.testSuitesBindingSource.DataMember = "TestSuites";
+            this.testSuitesBindingSource.DataSource = this.qSMTCDataSet1;
+            // 
+            // qSMTCDataSet1
+            // 
+            this.qSMTCDataSet1.DataSetName = "QSMTCDataSet";
+            this.qSMTCDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // qSMTCDataSet
+            // 
+            this.qSMTCDataSet.DataSetName = "QSMTCDataSet";
+            this.qSMTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // testCasesBindingSource
+            // 
+            this.testCasesBindingSource.DataMember = "TestCases";
+            this.testCasesBindingSource.DataSource = this.qSMTCDataSet;
+            // 
+            // testCasesTableAdapter
+            // 
+            this.testCasesTableAdapter.ClearBeforeFill = true;
+            // 
+            // testSuitesTableAdapter
+            // 
+            this.testSuitesTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,10 +282,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TestSuiteGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qSMTCDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qSMTCDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testCasesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qSMTCDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testSuitesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -71,6 +71,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QSMTCDataSet.cs">
+      <DependentUpon>QSMTCDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="QSMTCDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -115,6 +115,8 @@
             // 
             // BrandCB
             // 
+            this.BrandCB.AllowDrop = true;
+            this.BrandCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BrandCB.FormattingEnabled = true;
             this.BrandCB.Items.AddRange(new object[] {
             "HPS-Cigado",
@@ -166,6 +168,8 @@
             // 
             // VersionCB
             // 
+            this.VersionCB.AllowDrop = true;
+            this.VersionCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.VersionCB.FormattingEnabled = true;
             this.VersionCB.Items.AddRange(new object[] {
             "10.00",
@@ -213,6 +217,8 @@
             // 
             // ExecutionCB
             // 
+            this.ExecutionCB.AllowDrop = true;
+            this.ExecutionCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ExecutionCB.FormattingEnabled = true;
             this.ExecutionCB.Items.AddRange(new object[] {
             "Manual",
@@ -224,6 +230,8 @@
             // 
             // ImportanceCB
             // 
+            this.ImportanceCB.AllowDrop = true;
+            this.ImportanceCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ImportanceCB.FormattingEnabled = true;
             this.ImportanceCB.Items.AddRange(new object[] {
             "Low",
@@ -341,6 +349,7 @@
             this.ChangeTSButton.Text = "Change test suite info";
             this.ChangeTSButton.UseVisualStyleBackColor = true;
             this.ChangeTSButton.Visible = false;
+            this.ChangeTSButton.Click += new System.EventHandler(this.ChangeTSButton_Click);
             // 
             // TestCaseGrid
             // 

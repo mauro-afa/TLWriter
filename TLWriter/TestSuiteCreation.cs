@@ -109,6 +109,38 @@ namespace TLWriter
             this.parent.Show();
         }
 
+        private void ChangeTSButton_Click(object sender, EventArgs e)
+        {
+            if(ChangeTSButton.Text=="Change test suite info")
+            {
+                TestSuiteTB.Enabled = true;
+                JiraLinkTB.Enabled = true;
+                BrandCB.Enabled = true;
+                VersionCB.Enabled = true;
+                ChangeTSButton.Text = "Save Changes";
+            }
+            else
+            {
+                UpdateTestSuiteInfo();
+            }
+        }
+
+        private void UpdateTestSuiteInfo()
+        {
+            scn.Open();
+            scmd.CommandText = "UPDATE TestSuites SET Name = @TestSuiteName, Brand = @Brand, Version = @Version WHERE Id = @TSID";
+            scmd.Parameters.AddWithValue("@TestSuiteName", TestSuiteTB.Text);
+            scmd.Parameters.AddWithValue("@Brand", BrandCB.Text);
+            scmd.Parameters.AddWithValue("@Version", VersionCB.Text);
+            scmd.Parameters.AddWithValue("@TSID", testsuiteID);
+            scn.Close();
+            TestSuiteTB.Enabled = false;
+            JiraLinkTB.Enabled = false;
+            BrandCB.Enabled = false;
+            VersionCB.Enabled = false;
+            ChangeTSButton.Text = "Change test suite info";
+
+        }
         private void UpdateTestCase()
         {
             string keywords = "";
@@ -294,6 +326,8 @@ namespace TLWriter
             }
 
         }
+
+
     }
 }
         

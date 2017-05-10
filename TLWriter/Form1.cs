@@ -34,9 +34,11 @@ namespace TLWriter
             Hide();
         }
 
-        private void TestSuiteGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void TestSuiteGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            UploadTSButton.Visible = true;
+            OpenTSButton.Visible = true;
+            DeleteTSButton.Visible = true;
         }
     }
 }
