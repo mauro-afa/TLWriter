@@ -39,19 +39,20 @@
             this.UploadTSButton = new System.Windows.Forms.Button();
             this.CreateTSButton = new System.Windows.Forms.Button();
             this.TestSuiteGrid = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uploadDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testSuitesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qSMTCDataSet1 = new QSM.QSMTCDataSet();
             this.qSMTCDataSet = new QSM.QSMTCDataSet();
             this.testCasesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.testCasesTableAdapter = new QSM.QSMTCDataSetTableAdapters.TestCasesTableAdapter();
             this.testSuitesTableAdapter = new QSM.QSMTCDataSetTableAdapters.TestSuitesTableAdapter();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jiraLinkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uploadDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updateDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -122,7 +123,6 @@
             this.DeleteTSButton.TabIndex = 3;
             this.DeleteTSButton.Text = "Delete test suite";
             this.DeleteTSButton.UseVisualStyleBackColor = true;
-            this.DeleteTSButton.Visible = false;
             // 
             // OpenTSButton
             // 
@@ -132,7 +132,7 @@
             this.OpenTSButton.TabIndex = 2;
             this.OpenTSButton.Text = "Open test suite";
             this.OpenTSButton.UseVisualStyleBackColor = true;
-            this.OpenTSButton.Visible = false;
+            this.OpenTSButton.Click += new System.EventHandler(this.OpenTSButton_Click);
             // 
             // UploadTSButton
             // 
@@ -142,7 +142,7 @@
             this.UploadTSButton.TabIndex = 1;
             this.UploadTSButton.Text = "Upload test suite";
             this.UploadTSButton.UseVisualStyleBackColor = true;
-            this.UploadTSButton.Visible = false;
+            this.UploadTSButton.Click += new System.EventHandler(this.UploadTSButton_Click);
             // 
             // CreateTSButton
             // 
@@ -166,12 +166,13 @@
             this.TestSuiteGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TestSuiteGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
+            this.jiraLinkDataGridViewTextBoxColumn,
             this.brandDataGridViewTextBoxColumn,
             this.versionDataGridViewTextBoxColumn,
             this.creationDateDataGridViewTextBoxColumn,
             this.uploadDateDataGridViewTextBoxColumn,
             this.updateDateDataGridViewTextBoxColumn,
-            this.idDataGridViewTextBoxColumn});
+            this.Id});
             this.TestSuiteGrid.DataSource = this.testSuitesBindingSource;
             this.TestSuiteGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TestSuiteGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -185,7 +186,34 @@
             this.TestSuiteGrid.ShowRowErrors = false;
             this.TestSuiteGrid.Size = new System.Drawing.Size(632, 489);
             this.TestSuiteGrid.TabIndex = 0;
-            this.TestSuiteGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TestSuiteGrid_CellClick);
+            // 
+            // testSuitesBindingSource
+            // 
+            this.testSuitesBindingSource.DataMember = "TestSuites";
+            this.testSuitesBindingSource.DataSource = this.qSMTCDataSet1;
+            // 
+            // qSMTCDataSet1
+            // 
+            this.qSMTCDataSet1.DataSetName = "QSMTCDataSet";
+            this.qSMTCDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // qSMTCDataSet
+            // 
+            this.qSMTCDataSet.DataSetName = "QSMTCDataSet";
+            this.qSMTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // testCasesBindingSource
+            // 
+            this.testCasesBindingSource.DataMember = "TestCases";
+            this.testCasesBindingSource.DataSource = this.qSMTCDataSet;
+            // 
+            // testCasesTableAdapter
+            // 
+            this.testCasesTableAdapter.ClearBeforeFill = true;
+            // 
+            // testSuitesTableAdapter
+            // 
+            this.testSuitesTableAdapter.ClearBeforeFill = true;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -193,6 +221,13 @@
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // jiraLinkDataGridViewTextBoxColumn
+            // 
+            this.jiraLinkDataGridViewTextBoxColumn.DataPropertyName = "JiraLink";
+            this.jiraLinkDataGridViewTextBoxColumn.HeaderText = "JiraLink";
+            this.jiraLinkDataGridViewTextBoxColumn.Name = "jiraLinkDataGridViewTextBoxColumn";
+            this.jiraLinkDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // brandDataGridViewTextBoxColumn
             // 
@@ -229,40 +264,13 @@
             this.updateDateDataGridViewTextBoxColumn.Name = "updateDateDataGridViewTextBoxColumn";
             this.updateDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // idDataGridViewTextBoxColumn
+            // Id
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // testSuitesBindingSource
-            // 
-            this.testSuitesBindingSource.DataMember = "TestSuites";
-            this.testSuitesBindingSource.DataSource = this.qSMTCDataSet1;
-            // 
-            // qSMTCDataSet1
-            // 
-            this.qSMTCDataSet1.DataSetName = "QSMTCDataSet";
-            this.qSMTCDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // qSMTCDataSet
-            // 
-            this.qSMTCDataSet.DataSetName = "QSMTCDataSet";
-            this.qSMTCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // testCasesBindingSource
-            // 
-            this.testCasesBindingSource.DataMember = "TestCases";
-            this.testCasesBindingSource.DataSource = this.qSMTCDataSet;
-            // 
-            // testCasesTableAdapter
-            // 
-            this.testCasesTableAdapter.ClearBeforeFill = true;
-            // 
-            // testSuitesTableAdapter
-            // 
-            this.testSuitesTableAdapter.ClearBeforeFill = true;
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
             // Form1
             // 
@@ -310,12 +318,13 @@
         private System.Windows.Forms.BindingSource testSuitesBindingSource;
         private QSM.QSMTCDataSetTableAdapters.TestSuitesTableAdapter testSuitesTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jiraLinkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn creationDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uploadDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn updateDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
     }
 }
 

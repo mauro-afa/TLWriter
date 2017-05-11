@@ -13,33 +13,54 @@ namespace TLWriter
         int newTestSuite = 0;
         string[] translateResult = new string[20];
         string[] selectionString = new string[9];
+        string[] OpenTSinfo = new string[8];
         string testsuiteID;
         int tcounter = 1;
+        bool bWithData;
         CommonFunctions cf = new CommonFunctions();
         SqlConnection scn = new SqlConnection(connectionString);
         SqlDataAdapter adapter = new SqlDataAdapter();
         SqlCommand scmd = new SqlCommand();
         SqlDataReader sdr;
         DataTable data = new DataTable();
-        public Form parent
+
+        public TestSuiteCreation(string[] OpenTSinfo = null, bool bWithData = false)
         {
-
-            get;
-            private set;
-
-        }
-
-        public TestSuiteCreation(Form parent)
-        {
-            this.parent = parent;
+            this.OpenTSinfo = OpenTSinfo;
+            this.bWithData = bWithData;
             InitializeComponent();
         }
 
         private void TestSuiteCreation_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.parent.Show();            
+            //this.parent.Show();            
         }
 
+        private void TestSuiteCreation_Load(object sender, EventArgs e)
+        {
+            if (bWithData)
+            {
+                testsuiteID = OpenTSinfo[7];
+                OpenTS(testsuiteID);
+            }
+        }
+
+        private void OpenTS(string ID)
+        {
+            updateTestGrid();
+            TestSuiteTB.Text = OpenTSinfo[0].Trim();
+            JiraLinkTB.Text = OpenTSinfo[1].Trim();
+            BrandCB.Text = OpenTSinfo[2].Trim();
+            VersionCB.Text = OpenTSinfo[3].Trim();
+            scn.Open();
+            scmd.Connection = scn;
+            scmd.CommandText = "select top 1 * from TestCases WHERE TSID=@TSID order by 1 desc";
+            scmd.Parameters.AddWithValue("@TSID", testsuiteID);
+            tcounter = Convert.ToInt32(scmd.ExecuteScalar().ToString()) + 1;
+            scmd.Parameters.Clear();
+            scn.Close();
+            newTestSuite = 1;
+        }
         private void AddTCButton_Click(object sender, EventArgs e)
         {
             if(newTestSuite==1)
@@ -54,19 +75,13 @@ namespace TLWriter
 
         }
 
-        private void TestSuiteCreation_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void TestCaseGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             getClickedTC();
             UpdateTCButton.Visible = true;
             RemoveTCButton.Visible = true;
             CancelSelect.Visible = true;
         }
-
         private void CancelSelect_Click(object sender, EventArgs e)
         {
             updateClearFields();
@@ -105,8 +120,16 @@ namespace TLWriter
 
         private void FinishButton_Click(object sender, EventArgs e)
         {
-            Hide();
-            this.parent.Show();
+            DialogResult answer = MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (answer == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else
+            {
+
+            }
         }
 
         private void ChangeTSButton_Click(object sender, EventArgs e)
@@ -145,7 +168,6 @@ namespace TLWriter
         {
             string keywords = "";
             translateResult = cf.translateStep(ExecutionCB.SelectedItem.ToString(), ImportanceCB.SelectedItem.ToString());
-            data.Clear();
             foreach (string checkeditems in KeywordLB.CheckedItems)
             {
                 scmd.Connection = scn;
@@ -167,19 +189,17 @@ namespace TLWriter
             scmd.ExecuteNonQuery();
             scmd.Parameters.Clear();
             scn.Close();
-            adapter.SelectCommand = new SqlCommand("SELECT TCID, TestCaseID, TestObjective, Preconditions, Actions, Expec_res, Keyword, Exec_type, Importance FROM TestCases WHERE TSID = @TSID", scn);
-            adapter.SelectCommand.Parameters.AddWithValue("@TSID", testsuiteID);
-            adapter.Fill(data);
-            TestCaseGrid.DataSource = data;
-            adapter.SelectCommand.Parameters.Clear();
+
+            updateTestGrid();
+
             updateClearFields();
+
             UpdateTCButton.Visible = false;
             CancelSelect.Visible = false;
             RemoveTCButton.Visible = false;
         }
         private void RemoveTestCase()
         {
-            data.Clear();
             scn.Open();
             scmd.Connection = scn;
             scmd.CommandText = "DELETE FROM TestCases WHERE TCID = @TCID AND TSID = @TSID";
@@ -191,11 +211,7 @@ namespace TLWriter
             scmd.Parameters.Clear();
             scn.Close();
 
-            adapter.SelectCommand = new SqlCommand("SELECT TCID, TestCaseID, TestObjective, Preconditions, Actions, Expec_res, Keyword, Exec_type, Importance FROM TestCases WHERE TSID = @TSID", scn);
-            adapter.SelectCommand.Parameters.AddWithValue("@TSID", testsuiteID);
-            adapter.Fill(data);
-            TestCaseGrid.DataSource = data;
-            adapter.SelectCommand.Parameters.Clear();
+            updateTestGrid();
 
             tcounter = tcounter - 1;
             updateClearFields();
@@ -276,7 +292,6 @@ namespace TLWriter
         }
         private void addTestCase()
         {
-            data.Clear();
             translateResult = cf.translateStep(ExecutionCB.SelectedItem.ToString(), ImportanceCB.SelectedItem.ToString());
             string keywords = "";
             foreach (string checkeditems in KeywordLB.CheckedItems)
@@ -286,7 +301,7 @@ namespace TLWriter
             }
             scn.Open();
             scmd.CommandText = "SELECT * FROM TestSuites WHERE Name = @TSN";
-            scmd.Parameters.AddWithValue("TSN", TestSuiteTB.Text);
+            scmd.Parameters.AddWithValue("@TSN", TestSuiteTB.Text);
             testsuiteID = scmd.ExecuteScalar().ToString();
             scmd.CommandText = "INSERT INTO TestCases (TCID, TSID, TestCaseID, TestObjective, Preconditions, Actions, Expec_res, Keyword, Exec_type, Importance, Stat) VALUES (@TCCounter, @TSID, @TCID, @obj, @Precon, @Action, @ExpRes, @Keywords, @result1, @result2, '1')";
             scmd.Parameters.AddWithValue("@TCCOunter", tcounter);
@@ -299,16 +314,25 @@ namespace TLWriter
             scmd.Parameters.AddWithValue("@Keywords", keywords);
             scmd.Parameters.AddWithValue("@result1", translateResult[0]);
             scmd.Parameters.AddWithValue("@result2", translateResult[1]);
+            MessageBox.Show(tcounter.ToString());
+            MessageBox.Show(testsuiteID);
             scmd.ExecuteNonQuery();
             scmd.Parameters.Clear();
             scn.Close();
             tcounter = tcounter + 1;
+            updateTestGrid();
+            updateClearFields();
+        }
+
+        private void updateTestGrid()
+        {
+            data.Clear();
             adapter.SelectCommand = new SqlCommand("SELECT TCID, TestCaseID, TestObjective, Preconditions, Actions, Expec_res, Keyword, Exec_type, Importance FROM TestCases WHERE TSID = @TSID", scn);
             adapter.SelectCommand.Parameters.AddWithValue("@TSID", testsuiteID);
             adapter.Fill(data);
             TestCaseGrid.DataSource = data;
             adapter.SelectCommand.Parameters.Clear();
-            updateClearFields();
+
         }
         private void updateClearFields()
         {
@@ -326,8 +350,6 @@ namespace TLWriter
             }
 
         }
-
-
     }
 }
         

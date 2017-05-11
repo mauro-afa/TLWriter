@@ -328,6 +328,8 @@ namespace QSM {
             
             private global::System.Data.DataColumn columnId;
             
+            private global::System.Data.DataColumn columnJiraLink;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TestSuitesDataTable() {
@@ -419,6 +421,14 @@ namespace QSM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn JiraLinkColumn {
+                get {
+                    return this.columnJiraLink;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -454,7 +464,7 @@ namespace QSM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TestSuitesRow AddTestSuitesRow(string Name, string Brand, string Version, System.DateTime CreationDate, System.DateTime UploadDate, System.DateTime UpdateDate) {
+            public TestSuitesRow AddTestSuitesRow(string Name, string Brand, string Version, System.DateTime CreationDate, System.DateTime UploadDate, System.DateTime UpdateDate, string JiraLink) {
                 TestSuitesRow rowTestSuitesRow = ((TestSuitesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
@@ -463,7 +473,8 @@ namespace QSM {
                         CreationDate,
                         UploadDate,
                         UpdateDate,
-                        null};
+                        null,
+                        JiraLink};
                 rowTestSuitesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTestSuitesRow);
                 return rowTestSuitesRow;
@@ -500,6 +511,7 @@ namespace QSM {
                 this.columnUploadDate = base.Columns["UploadDate"];
                 this.columnUpdateDate = base.Columns["UpdateDate"];
                 this.columnId = base.Columns["Id"];
+                this.columnJiraLink = base.Columns["JiraLink"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +531,8 @@ namespace QSM {
                 base.Columns.Add(this.columnUpdateDate);
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
+                this.columnJiraLink = new global::System.Data.DataColumn("JiraLink", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnJiraLink);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnName.MaxLength = 100;
@@ -530,6 +544,7 @@ namespace QSM {
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
+                this.columnJiraLink.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1188,6 +1203,22 @@ namespace QSM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string JiraLink {
+                get {
+                    try {
+                        return ((string)(this[this.tableTestSuites.JiraLinkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'JiraLink\' in table \'TestSuites\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTestSuites.JiraLinkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableTestSuites.NameColumn);
             }
@@ -1256,6 +1287,18 @@ namespace QSM {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetUpdateDateNull() {
                 this[this.tableTestSuites.UpdateDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsJiraLinkNull() {
+                return this.IsNull(this.tableTestSuites.JiraLinkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetJiraLinkNull() {
+                this[this.tableTestSuites.JiraLinkColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1748,14 +1791,17 @@ namespace QSM.QSMTCDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("UploadDate", "UploadDate");
             tableMapping.ColumnMappings.Add("UpdateDate", "UpdateDate");
             tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("JiraLink", "JiraLink");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [TestSuites] WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Brand = 1 AND [Brand] IS NULL) OR ([Brand] = @Original_Brand)) AND ((@IsNull_Version = 1 AND [Version] IS NULL) OR ([Version] = @Original_Version)) AND ((@IsNull_CreationDate = 1 AND [CreationDate] IS NULL) OR ([CreationDate] = @Original_CreationDate)) AND ((@IsNull_UploadDate = 1 AND [UploadDate] IS NULL) OR ([UploadDate] = @Original_UploadDate)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [TestSuites] WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_JiraLink = 1 AND [JiraLink] IS NULL) OR ([JiraLink] = @Original_JiraLink)) AND ((@IsNull_Brand = 1 AND [Brand] IS NULL) OR ([Brand] = @Original_Brand)) AND ((@IsNull_Version = 1 AND [Version] IS NULL) OR ([Version] = @Original_Version)) AND ((@IsNull_CreationDate = 1 AND [CreationDate] IS NULL) OR ([CreationDate] = @Original_CreationDate)) AND ((@IsNull_UploadDate = 1 AND [UploadDate] IS NULL) OR ([UploadDate] = @Original_UploadDate)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JiraLink", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JiraLink", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JiraLink", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JiraLink", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Brand", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Brand", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Version", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1768,10 +1814,11 @@ namespace QSM.QSMTCDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UpdateDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [TestSuites] ([Name], [Brand], [Version], [CreationDate], [UploadDate], [UpdateDate]) VALUES (@Name, @Brand, @Version, @CreationDate, @UploadDate, @UpdateDate);
-SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestSuites WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [TestSuites] ([Name], [JiraLink], [Brand], [Version], [CreationDate], [UploadDate], [UpdateDate]) VALUES (@Name, @JiraLink, @Brand, @Version, @CreationDate, @UploadDate, @UpdateDate);
+SELECT Id, Name, JiraLink, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestSuites WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JiraLink", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JiraLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Brand", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Version", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreationDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1779,10 +1826,11 @@ SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestS
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UpdateDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UpdateDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [TestSuites] SET [Name] = @Name, [Brand] = @Brand, [Version] = @Version, [CreationDate] = @CreationDate, [UploadDate] = @UploadDate, [UpdateDate] = @UpdateDate WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Brand = 1 AND [Brand] IS NULL) OR ([Brand] = @Original_Brand)) AND ((@IsNull_Version = 1 AND [Version] IS NULL) OR ([Version] = @Original_Version)) AND ((@IsNull_CreationDate = 1 AND [CreationDate] IS NULL) OR ([CreationDate] = @Original_CreationDate)) AND ((@IsNull_UploadDate = 1 AND [UploadDate] IS NULL) OR ([UploadDate] = @Original_UploadDate)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)));
-SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestSuites WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [TestSuites] SET [Name] = @Name, [JiraLink] = @JiraLink, [Brand] = @Brand, [Version] = @Version, [CreationDate] = @CreationDate, [UploadDate] = @UploadDate, [UpdateDate] = @UpdateDate WHERE (([Id] = @Original_Id) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_JiraLink = 1 AND [JiraLink] IS NULL) OR ([JiraLink] = @Original_JiraLink)) AND ((@IsNull_Brand = 1 AND [Brand] IS NULL) OR ([Brand] = @Original_Brand)) AND ((@IsNull_Version = 1 AND [Version] IS NULL) OR ([Version] = @Original_Version)) AND ((@IsNull_CreationDate = 1 AND [CreationDate] IS NULL) OR ([CreationDate] = @Original_CreationDate)) AND ((@IsNull_UploadDate = 1 AND [UploadDate] IS NULL) OR ([UploadDate] = @Original_UploadDate)) AND ((@IsNull_UpdateDate = 1 AND [UpdateDate] IS NULL) OR ([UpdateDate] = @Original_UpdateDate)));
+SELECT Id, Name, JiraLink, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestSuites WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@JiraLink", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JiraLink", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Brand", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Version", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreationDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreationDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1791,6 +1839,8 @@ SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestS
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_JiraLink", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JiraLink", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_JiraLink", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "JiraLink", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Brand", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Brand", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Brand", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Version", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Version", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1817,8 +1867,8 @@ SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestS
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestSu" +
-                "ites";
+            this._commandCollection[0].CommandText = "SELECT Id, Name, JiraLink , Brand, Version, CreationDate, UploadDate, UpdateDate " +
+                "FROM TestSuites";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1879,7 +1929,7 @@ SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestS
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_Name, string Original_Brand, string Original_Version, global::System.Nullable<global::System.DateTime> Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate) {
+        public virtual int Delete(int Original_Id, string Original_Name, string Original_JiraLink, string Original_Brand, string Original_Version, global::System.Nullable<global::System.DateTime> Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -1889,45 +1939,53 @@ SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestS
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Name));
             }
-            if ((Original_Brand == null)) {
+            if ((Original_JiraLink == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Brand));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_JiraLink));
             }
-            if ((Original_Version == null)) {
+            if ((Original_Brand == null)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Version));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Brand));
             }
-            if ((Original_CreationDate.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_CreationDate.Value));
-            }
-            else {
+            if ((Original_Version == null)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_UploadDate.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Version));
+            }
+            if ((Original_CreationDate.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_UploadDate.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_CreationDate.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_UpdateDate.HasValue == true)) {
+            if ((Original_UploadDate.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((System.DateTime)(Original_UpdateDate.Value));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((System.DateTime)(Original_UploadDate.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_UpdateDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((System.DateTime)(Original_UpdateDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1949,42 +2007,48 @@ SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestS
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, string Brand, string Version, global::System.Nullable<global::System.DateTime> CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate) {
+        public virtual int Insert(string Name, string JiraLink, string Brand, string Version, global::System.Nullable<global::System.DateTime> CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate) {
             if ((Name == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
-            if ((Brand == null)) {
+            if ((JiraLink == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Brand));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(JiraLink));
             }
-            if ((Version == null)) {
+            if ((Brand == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Version));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Brand));
             }
-            if ((CreationDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(CreationDate.Value));
-            }
-            else {
+            if ((Version == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((UploadDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(UploadDate.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Version));
+            }
+            if ((CreationDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(CreationDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((UpdateDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(UpdateDate.Value));
+            if ((UploadDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(UploadDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((UpdateDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(UpdateDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2006,93 +2070,123 @@ SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestS
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string Brand, string Version, global::System.Nullable<global::System.DateTime> CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate, int Original_Id, string Original_Name, string Original_Brand, string Original_Version, global::System.Nullable<global::System.DateTime> Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate, int Id) {
+        public virtual int Update(
+                    string Name, 
+                    string JiraLink, 
+                    string Brand, 
+                    string Version, 
+                    global::System.Nullable<global::System.DateTime> CreationDate, 
+                    global::System.Nullable<global::System.DateTime> UploadDate, 
+                    global::System.Nullable<global::System.DateTime> UpdateDate, 
+                    int Original_Id, 
+                    string Original_Name, 
+                    string Original_JiraLink, 
+                    string Original_Brand, 
+                    string Original_Version, 
+                    global::System.Nullable<global::System.DateTime> Original_CreationDate, 
+                    global::System.Nullable<global::System.DateTime> Original_UploadDate, 
+                    global::System.Nullable<global::System.DateTime> Original_UpdateDate, 
+                    int Id) {
             if ((Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
             }
-            if ((Brand == null)) {
+            if ((JiraLink == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Brand));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(JiraLink));
             }
-            if ((Version == null)) {
+            if ((Brand == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Version));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Brand));
             }
-            if ((CreationDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(CreationDate.Value));
-            }
-            else {
+            if ((Version == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((UploadDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(UploadDate.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Version));
+            }
+            if ((CreationDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(CreationDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((UpdateDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(UpdateDate.Value));
+            if ((UploadDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(UploadDate.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
-            if ((Original_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            if ((UpdateDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(UpdateDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Id));
+            if ((Original_Name == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Name));
+            }
+            if ((Original_JiraLink == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_JiraLink));
             }
             if ((Original_Brand == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Brand));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Brand));
             }
             if ((Original_Version == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Version));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Version));
             }
             if ((Original_CreationDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_CreationDate.Value));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_CreationDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             if ((Original_UploadDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_UploadDate.Value));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((System.DateTime)(Original_UploadDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             if ((Original_UpdateDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_UpdateDate.Value));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(Original_UpdateDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2113,8 +2207,8 @@ SELECT Id, Name, Brand, Version, CreationDate, UploadDate, UpdateDate FROM TestS
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string Brand, string Version, global::System.Nullable<global::System.DateTime> CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate, int Original_Id, string Original_Name, string Original_Brand, string Original_Version, global::System.Nullable<global::System.DateTime> Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate) {
-            return this.Update(Name, Brand, Version, CreationDate, UploadDate, UpdateDate, Original_Id, Original_Name, Original_Brand, Original_Version, Original_CreationDate, Original_UploadDate, Original_UpdateDate, Original_Id);
+        public virtual int Update(string Name, string JiraLink, string Brand, string Version, global::System.Nullable<global::System.DateTime> CreationDate, global::System.Nullable<global::System.DateTime> UploadDate, global::System.Nullable<global::System.DateTime> UpdateDate, int Original_Id, string Original_Name, string Original_JiraLink, string Original_Brand, string Original_Version, global::System.Nullable<global::System.DateTime> Original_CreationDate, global::System.Nullable<global::System.DateTime> Original_UploadDate, global::System.Nullable<global::System.DateTime> Original_UpdateDate) {
+            return this.Update(Name, JiraLink, Brand, Version, CreationDate, UploadDate, UpdateDate, Original_Id, Original_Name, Original_JiraLink, Original_Brand, Original_Version, Original_CreationDate, Original_UploadDate, Original_UpdateDate, Original_Id);
         }
     }
     

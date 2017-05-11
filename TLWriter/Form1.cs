@@ -12,6 +12,8 @@ namespace TLWriter
 {
     public partial class Form1 : Form
     {
+        string[] selectionString = new string[9];
+
         public Form1()
         {
             InitializeComponent();
@@ -29,16 +31,26 @@ namespace TLWriter
 
         private void CreateTSButton_Click(object sender, EventArgs e)
         {
-            TestSuiteCreation f = new TestSuiteCreation(this);
+            TestSuiteCreation f = new TestSuiteCreation();
             f.Show(this);
-            Hide();
+            //Hide();
         }
 
-        private void TestSuiteGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void UploadTSButton_Click(object sender, EventArgs e)
         {
-            UploadTSButton.Visible = true;
-            OpenTSButton.Visible = true;
-            DeleteTSButton.Visible = true;
+        }
+
+        private void OpenTSButton_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow dgvr = new DataGridViewRow();
+
+            dgvr = TestSuiteGrid.CurrentRow;
+            for(int i=0; i<8; i++)
+            {
+                selectionString[i] = dgvr.Cells[i].Value.ToString();
+            }
+            TestSuiteCreation f = new TestSuiteCreation(selectionString, true);
+            f.Show(this);
         }
     }
 }

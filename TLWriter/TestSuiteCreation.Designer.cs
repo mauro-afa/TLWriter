@@ -227,6 +227,7 @@
             this.ExecutionCB.Name = "ExecutionCB";
             this.ExecutionCB.Size = new System.Drawing.Size(121, 21);
             this.ExecutionCB.TabIndex = 4;
+            this.ExecutionCB.SelectedIndex = 1;
             // 
             // ImportanceCB
             // 
@@ -241,6 +242,7 @@
             this.ImportanceCB.Name = "ImportanceCB";
             this.ImportanceCB.Size = new System.Drawing.Size(121, 21);
             this.ImportanceCB.TabIndex = 5;
+            this.ImportanceCB.SelectedIndex = 1;
             // 
             // ObjTB
             // 
@@ -364,11 +366,12 @@
             this.TestCaseGrid.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.TestCaseGrid.Location = new System.Drawing.Point(16, 391);
             this.TestCaseGrid.Name = "TestCaseGrid";
+            this.TestCaseGrid.ReadOnly = true;
             this.TestCaseGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.TestCaseGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TestCaseGrid.Size = new System.Drawing.Size(1162, 150);
             this.TestCaseGrid.TabIndex = 23;
-            this.TestCaseGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.TestCaseGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TestCaseGrid_CellClick);
             // 
             // AddTCButton
             // 

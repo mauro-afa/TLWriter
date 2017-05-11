@@ -4,6 +4,9 @@
 
     partial class QSMTCDataSet
     {
+        partial class TestSuitesDataTable
+        {
+        }
     }
 }
 
