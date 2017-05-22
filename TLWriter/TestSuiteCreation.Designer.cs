@@ -119,33 +119,34 @@
             this.BrandCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BrandCB.FormattingEnabled = true;
             this.BrandCB.Items.AddRange(new object[] {
-            "HPS-Cigado",
-            "Concord",
-            "Sunoco",
-            "Valero",
-            "HPS-Dallas",
-            "Citgo",
-            "Citgo-Unbranded",
-            "Marathon",
-            "Marathon-Unbranded",
-            "Conoco-Phillips",
-            "Chevron",
-            "Chevron Canada",
-            "Chevron-Unbranded",
-            "Texaco",
-            "Shell",
-            "Exxon",
-            "mobil",
             "BP",
-            "Esso",
             "Cenex",
             "Cenex-Unbranded",
+            "Chevron",
+            "Chevron-Unbranded",
+            "Chevron Canada",
+            "Citgo",
+            "Citgo-Unbranded",
+            "Concord",
+            "Conoco-Phillips",
+            "Esso",
+            "Exxon",
+            "HPS-Cigado",
+            "HPS-Dallas",
+            "Marathon",
+            "Marathon-Unbranded",
+            "mobil",
             "NBS",
             "RBS",
+            "Shell",
+            "Sunoco",
+            "Texaco",
+            "Valero",
             "WorldPay"});
             this.BrandCB.Location = new System.Drawing.Point(964, 44);
             this.BrandCB.Name = "BrandCB";
             this.BrandCB.Size = new System.Drawing.Size(105, 21);
+            this.BrandCB.Sorted = true;
             this.BrandCB.TabIndex = 2;
             // 
             // label3
@@ -179,7 +180,7 @@
             this.VersionCB.Location = new System.Drawing.Point(1107, 44);
             this.VersionCB.Name = "VersionCB";
             this.VersionCB.Size = new System.Drawing.Size(71, 21);
-            this.VersionCB.TabIndex = 8;
+            this.VersionCB.TabIndex = 3;
             // 
             // label5
             // 
@@ -213,7 +214,7 @@
             this.TestCaseTB.Location = new System.Drawing.Point(16, 113);
             this.TestCaseTB.Name = "TestCaseTB";
             this.TestCaseTB.Size = new System.Drawing.Size(685, 20);
-            this.TestCaseTB.TabIndex = 3;
+            this.TestCaseTB.TabIndex = 4;
             // 
             // ExecutionCB
             // 
@@ -226,7 +227,7 @@
             this.ExecutionCB.Location = new System.Drawing.Point(739, 112);
             this.ExecutionCB.Name = "ExecutionCB";
             this.ExecutionCB.Size = new System.Drawing.Size(121, 21);
-            this.ExecutionCB.TabIndex = 4;
+            this.ExecutionCB.TabIndex = 5;
             this.ExecutionCB.SelectedIndex = 1;
             // 
             // ImportanceCB
@@ -241,8 +242,8 @@
             this.ImportanceCB.Location = new System.Drawing.Point(884, 112);
             this.ImportanceCB.Name = "ImportanceCB";
             this.ImportanceCB.Size = new System.Drawing.Size(121, 21);
-            this.ImportanceCB.TabIndex = 5;
-            this.ImportanceCB.SelectedIndex = 1;
+            this.ImportanceCB.TabIndex = 6;
+            this.ImportanceCB.SelectedIndex=1;
             // 
             // ObjTB
             // 
@@ -250,7 +251,7 @@
             this.ObjTB.Multiline = true;
             this.ObjTB.Name = "ObjTB";
             this.ObjTB.Size = new System.Drawing.Size(214, 143);
-            this.ObjTB.TabIndex = 7;
+            this.ObjTB.TabIndex = 8;
             // 
             // label8
             // 
@@ -276,7 +277,7 @@
             this.PreconTB.Multiline = true;
             this.PreconTB.Name = "PreconTB";
             this.PreconTB.Size = new System.Drawing.Size(214, 143);
-            this.PreconTB.TabIndex = 8;
+            this.PreconTB.TabIndex = 9;
             // 
             // ActionTB
             // 
@@ -284,7 +285,7 @@
             this.ActionTB.Multiline = true;
             this.ActionTB.Name = "ActionTB";
             this.ActionTB.Size = new System.Drawing.Size(214, 143);
-            this.ActionTB.TabIndex = 9;
+            this.ActionTB.TabIndex = 10;
             // 
             // ExpecReTB
             // 
@@ -292,7 +293,7 @@
             this.ExpecReTB.Multiline = true;
             this.ExpecReTB.Name = "ExpecReTB";
             this.ExpecReTB.Size = new System.Drawing.Size(214, 143);
-            this.ExpecReTB.TabIndex = 10;
+            this.ExpecReTB.TabIndex = 11;
             // 
             // KeywordLB
             // 
@@ -340,14 +341,14 @@
             this.KeywordLB.Location = new System.Drawing.Point(964, 183);
             this.KeywordLB.Name = "KeywordLB";
             this.KeywordLB.Size = new System.Drawing.Size(214, 139);
-            this.KeywordLB.TabIndex = 11;
+            this.KeywordLB.TabIndex = 12;
             // 
             // ChangeTSButton
             // 
             this.ChangeTSButton.Location = new System.Drawing.Point(1054, 111);
             this.ChangeTSButton.Name = "ChangeTSButton";
             this.ChangeTSButton.Size = new System.Drawing.Size(124, 23);
-            this.ChangeTSButton.TabIndex = 6;
+            this.ChangeTSButton.TabIndex = 7;
             this.ChangeTSButton.Text = "Change test suite info";
             this.ChangeTSButton.UseVisualStyleBackColor = true;
             this.ChangeTSButton.Visible = false;
@@ -370,7 +371,7 @@
             this.TestCaseGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.TestCaseGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TestCaseGrid.Size = new System.Drawing.Size(1162, 150);
-            this.TestCaseGrid.TabIndex = 23;
+            this.TestCaseGrid.TabIndex = 18;
             this.TestCaseGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TestCaseGrid_CellClick);
             // 
             // AddTCButton
@@ -378,7 +379,7 @@
             this.AddTCButton.Location = new System.Drawing.Point(55, 347);
             this.AddTCButton.Name = "AddTCButton";
             this.AddTCButton.Size = new System.Drawing.Size(127, 23);
-            this.AddTCButton.TabIndex = 12;
+            this.AddTCButton.TabIndex = 13;
             this.AddTCButton.Text = "Add Test Case";
             this.AddTCButton.UseVisualStyleBackColor = true;
             this.AddTCButton.Click += new System.EventHandler(this.AddTCButton_Click);
@@ -388,7 +389,7 @@
             this.UpdateTCButton.Location = new System.Drawing.Point(292, 347);
             this.UpdateTCButton.Name = "UpdateTCButton";
             this.UpdateTCButton.Size = new System.Drawing.Size(127, 23);
-            this.UpdateTCButton.TabIndex = 13;
+            this.UpdateTCButton.TabIndex = 14;
             this.UpdateTCButton.Text = "Update Test Case";
             this.UpdateTCButton.UseVisualStyleBackColor = true;
             this.UpdateTCButton.Visible = false;
@@ -399,7 +400,7 @@
             this.RemoveTCButton.Location = new System.Drawing.Point(530, 347);
             this.RemoveTCButton.Name = "RemoveTCButton";
             this.RemoveTCButton.Size = new System.Drawing.Size(127, 23);
-            this.RemoveTCButton.TabIndex = 14;
+            this.RemoveTCButton.TabIndex = 15;
             this.RemoveTCButton.Text = "Remove Test Case";
             this.RemoveTCButton.UseVisualStyleBackColor = true;
             this.RemoveTCButton.Visible = false;
@@ -410,7 +411,7 @@
             this.CancelSelect.Location = new System.Drawing.Point(772, 347);
             this.CancelSelect.Name = "CancelSelect";
             this.CancelSelect.Size = new System.Drawing.Size(127, 23);
-            this.CancelSelect.TabIndex = 15;
+            this.CancelSelect.TabIndex = 16;
             this.CancelSelect.Text = "Cancel selection";
             this.CancelSelect.UseVisualStyleBackColor = true;
             this.CancelSelect.Visible = false;
@@ -448,7 +449,7 @@
             this.FinishButton.Location = new System.Drawing.Point(1009, 347);
             this.FinishButton.Name = "FinishButton";
             this.FinishButton.Size = new System.Drawing.Size(125, 23);
-            this.FinishButton.TabIndex = 27;
+            this.FinishButton.TabIndex = 17;
             this.FinishButton.Text = "Finish";
             this.FinishButton.UseVisualStyleBackColor = true;
             this.FinishButton.Click += new System.EventHandler(this.FinishButton_Click);

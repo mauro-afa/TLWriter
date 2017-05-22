@@ -34,6 +34,8 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.XMLButton = new System.Windows.Forms.Button();
             this.DeleteTSButton = new System.Windows.Forms.Button();
             this.OpenTSButton = new System.Windows.Forms.Button();
             this.UploadTSButton = new System.Windows.Forms.Button();
@@ -45,14 +47,6 @@
             this.testCasesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.testCasesTableAdapter = new QSM.QSMTCDataSetTableAdapters.TestCasesTableAdapter();
             this.testSuitesTableAdapter = new QSM.QSMTCDataSetTableAdapters.TestSuitesTableAdapter();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jiraLinkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brandDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.versionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uploadDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -103,6 +97,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.RefreshButton);
+            this.splitContainer1.Panel1.Controls.Add(this.XMLButton);
             this.splitContainer1.Panel1.Controls.Add(this.DeleteTSButton);
             this.splitContainer1.Panel1.Controls.Add(this.OpenTSButton);
             this.splitContainer1.Panel1.Controls.Add(this.UploadTSButton);
@@ -115,6 +111,26 @@
             this.splitContainer1.SplitterDistance = 318;
             this.splitContainer1.TabIndex = 1;
             // 
+            // RefreshButton
+            // 
+            this.RefreshButton.Location = new System.Drawing.Point(241, 3);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(75, 23);
+            this.RefreshButton.TabIndex = 5;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // XMLButton
+            // 
+            this.XMLButton.Location = new System.Drawing.Point(66, 291);
+            this.XMLButton.Name = "XMLButton";
+            this.XMLButton.Size = new System.Drawing.Size(155, 42);
+            this.XMLButton.TabIndex = 4;
+            this.XMLButton.Text = "Export to XML";
+            this.XMLButton.UseVisualStyleBackColor = true;
+            this.XMLButton.Click += new System.EventHandler(this.XMLButton_Click);
+            // 
             // DeleteTSButton
             // 
             this.DeleteTSButton.Location = new System.Drawing.Point(66, 243);
@@ -123,6 +139,7 @@
             this.DeleteTSButton.TabIndex = 3;
             this.DeleteTSButton.Text = "Delete test suite";
             this.DeleteTSButton.UseVisualStyleBackColor = true;
+            this.DeleteTSButton.Click += new System.EventHandler(this.DeleteTSButton_Click);
             // 
             // OpenTSButton
             // 
@@ -160,20 +177,9 @@
             this.TestSuiteGrid.AllowUserToDeleteRows = false;
             this.TestSuiteGrid.AllowUserToResizeColumns = false;
             this.TestSuiteGrid.AllowUserToResizeRows = false;
-            this.TestSuiteGrid.AutoGenerateColumns = false;
             this.TestSuiteGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TestSuiteGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TestSuiteGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TestSuiteGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameDataGridViewTextBoxColumn,
-            this.jiraLinkDataGridViewTextBoxColumn,
-            this.brandDataGridViewTextBoxColumn,
-            this.versionDataGridViewTextBoxColumn,
-            this.creationDateDataGridViewTextBoxColumn,
-            this.uploadDateDataGridViewTextBoxColumn,
-            this.updateDateDataGridViewTextBoxColumn,
-            this.Id});
-            this.TestSuiteGrid.DataSource = this.testSuitesBindingSource;
             this.TestSuiteGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TestSuiteGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.TestSuiteGrid.GridColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -186,6 +192,7 @@
             this.TestSuiteGrid.ShowRowErrors = false;
             this.TestSuiteGrid.Size = new System.Drawing.Size(632, 489);
             this.TestSuiteGrid.TabIndex = 0;
+            this.TestSuiteGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TestSuiteGrid_CellClick);
             // 
             // testSuitesBindingSource
             // 
@@ -214,63 +221,6 @@
             // testSuitesTableAdapter
             // 
             this.testSuitesTableAdapter.ClearBeforeFill = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // jiraLinkDataGridViewTextBoxColumn
-            // 
-            this.jiraLinkDataGridViewTextBoxColumn.DataPropertyName = "JiraLink";
-            this.jiraLinkDataGridViewTextBoxColumn.HeaderText = "JiraLink";
-            this.jiraLinkDataGridViewTextBoxColumn.Name = "jiraLinkDataGridViewTextBoxColumn";
-            this.jiraLinkDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // brandDataGridViewTextBoxColumn
-            // 
-            this.brandDataGridViewTextBoxColumn.DataPropertyName = "Brand";
-            this.brandDataGridViewTextBoxColumn.HeaderText = "Brand";
-            this.brandDataGridViewTextBoxColumn.Name = "brandDataGridViewTextBoxColumn";
-            this.brandDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // versionDataGridViewTextBoxColumn
-            // 
-            this.versionDataGridViewTextBoxColumn.DataPropertyName = "Version";
-            this.versionDataGridViewTextBoxColumn.HeaderText = "Version";
-            this.versionDataGridViewTextBoxColumn.Name = "versionDataGridViewTextBoxColumn";
-            this.versionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // creationDateDataGridViewTextBoxColumn
-            // 
-            this.creationDateDataGridViewTextBoxColumn.DataPropertyName = "CreationDate";
-            this.creationDateDataGridViewTextBoxColumn.HeaderText = "CreationDate";
-            this.creationDateDataGridViewTextBoxColumn.Name = "creationDateDataGridViewTextBoxColumn";
-            this.creationDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // uploadDateDataGridViewTextBoxColumn
-            // 
-            this.uploadDateDataGridViewTextBoxColumn.DataPropertyName = "UploadDate";
-            this.uploadDateDataGridViewTextBoxColumn.HeaderText = "UploadDate";
-            this.uploadDateDataGridViewTextBoxColumn.Name = "uploadDateDataGridViewTextBoxColumn";
-            this.uploadDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updateDateDataGridViewTextBoxColumn
-            // 
-            this.updateDateDataGridViewTextBoxColumn.DataPropertyName = "UpdateDate";
-            this.updateDateDataGridViewTextBoxColumn.HeaderText = "UpdateDate";
-            this.updateDateDataGridViewTextBoxColumn.Name = "updateDateDataGridViewTextBoxColumn";
-            this.updateDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
             // 
             // Form1
             // 
@@ -317,14 +267,8 @@
         private QSM.QSMTCDataSet qSMTCDataSet1;
         private System.Windows.Forms.BindingSource testSuitesBindingSource;
         private QSM.QSMTCDataSetTableAdapters.TestSuitesTableAdapter testSuitesTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jiraLinkDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn brandDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn versionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn creationDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uploadDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updateDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.Button XMLButton;
+        private System.Windows.Forms.Button RefreshButton;
     }
 }
 

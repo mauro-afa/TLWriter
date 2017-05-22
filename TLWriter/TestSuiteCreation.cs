@@ -21,7 +21,6 @@ namespace TLWriter
         SqlConnection scn = new SqlConnection(connectionString);
         SqlDataAdapter adapter = new SqlDataAdapter();
         SqlCommand scmd = new SqlCommand();
-        SqlDataReader sdr;
         DataTable data = new DataTable();
 
         public TestSuiteCreation(string[] OpenTSinfo = null, bool bWithData = false)
@@ -33,7 +32,7 @@ namespace TLWriter
 
         private void TestSuiteCreation_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //this.parent.Show();            
+            //this.parent.Show(); 
         }
 
         private void TestSuiteCreation_Load(object sender, EventArgs e)
@@ -49,9 +48,14 @@ namespace TLWriter
         {
             updateTestGrid();
             TestSuiteTB.Text = OpenTSinfo[0].Trim();
-            JiraLinkTB.Text = OpenTSinfo[1].Trim();
-            BrandCB.Text = OpenTSinfo[2].Trim();
+            TestSuiteTB.Enabled = false;
+            BrandCB.Text = OpenTSinfo[1].Trim();
+            BrandCB.Enabled = false;
+            JiraLinkTB.Text = OpenTSinfo[2].Trim();
+            JiraLinkTB.Enabled = false;
             VersionCB.Text = OpenTSinfo[3].Trim();
+            VersionCB.Enabled = false;
+            ChangeTSButton.Visible = true;
             scn.Open();
             scmd.Connection = scn;
             scmd.CommandText = "select top 1 * from TestCases WHERE TSID=@TSID order by 1 desc";
@@ -151,11 +155,15 @@ namespace TLWriter
         private void UpdateTestSuiteInfo()
         {
             scn.Open();
-            scmd.CommandText = "UPDATE TestSuites SET Name = @TestSuiteName, Brand = @Brand, Version = @Version WHERE Id = @TSID";
+            scmd.Connection = scn;
+            scmd.CommandText = "UPDATE TestSuites SET Name = @TestSuiteName, JiraLink = @JiraLink, Brand = @Brand, Version = @Version WHERE Id = @TSID";
             scmd.Parameters.AddWithValue("@TestSuiteName", TestSuiteTB.Text);
+            scmd.Parameters.AddWithValue("@JiraLink", JiraLinkTB.Text);
             scmd.Parameters.AddWithValue("@Brand", BrandCB.Text);
             scmd.Parameters.AddWithValue("@Version", VersionCB.Text);
             scmd.Parameters.AddWithValue("@TSID", testsuiteID);
+            scmd.ExecuteNonQuery();
+            scmd.Parameters.Clear();
             scn.Close();
             TestSuiteTB.Enabled = false;
             JiraLinkTB.Enabled = false;
@@ -274,8 +282,9 @@ namespace TLWriter
         {
             scn.Open();
             scmd.Connection = scn;
-            scmd.CommandText = "INSERT INTO TestSuites (Name, Brand, Version, UploadDate) VALUES(@TestSuiteName, @Brand, @Version, getdate())";
+            scmd.CommandText = "INSERT INTO TestSuites (Name, Brand, JiraLink, Version, UploadDate) VALUES(@TestSuiteName, @Brand, @JiraLink, @Version, getdate())";
             scmd.Parameters.AddWithValue("@TestSuiteName", TestSuiteTB.Text);
+            scmd.Parameters.AddWithValue("@JiraLink", JiraLinkTB.Text);
             scmd.Parameters.AddWithValue("@Brand", BrandCB.Text);
             scmd.Parameters.AddWithValue("@Version", VersionCB.Text);
 
@@ -292,6 +301,10 @@ namespace TLWriter
         }
         private void addTestCase()
         {
+            if (ChangeTSButton.Text == "Save Changes")
+            {
+                UpdateTestSuiteInfo();
+            }
             translateResult = cf.translateStep(ExecutionCB.SelectedItem.ToString(), ImportanceCB.SelectedItem.ToString());
             string keywords = "";
             foreach (string checkeditems in KeywordLB.CheckedItems)
@@ -300,6 +313,7 @@ namespace TLWriter
                 keywords = keywords + checkeditems + ";";
             }
             scn.Open();
+            scmd.Connection = scn;
             scmd.CommandText = "SELECT * FROM TestSuites WHERE Name = @TSN";
             scmd.Parameters.AddWithValue("@TSN", TestSuiteTB.Text);
             testsuiteID = scmd.ExecuteScalar().ToString();
@@ -314,8 +328,6 @@ namespace TLWriter
             scmd.Parameters.AddWithValue("@Keywords", keywords);
             scmd.Parameters.AddWithValue("@result1", translateResult[0]);
             scmd.Parameters.AddWithValue("@result2", translateResult[1]);
-            MessageBox.Show(tcounter.ToString());
-            MessageBox.Show(testsuiteID);
             scmd.ExecuteNonQuery();
             scmd.Parameters.Clear();
             scn.Close();

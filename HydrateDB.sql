@@ -16,5 +16,5 @@ values('2', '2', 'TestCase2', 'Objective2', 'Preconditions2', 'Actions2', 'Expec
 insert into TestCases(TCID, TSID, TestCaseID, TestObjective, Preconditions, Actions, Expec_res, Keyword, Exec_type, Importance, Stat)
 values('3', '2', 'TestCase3', 'Objective3', 'Preconditions3', 'Actions3', 'Expected result 3', 'Keyword1;Keyword2;Keyword3;', '1', '2', '1');
 
-select * from TestSuites
-select * from TestCases
+select * from TestSuites;
+select * from TestCases;
