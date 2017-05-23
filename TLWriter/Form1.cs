@@ -102,7 +102,20 @@ namespace TLWriter
 
         private void XMLButton_Click(object sender, EventArgs e)
         {
-            XMLParse();
+            try
+            {
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    XMLParse(fbd.SelectedPath);
+                    XMLParseRegression(fbd.SelectedPath);
+                    XMLParseSmoke(fbd.SelectedPath);
+                }
+            }
+               catch (NullReferenceException)
+            {
+                MessageBox.Show("Test suite must be selected first");
+            }
         }
 
         private void DeleteTS()
@@ -124,10 +137,9 @@ namespace TLWriter
             scn.Close();
             ReloadData();
         }
-        private void XMLParse()
+
+        private void XMLParse(string path)
         {
-            try
-            {
                 XmlDocument TSDoc = new XmlDocument();
                 XmlDeclaration xmlDec = TSDoc.CreateXmlDeclaration("1.0", "UTF-8", "yes");
 
@@ -184,29 +196,264 @@ namespace TLWriter
                     TestCaseStatus.InnerText = sdr[10].ToString();
                     TestCaseID.AppendChild(TestCaseStatus);
 
+                    //Keyword handling
+
                     XmlElement TestCaseKeywordList = TSDoc.CreateElement("keywords");
                     TestCaseID.AppendChild(TestCaseKeywordList);
 
                     string keywords = sdr[7].ToString();
                     foreach(string Key in keywords.Split(';'))
                     {
-                        XmlElement TestCaseKeyword = TSDoc.CreateElement("keyword");
-                        TestCaseKeyword.SetAttribute("name", Key);
-                        TestCaseKeywordList.AppendChild(TestCaseKeyword);
+                        if(Key != "")
+                        {
+                            XmlElement TestCaseKeyword = TSDoc.CreateElement("keyword");
+                            TestCaseKeyword.SetAttribute("name", Key);
+                            TestCaseKeywordList.AppendChild(TestCaseKeyword);
+                        }
                     }
+
+                    // Add step list, this should be improved in the future
+
+                    XmlElement TestCaseStepList = TSDoc.CreateElement("steps");
+                    TestCaseID.AppendChild(TestCaseStepList);
+
+
+                    // Add step
+                    XmlElement TestCaseStep = TSDoc.CreateElement("step");
+                    TestCaseStepList.AppendChild(TestCaseStep);
+
+                    //Step information
+
+                    XmlElement TestCaseStepNumber = TSDoc.CreateElement("step_number");
+                    TestCaseStepNumber.InnerText = "1";
+                    TestCaseStep.AppendChild(TestCaseStepNumber);
+
+                    XmlElement TestCaseStepActions = TSDoc.CreateElement("actions");
+                    TestCaseStepActions.InnerText = sdr[5].ToString();
+                    TestCaseStep.AppendChild(TestCaseStepActions);
+
+                    XmlElement TestCaseStepExpRes = TSDoc.CreateElement("expectedresults");
+                    TestCaseStepExpRes.InnerText = sdr[6].ToString();
+                    TestCaseStep.AppendChild(TestCaseStepExpRes);
+
+                    XmlElement TestCaseStepExecType = TSDoc.CreateElement("execution_type");
+                    TestCaseStepExecType.InnerText = "1";
+                    TestCaseStep.AppendChild(TestCaseStepExecType);
+
                 }
                 scn.Close();
                 scmd.Parameters.Clear();
 
                 //Saves the document
-                TSDoc.Save("C:\\temp\\test.xml");
-
-            }
-            catch(NullReferenceException)
-            {
-                MessageBox.Show("Test suite must be selected first");
-            }
+                TSDoc.Save(path +"\\"+selectionString[0].Trim()+".xml");
         }
 
+        private void XMLParseRegression(string path)
+        {
+            XmlDocument TSDoc = new XmlDocument();
+            XmlDeclaration xmlDec = TSDoc.CreateXmlDeclaration("1.0", "UTF-8", "yes");
+
+            // Inserts declaration before root.
+            XmlElement root = TSDoc.DocumentElement;
+            TSDoc.InsertBefore(xmlDec, root);
+
+            //Creates test suite element
+            XmlElement TSElement = TSDoc.CreateElement("testsuite");
+            TSElement.SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+            TSElement.SetAttribute("name", "REGRESSION");
+            TSDoc.AppendChild(TSElement);
+
+            //Creates test case element
+
+            string connectionString = ConfigurationManager.ConnectionStrings["QSM.Properties.Settings.QSMTCConnectionString"].ConnectionString;
+            SqlConnection scn = new SqlConnection(connectionString);
+            scn.Open();
+            scmd.Connection = scn;
+            scmd.CommandText = "SELECT * FROM TestCases where TSID = @TSID AND keyword like '%ADD2REGRESSION%'";
+            scmd.Parameters.AddWithValue("@TSID", selectionString[7].Trim());
+            sdr = scmd.ExecuteReader();
+            while (sdr.Read())
+            {
+                //Adds test case name
+                XmlElement TestCaseID = TSDoc.CreateElement("testcase");
+                TestCaseID.SetAttribute("name", sdr[2].ToString());
+                TSElement.AppendChild(TestCaseID);
+
+                //Adds test case information
+                XmlElement TestCaseSummary = TSDoc.CreateElement("summary");
+                TestCaseSummary.InnerText = sdr[3].ToString();
+                TestCaseID.AppendChild(TestCaseSummary);
+
+                XmlElement TestCasePreCon = TSDoc.CreateElement("preconditions");
+                TestCasePreCon.InnerText = sdr[4].ToString();
+                TestCaseID.AppendChild(TestCasePreCon);
+
+                XmlElement TestCaseExecType = TSDoc.CreateElement("execution_type");
+                TestCaseExecType.InnerText = sdr[8].ToString();
+                TestCaseID.AppendChild(TestCaseExecType);
+
+                XmlElement TestCaseImportance = TSDoc.CreateElement("importance");
+                TestCaseImportance.InnerText = sdr[9].ToString();
+                TestCaseID.AppendChild(TestCaseImportance);
+
+                XmlElement TestCaseStatus = TSDoc.CreateElement("status");
+                TestCaseStatus.InnerText = sdr[10].ToString();
+                TestCaseID.AppendChild(TestCaseStatus);
+
+                //Keyword handling
+
+                XmlElement TestCaseKeywordList = TSDoc.CreateElement("keywords");
+                TestCaseID.AppendChild(TestCaseKeywordList);
+
+                string keywords = sdr[7].ToString();
+                foreach (string Key in keywords.Split(';'))
+                {
+                    if (Key != "")
+                    {
+                        XmlElement TestCaseKeyword = TSDoc.CreateElement("keyword");
+                        TestCaseKeyword.SetAttribute("name", Key);
+                        TestCaseKeywordList.AppendChild(TestCaseKeyword);
+                    }
+                }
+
+                // Add step list, this should be improved in the future
+
+                XmlElement TestCaseStepList = TSDoc.CreateElement("steps");
+                TestCaseID.AppendChild(TestCaseStepList);
+
+
+                // Add step
+                XmlElement TestCaseStep = TSDoc.CreateElement("step");
+                TestCaseStepList.AppendChild(TestCaseStep);
+
+                //Step information
+
+                XmlElement TestCaseStepNumber = TSDoc.CreateElement("step_number");
+                TestCaseStepNumber.InnerText = "1";
+                TestCaseStep.AppendChild(TestCaseStepNumber);
+
+                XmlElement TestCaseStepActions = TSDoc.CreateElement("actions");
+                TestCaseStepActions.InnerText = sdr[5].ToString();
+                TestCaseStep.AppendChild(TestCaseStepActions);
+
+                XmlElement TestCaseStepExpRes = TSDoc.CreateElement("expectedresults");
+                TestCaseStepExpRes.InnerText = sdr[6].ToString();
+                TestCaseStep.AppendChild(TestCaseStepExpRes);
+
+                XmlElement TestCaseStepExecType = TSDoc.CreateElement("execution_type");
+                TestCaseStepExecType.InnerText = "1";
+                TestCaseStep.AppendChild(TestCaseStepExecType);
+
+            }
+            scn.Close();
+            scmd.Parameters.Clear();
+
+            //Saves the document
+            TSDoc.Save(path + "\\REGRESSION.xml");
+        }
+
+        private void XMLParseSmoke(string path)
+        {
+            XmlDocument TSDoc = new XmlDocument();
+            XmlDeclaration xmlDec = TSDoc.CreateXmlDeclaration("1.0", "UTF-8", "yes");
+
+            // Inserts declaration before root.
+            XmlElement root = TSDoc.DocumentElement;
+            TSDoc.InsertBefore(xmlDec, root);
+
+            //Creates test suite element
+            XmlElement TSElement = TSDoc.CreateElement("testsuite");
+            TSElement.SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+            TSElement.SetAttribute("name", "SMOKE");
+            TSDoc.AppendChild(TSElement);
+
+            //Creates test case element
+
+            string connectionString = ConfigurationManager.ConnectionStrings["QSM.Properties.Settings.QSMTCConnectionString"].ConnectionString;
+            SqlConnection scn = new SqlConnection(connectionString);
+            scn.Open();
+            scmd.Connection = scn;
+            scmd.CommandText = "SELECT * FROM TestCases where TSID = @TSID AND keyword like '%SMOKE TEST%'";
+            scmd.Parameters.AddWithValue("@TSID", selectionString[7].Trim());
+            sdr = scmd.ExecuteReader();
+            while (sdr.Read())
+            {
+                //Adds test case name
+                XmlElement TestCaseID = TSDoc.CreateElement("testcase");
+                TestCaseID.SetAttribute("name", sdr[2].ToString());
+                TSElement.AppendChild(TestCaseID);
+
+                //Adds test case information
+                XmlElement TestCaseSummary = TSDoc.CreateElement("summary");
+                TestCaseSummary.InnerText = sdr[3].ToString();
+                TestCaseID.AppendChild(TestCaseSummary);
+
+                XmlElement TestCasePreCon = TSDoc.CreateElement("preconditions");
+                TestCasePreCon.InnerText = sdr[4].ToString();
+                TestCaseID.AppendChild(TestCasePreCon);
+
+                XmlElement TestCaseExecType = TSDoc.CreateElement("execution_type");
+                TestCaseExecType.InnerText = sdr[8].ToString();
+                TestCaseID.AppendChild(TestCaseExecType);
+
+                XmlElement TestCaseImportance = TSDoc.CreateElement("importance");
+                TestCaseImportance.InnerText = sdr[9].ToString();
+                TestCaseID.AppendChild(TestCaseImportance);
+
+                XmlElement TestCaseStatus = TSDoc.CreateElement("status");
+                TestCaseStatus.InnerText = sdr[10].ToString();
+                TestCaseID.AppendChild(TestCaseStatus);
+
+                //Keyword handling
+
+                XmlElement TestCaseKeywordList = TSDoc.CreateElement("keywords");
+                TestCaseID.AppendChild(TestCaseKeywordList);
+
+                string keywords = sdr[7].ToString();
+                foreach (string Key in keywords.Split(';'))
+                {
+                    if (Key != "")
+                    {
+                        XmlElement TestCaseKeyword = TSDoc.CreateElement("keyword");
+                        TestCaseKeyword.SetAttribute("name", Key);
+                        TestCaseKeywordList.AppendChild(TestCaseKeyword);
+                    }
+                }
+
+                // Add step list, this should be improved in the future
+
+                XmlElement TestCaseStepList = TSDoc.CreateElement("steps");
+                TestCaseID.AppendChild(TestCaseStepList);
+
+
+                // Add step
+                XmlElement TestCaseStep = TSDoc.CreateElement("step");
+                TestCaseStepList.AppendChild(TestCaseStep);
+
+                //Step information
+
+                XmlElement TestCaseStepNumber = TSDoc.CreateElement("step_number");
+                TestCaseStepNumber.InnerText = "1";
+                TestCaseStep.AppendChild(TestCaseStepNumber);
+
+                XmlElement TestCaseStepActions = TSDoc.CreateElement("actions");
+                TestCaseStepActions.InnerText = sdr[5].ToString();
+                TestCaseStep.AppendChild(TestCaseStepActions);
+
+                XmlElement TestCaseStepExpRes = TSDoc.CreateElement("expectedresults");
+                TestCaseStepExpRes.InnerText = sdr[6].ToString();
+                TestCaseStep.AppendChild(TestCaseStepExpRes);
+
+                XmlElement TestCaseStepExecType = TSDoc.CreateElement("execution_type");
+                TestCaseStepExecType.InnerText = "1";
+                TestCaseStep.AppendChild(TestCaseStepExecType);
+
+            }
+            scn.Close();
+            scmd.Parameters.Clear();
+
+            //Saves the document
+            TSDoc.Save(path + "\\SMOKE.xml");
+        }
     }
 }

@@ -18,3 +18,6 @@ values('3', '2', 'TestCase3', 'Objective3', 'Preconditions3', 'Actions3', 'Expec
 
 select * from TestSuites;
 select * from TestCases;
+
+delete from testsuites;
+delete from testcases;
