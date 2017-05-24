@@ -455,5 +455,10 @@ namespace TLWriter
             //Saves the document
             TSDoc.Save(path + "\\SMOKE.xml");
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Beta version, have patience :)");
+        }
     }
 }

@@ -33,7 +33,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_810C4842AE164568AED145D85211ED91"
+        "MsmKey" = "8:_A0C3502FADCA4DC392FA04557D5DA996"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -41,6 +41,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_629A5E0F49A5431FB47958AD983EBD00"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A0C3502FADCA4DC392FA04557D5DA996"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -80,16 +86,6 @@
                     {
                     "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.6.1"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.Express.10.5"
-                    {
-                    "Name" = "8:SQL Server 2008 R2 Express"
-                    "ProductCode" = "8:Microsoft.SqlServer.Express.10.5"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.Express.11.0"
-                    {
-                    "Name" = "8:SQL Server 2012 Express"
-                    "ProductCode" = "8:Microsoft.SqlServer.Express.11.0"
                     }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SqlLocalDB.11.1"
                     {
@@ -136,18 +132,18 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_4D3E703AD37646D3AC0FE923FEA9AEF8"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_7BA0C38442A0499BAEFF78B0091BA7FA"
             {
-            "Name" = "8:SQLEXPR_x64_ENU.exe"
+            "Name" = "8:SQLServer2016-SSEI-Expr.exe"
             "Condition" = "8:"
-            "Object" = "8:_810C4842AE164568AED145D85211ED91"
+            "Object" = "8:_A0C3502FADCA4DC392FA04557D5DA996"
             "FileType" = "3:2"
             "InstallAction" = "3:1"
-            "Arguments" = "8:/ACTION=INSTALL /ADDCURRENTUSERASSQLADMIN"
+            "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_792AC195_5DC1_48CA_BCE9_544922B0A8C2"
-            "InstallerClass" = "11:FALSE"
+            "Identifier" = "8:_75C6F87A_C17F_4C76_80F6_53ABB282E964"
+            "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
         }
@@ -224,10 +220,21 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_810C4842AE164568AED145D85211ED91"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A0C3502FADCA4DC392FA04557D5DA996"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\SQLEXPR_x64_ENU.exe"
-            "TargetName" = "8:SQLEXPR_x64_ENU.exe"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SQLServer2016-SSEI-Expr, Version=1.1704.0.0, Culture=neutral, PublicKeyToken=57d8c1d10de9dc02, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A0C3502FADCA4DC392FA04557D5DA996"
+                    {
+                    "Name" = "8:SQLServer2016-SSEI-Expr.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\SQLServer2016-SSEI-Expr.exe"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1C0E2CB9217947D9A35E80ED90993F13"
             "Condition" = "8:"
@@ -309,13 +316,6 @@
         }
         "LaunchCondition"
         {
-            "{836E08B8-0285-4809-BA42-01DB6754A45D}:_EF682A67BF9B447C95780DD740433A5F"
-            {
-            "Name" = "8:AdminUser"
-            "Condition" = "8:AdminUser"
-            "Message" = "8:<Error Message>"
-            "InstallUrl" = "8:"
-            }
         }
         "Locator"
         {
@@ -330,7 +330,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Quality Scenarios Manager"
         "ProductCode" = "8:{806466AC-4216-4785-8D60-3ED45F6DC4BC}"
-        "PackageCode" = "8:{62986231-A90D-46E7-9AF7-F66D0B86531F}"
+        "PackageCode" = "8:{58A952B0-1439-473D-8817-DD6066F33B14}"
         "UpgradeCode" = "8:{E0068107-6C14-4DB3-A03E-021D86F9542C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -927,6 +927,34 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{E338A2C6-DFFA-48EA-9148-EC9104119490}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B28CAA6579F0471E97C3CA185FA88A41"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1C0E2CB9217947D9A35E80ED90993F13"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:RuntimeImplementation"
             "OutputProjectGuid" = "8:{E338A2C6-DFFA-48EA-9148-EC9104119490}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
