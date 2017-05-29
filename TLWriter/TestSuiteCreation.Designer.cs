@@ -228,7 +228,7 @@
             this.ExecutionCB.Name = "ExecutionCB";
             this.ExecutionCB.Size = new System.Drawing.Size(121, 21);
             this.ExecutionCB.TabIndex = 5;
-            this.ExecutionCB.SelectedIndex = 1;
+            this.ExecutionCB.SelectedIndex = 0;
             // 
             // ImportanceCB
             // 

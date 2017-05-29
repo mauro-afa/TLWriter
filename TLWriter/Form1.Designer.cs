@@ -33,6 +33,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.ViewTSButton = new System.Windows.Forms.Button();
+            this.PRTIButton = new System.Windows.Forms.Button();
+            this.ImportButton = new System.Windows.Forms.Button();
             this.RefreshButton = new System.Windows.Forms.Button();
             this.XMLButton = new System.Windows.Forms.Button();
             this.DeleteTSButton = new System.Windows.Forms.Button();
@@ -83,6 +86,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.ViewTSButton);
+            this.splitContainer1.Panel1.Controls.Add(this.PRTIButton);
+            this.splitContainer1.Panel1.Controls.Add(this.ImportButton);
             this.splitContainer1.Panel1.Controls.Add(this.RefreshButton);
             this.splitContainer1.Panel1.Controls.Add(this.XMLButton);
             this.splitContainer1.Panel1.Controls.Add(this.DeleteTSButton);
@@ -94,12 +100,39 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.TestSuiteGrid);
             this.splitContainer1.Size = new System.Drawing.Size(954, 489);
-            this.splitContainer1.SplitterDistance = 318;
+            this.splitContainer1.SplitterDistance = 334;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // ViewTSButton
+            // 
+            this.ViewTSButton.Location = new System.Drawing.Point(173, 107);
+            this.ViewTSButton.Name = "ViewTSButton";
+            this.ViewTSButton.Size = new System.Drawing.Size(155, 42);
+            this.ViewTSButton.TabIndex = 8;
+            this.ViewTSButton.Text = "View test suite";
+            this.ViewTSButton.UseVisualStyleBackColor = true;
+            // 
+            // PRTIButton
+            // 
+            this.PRTIButton.Location = new System.Drawing.Point(173, 155);
+            this.PRTIButton.Name = "PRTIButton";
+            this.PRTIButton.Size = new System.Drawing.Size(155, 42);
+            this.PRTIButton.TabIndex = 7;
+            this.PRTIButton.Text = "Test suite review";
+            this.PRTIButton.UseVisualStyleBackColor = true;
+            // 
+            // ImportButton
+            // 
+            this.ImportButton.Location = new System.Drawing.Point(173, 251);
+            this.ImportButton.Name = "ImportButton";
+            this.ImportButton.Size = new System.Drawing.Size(155, 42);
+            this.ImportButton.TabIndex = 6;
+            this.ImportButton.Text = "Import to XML";
+            this.ImportButton.UseVisualStyleBackColor = true;
             // 
             // RefreshButton
             // 
-            this.RefreshButton.Location = new System.Drawing.Point(241, 3);
+            this.RefreshButton.Location = new System.Drawing.Point(253, 3);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(75, 23);
             this.RefreshButton.TabIndex = 5;
@@ -109,7 +142,7 @@
             // 
             // XMLButton
             // 
-            this.XMLButton.Location = new System.Drawing.Point(66, 291);
+            this.XMLButton.Location = new System.Drawing.Point(12, 251);
             this.XMLButton.Name = "XMLButton";
             this.XMLButton.Size = new System.Drawing.Size(155, 42);
             this.XMLButton.TabIndex = 4;
@@ -119,7 +152,7 @@
             // 
             // DeleteTSButton
             // 
-            this.DeleteTSButton.Location = new System.Drawing.Point(66, 243);
+            this.DeleteTSButton.Location = new System.Drawing.Point(173, 59);
             this.DeleteTSButton.Name = "DeleteTSButton";
             this.DeleteTSButton.Size = new System.Drawing.Size(155, 42);
             this.DeleteTSButton.TabIndex = 3;
@@ -129,7 +162,7 @@
             // 
             // OpenTSButton
             // 
-            this.OpenTSButton.Location = new System.Drawing.Point(66, 195);
+            this.OpenTSButton.Location = new System.Drawing.Point(12, 155);
             this.OpenTSButton.Name = "OpenTSButton";
             this.OpenTSButton.Size = new System.Drawing.Size(155, 42);
             this.OpenTSButton.TabIndex = 2;
@@ -139,7 +172,7 @@
             // 
             // UploadTSButton
             // 
-            this.UploadTSButton.Location = new System.Drawing.Point(66, 147);
+            this.UploadTSButton.Location = new System.Drawing.Point(12, 107);
             this.UploadTSButton.Name = "UploadTSButton";
             this.UploadTSButton.Size = new System.Drawing.Size(155, 42);
             this.UploadTSButton.TabIndex = 1;
@@ -149,7 +182,7 @@
             // 
             // CreateTSButton
             // 
-            this.CreateTSButton.Location = new System.Drawing.Point(66, 99);
+            this.CreateTSButton.Location = new System.Drawing.Point(12, 59);
             this.CreateTSButton.Name = "CreateTSButton";
             this.CreateTSButton.Size = new System.Drawing.Size(155, 42);
             this.CreateTSButton.TabIndex = 0;
@@ -176,7 +209,7 @@
             this.TestSuiteGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TestSuiteGrid.ShowCellErrors = false;
             this.TestSuiteGrid.ShowRowErrors = false;
-            this.TestSuiteGrid.Size = new System.Drawing.Size(632, 489);
+            this.TestSuiteGrid.Size = new System.Drawing.Size(616, 489);
             this.TestSuiteGrid.TabIndex = 0;
             this.TestSuiteGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TestSuiteGrid_CellClick);
             // 
@@ -254,6 +287,9 @@
         private QSM.QSMTCDataSetTableAdapters.TestSuitesTableAdapter testSuitesTableAdapter;
         private System.Windows.Forms.Button XMLButton;
         private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.Button ImportButton;
+        private System.Windows.Forms.Button ViewTSButton;
+        private System.Windows.Forms.Button PRTIButton;
     }
 }
 

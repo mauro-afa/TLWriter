@@ -77,7 +77,16 @@ namespace TLWriter
 
         private void DeleteTSButton_Click(object sender, EventArgs e)
         {
-            DeleteTS();
+            DialogResult answer = MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (answer == DialogResult.Yes)
+            {
+                DeleteTS();
+            }
+            else
+            {
+
+            }
         }
 
         private void GetTSInfo()
@@ -177,11 +186,11 @@ namespace TLWriter
 
                     //Adds test case information
                     XmlElement TestCaseSummary = TSDoc.CreateElement("summary");
-                    TestCaseSummary.InnerText = sdr[3].ToString();
+                    TestCaseSummary.InnerText = addLineBreak(sdr[3].ToString());
                     TestCaseID.AppendChild(TestCaseSummary);
 
                     XmlElement TestCasePreCon = TSDoc.CreateElement("preconditions");
-                    TestCasePreCon.InnerText = sdr[4].ToString();
+                    TestCasePreCon.InnerText = addLineBreak(sdr[4].ToString());
                     TestCaseID.AppendChild(TestCasePreCon);
 
                     XmlElement TestCaseExecType = TSDoc.CreateElement("execution_type");
@@ -229,11 +238,11 @@ namespace TLWriter
                     TestCaseStep.AppendChild(TestCaseStepNumber);
 
                     XmlElement TestCaseStepActions = TSDoc.CreateElement("actions");
-                    TestCaseStepActions.InnerText = sdr[5].ToString();
+                    TestCaseStepActions.InnerText = addLineBreak(sdr[5].ToString());
                     TestCaseStep.AppendChild(TestCaseStepActions);
 
                     XmlElement TestCaseStepExpRes = TSDoc.CreateElement("expectedresults");
-                    TestCaseStepExpRes.InnerText = sdr[6].ToString();
+                    TestCaseStepExpRes.InnerText = addLineBreak(sdr[6].ToString());
                     TestCaseStep.AppendChild(TestCaseStepExpRes);
 
                     XmlElement TestCaseStepExecType = TSDoc.CreateElement("execution_type");
@@ -281,11 +290,11 @@ namespace TLWriter
 
                 //Adds test case information
                 XmlElement TestCaseSummary = TSDoc.CreateElement("summary");
-                TestCaseSummary.InnerText = sdr[3].ToString();
+                TestCaseSummary.InnerText = addLineBreak(sdr[3].ToString());
                 TestCaseID.AppendChild(TestCaseSummary);
 
                 XmlElement TestCasePreCon = TSDoc.CreateElement("preconditions");
-                TestCasePreCon.InnerText = sdr[4].ToString();
+                TestCasePreCon.InnerText = addLineBreak(sdr[4].ToString());
                 TestCaseID.AppendChild(TestCasePreCon);
 
                 XmlElement TestCaseExecType = TSDoc.CreateElement("execution_type");
@@ -333,11 +342,11 @@ namespace TLWriter
                 TestCaseStep.AppendChild(TestCaseStepNumber);
 
                 XmlElement TestCaseStepActions = TSDoc.CreateElement("actions");
-                TestCaseStepActions.InnerText = sdr[5].ToString();
+                TestCaseStepActions.InnerText = addLineBreak(sdr[5].ToString());
                 TestCaseStep.AppendChild(TestCaseStepActions);
 
                 XmlElement TestCaseStepExpRes = TSDoc.CreateElement("expectedresults");
-                TestCaseStepExpRes.InnerText = sdr[6].ToString();
+                TestCaseStepExpRes.InnerText = addLineBreak(sdr[6].ToString());
                 TestCaseStep.AppendChild(TestCaseStepExpRes);
 
                 XmlElement TestCaseStepExecType = TSDoc.CreateElement("execution_type");
@@ -385,11 +394,11 @@ namespace TLWriter
 
                 //Adds test case information
                 XmlElement TestCaseSummary = TSDoc.CreateElement("summary");
-                TestCaseSummary.InnerText = sdr[3].ToString();
+                TestCaseSummary.InnerText = addLineBreak(sdr[3].ToString());
                 TestCaseID.AppendChild(TestCaseSummary);
 
                 XmlElement TestCasePreCon = TSDoc.CreateElement("preconditions");
-                TestCasePreCon.InnerText = sdr[4].ToString();
+                TestCasePreCon.InnerText = addLineBreak(sdr[4].ToString());
                 TestCaseID.AppendChild(TestCasePreCon);
 
                 XmlElement TestCaseExecType = TSDoc.CreateElement("execution_type");
@@ -437,11 +446,11 @@ namespace TLWriter
                 TestCaseStep.AppendChild(TestCaseStepNumber);
 
                 XmlElement TestCaseStepActions = TSDoc.CreateElement("actions");
-                TestCaseStepActions.InnerText = sdr[5].ToString();
+                TestCaseStepActions.InnerText = addLineBreak(sdr[5].ToString());
                 TestCaseStep.AppendChild(TestCaseStepActions);
 
                 XmlElement TestCaseStepExpRes = TSDoc.CreateElement("expectedresults");
-                TestCaseStepExpRes.InnerText = sdr[6].ToString();
+                TestCaseStepExpRes.InnerText = addLineBreak(sdr[6].ToString());
                 TestCaseStep.AppendChild(TestCaseStepExpRes);
 
                 XmlElement TestCaseStepExecType = TSDoc.CreateElement("execution_type");
@@ -459,6 +468,13 @@ namespace TLWriter
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Beta version, have patience :)");
+        }
+
+        private string addLineBreak(string testCaseString)
+        {
+            testCaseString = testCaseString.Replace(System.Environment.NewLine, "<BR>");
+
+            return testCaseString;
         }
     }
 }
