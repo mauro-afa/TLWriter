@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="TestSuite.cs" />
     <Compile Include="TestSuiteCreation.xaml.cs">
       <DependentUpon>TestSuiteCreation.xaml</DependentUpon>
     </Compile>

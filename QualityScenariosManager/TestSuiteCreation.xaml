@@ -29,33 +29,31 @@
                 <ComboBoxItem Content="RBS"/>
                 <ComboBoxItem Content="Shell"/>
             </ComboBox>
-            <Button Content="Change TS Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Canvas.Left="1012" Height="25" IsEnabled="False"/>
+            <Button x:Name="SaveTSInfo" Content="Save TS Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Canvas.Left="1012" Height="25" Click="SaveTSInfo_Click"/>
         </Canvas>
         <Canvas x:Name="TCInfoCvs" HorizontalAlignment="Left" Height="373" Margin="0,25,0,0" VerticalAlignment="Top" Width="1110">
-            <TextBox x:Name="TCID_TB" Height="23" TextWrapping="Wrap" Text="Test Case ID" Canvas.Top="10" Width="734"/>
-            <ComboBox Canvas.Left="847" Canvas.Top="10" Width="149" SelectedIndex="0">
+            <TextBox x:Name="TCID_TB" Height="23" TextWrapping="Wrap" Text="Test Case ID" Canvas.Top="10" Width="734" IsEnabled="False"/>
+            <ComboBox x:Name="TCExecCB" Canvas.Left="847" Canvas.Top="10" Width="149" SelectedIndex="0" IsEnabled="False">
                 <ComboBoxItem Content="Manual"/>
                 <ComboBoxItem Content="Automated"/>
             </ComboBox>
-            <ComboBox Canvas.Left="1001" Canvas.Top="10" Width="109" SelectedIndex="0">
+            <ComboBox x:Name="TCPriorityCB" Canvas.Left="1001" Canvas.Top="10" Width="109" SelectedIndex="0" IsEnabled="False">
                 <ComboBoxItem Content="Low"/>
                 <ComboBoxItem Content="Medium"/>
                 <ComboBoxItem Content="High"/>
             </ComboBox>
-            <TextBox x:Name="TCObj" Height="259" TextWrapping="Wrap" Canvas.Top="68" Width="215" AcceptsReturn="True"/>
-            <TextBox x:Name="TCPrecon" Height="259" TextWrapping="Wrap" Canvas.Top="68" Width="215" AcceptsReturn="True" Canvas.Left="220"/>
-            <TextBox x:Name="TCAction" Height="259" TextWrapping="Wrap" Canvas.Top="68" Width="215" AcceptsReturn="True" Canvas.Left="440"/>
-            <TextBox x:Name="TCExpecRes" Height="259" TextWrapping="Wrap" Canvas.Top="68" Width="215" AcceptsReturn="True" Canvas.Left="660"/>
-            <ListBox Height="259" Canvas.Left="885" Canvas.Top="68" Width="215">
+            <TextBox x:Name="TCObj" Height="259" TextWrapping="Wrap" Canvas.Top="68" Width="215" AcceptsReturn="True" IsEnabled="False"/>
+            <TextBox x:Name="TCPrecon" Height="259" TextWrapping="Wrap" Canvas.Top="68" Width="215" AcceptsReturn="True" Canvas.Left="220" IsEnabled="False"/>
+            <TextBox x:Name="TCAction" Height="259" TextWrapping="Wrap" Canvas.Top="68" Width="215" AcceptsReturn="True" Canvas.Left="440" IsEnabled="False"/>
+            <TextBox x:Name="TCExpecRes" Height="259" TextWrapping="Wrap" Canvas.Top="68" Width="215" AcceptsReturn="True" Canvas.Left="660" IsEnabled="False"/>
+            <ListBox x:Name="KeywordLB" Height="259" Canvas.Left="885" Canvas.Top="68" Width="215" IsEnabled="False">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0"/>
-                            <TextBlock Text="{Binding KeywordName}" Grid.Column="1"/>
+                            <CheckBox Grid.Column="0" Content="{Binding KeywordName}" IsChecked="{Binding IsChecked}"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -65,14 +63,25 @@
             <Label Content="Actions" Canvas.Top="42" Width="87" Canvas.Left="440"/>
             <Label Content="Expected Results" Canvas.Top="42" Width="116" Canvas.Left="660"/>
             <Label Content="Keywords" Canvas.Top="42" Width="87" Canvas.Left="885"/>
-            <Button Content="Add" Canvas.Left="54" Canvas.Top="351" Width="75"/>
-            <Button Content="Update" Canvas.Left="295" Canvas.Top="351" Width="75"/>
-            <Button Content="Remove" Canvas.Left="516" Canvas.Top="351" Width="75"/>
-            <Button Content="Cancel" Canvas.Left="724" Canvas.Top="351" Width="75"/>
-            <Button Content="Finish" Canvas.Left="949" Canvas.Top="351" Width="75"/>
+            <Button x:Name="AddTC" Content="Add" Canvas.Left="54" Canvas.Top="351" Width="75" Click="AddTC_Click" IsEnabled="False"/>
+            <Button x:Name="UpdateTC" Content="Update" Canvas.Left="295" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden"/>
+            <Button x:Name="RemoveTC" Content="Remove" Canvas.Left="516" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden"/>
+            <Button x:Name="CancelTC" Content="Cancel" Canvas.Left="724" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden"/>
+            <Button x:Name="SaveTS" Content="Save" Canvas.Left="949" Canvas.Top="351" Width="75" IsEnabled="False"/>
         </Canvas>
         <Canvas x:Name="TCAdditionCvs" HorizontalAlignment="Left" Height="193" Margin="0,403,0,0" VerticalAlignment="Top" Width="1110">
-            <DataGrid Height="193" Width="1110"/>
+            <DataGrid x:Name="TestCasesDG" Height="193" Width="1110" AutoGenerateColumns="False" SelectionMode="Extended" SelectionChanged="TestCasesDG_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="TestCaseName" Binding="{Binding TestCaseName}" Width="*"/>
+                    <DataGridTextColumn Header="Objective" Binding="{Binding Objective}" Width="*"/>
+                    <DataGridTextColumn Header="Preconditions" Binding="{Binding Preconditions}" Width="*"/>
+                    <DataGridTextColumn Header="Actions" Binding="{Binding Actions}" Width="*"/>
+                    <DataGridTextColumn Header="ExpectedResult" Binding="{Binding ExpectedResult}" Width="*"/>
+                    <DataGridTextColumn Header="Execution" Binding="{Binding Execution}" Width="*"/>
+                    <DataGridTextColumn Header="Importance" Binding="{Binding Importance}" Width="*"/>
+                    <DataGridTextColumn Header="Keywords" Binding="{Binding Keywords}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Canvas>
     </Grid>
 </UserControl>
