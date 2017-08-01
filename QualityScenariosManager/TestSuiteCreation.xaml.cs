@@ -64,6 +64,7 @@ namespace QualityScenariosManager
 		};
 		TestSuite nTestSuite;
 		List<TestCase> nTestCaseList = new List<TestCase>();
+		private int counter=0;
 		public TestSuiteCreation()
 		{
 			InitializeComponent();
@@ -92,6 +93,7 @@ namespace QualityScenariosManager
 				}
 				TestCase nTestCase = new TestCase()
 				{
+					TestCaseID = ++counter,
 					TestCaseName = TCID_TB.Text,
 					Objective = TCObj.Text,
 					Preconditions = TCPrecon.Text,
@@ -137,7 +139,7 @@ namespace QualityScenariosManager
 					TCExecCB.IsEnabled = true;
 					TCPriorityCB.IsEnabled = true;
 					AddTC.IsEnabled = true;
-					UpdateTC.IsEnabled = true;
+					EditTC.IsEnabled = true;
 					RemoveTC.IsEnabled = true;
 					CancelTC.IsEnabled = true;
 					SaveTS.IsEnabled = true;
@@ -171,12 +173,102 @@ namespace QualityScenariosManager
 
 		private void TestCasesDG_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			UpdateTC.Visibility = System.Windows.Visibility.Visible;
+			EditTC.Visibility = System.Windows.Visibility.Visible;
 			RemoveTC.Visibility = System.Windows.Visibility.Visible;
+		}
+
+		private void EditTC_Click(object sender, RoutedEventArgs e)
+		{
 			CancelTC.Visibility = System.Windows.Visibility.Visible;
-
 			TestCase currentTC = (TestCase)TestCasesDG.SelectedItem;
+			if (EditTC.Content.ToString()=="Edit")
+			{
+				PopulateBoxes(currentTC);
+				EditTC.Content = "Update";
+			}
+			else
+			{
+				UpdateTestCase(currentTC);
+				EditTC.Content = "Edit";
+				HideTCButtons();
+			}
+		}
 
+		private void PopulateBoxes(TestCase oTC)
+		{
+			TCID_TB.Text = oTC.TestCaseName;
+			TCExecCB.SelectedItem = oTC.Execution;
+			TCPriorityCB.SelectedItem = oTC.Importance;
+			TCObj.Text = oTC.Objective;
+			TCPrecon.Text = oTC.Preconditions;
+			TCAction.Text = oTC.Actions;
+			TCExpecRes.Text = oTC.ExpectedResult;
+
+			foreach(Keyword oKeyword in KeywordLB.Items)
+			{
+				foreach(String _keyword in oTC.Keywords)
+				{
+					if (oKeyword.KeywordName == _keyword)
+						oKeyword.IsChecked = true;
+				}
+			}
+			KeywordLB.Items.Refresh();
+		}
+
+		private void RemoveTC_Click(object sender, RoutedEventArgs e)
+		{
+			int newCounter = 0;
+			TestCase currentTC = (TestCase)TestCasesDG.SelectedItem;
+			nTestCaseList.Remove(currentTC);
+			foreach(TestCase tc in nTestCaseList)
+			{
+				tc.TestCaseID = ++newCounter; 
+			}
+			ClearControllers();
+			TestCasesDG.Items.Refresh();
+
+		}
+
+		private void UpdateTestCase(TestCase oTC)
+		{
+			//TestCasesDG.ItemsSource = null;
+
+			List<string> selectedKeywords = new List<string>();
+			foreach (Keyword oKeyword in KeywordLB.Items)
+			{
+				if (oKeyword.IsChecked)
+					selectedKeywords.Add(oKeyword.KeywordName);
+			}
+			TestCase nTestCase = new TestCase()
+			{
+				TestCaseID = oTC.TestCaseID,
+				TestCaseName = TCID_TB.Text,
+				Objective = TCObj.Text,
+				Preconditions = TCPrecon.Text,
+				Actions = TCAction.Text,
+				ExpectedResult = TCExpecRes.Text,
+				Execution = ((ComboBoxItem)TCExecCB.SelectedItem).Content.ToString(),
+				Importance = ((ComboBoxItem)TCPriorityCB.SelectedItem).Content.ToString(),
+				Keywords = new List<string>(selectedKeywords)
+			};
+			nTestCaseList[oTC.TestCaseID - 1] = nTestCase;
+			ClearControllers();
+			TestCasesDG.Items.Refresh();
+			//TestCasesDG.ItemsSource = nTestCaseList;
+		}
+
+		private void HideTCButtons()
+		{
+			EditTC.Visibility = System.Windows.Visibility.Hidden;
+			RemoveTC.Visibility = System.Windows.Visibility.Hidden;
+			CancelTC.Visibility = System.Windows.Visibility.Hidden;
+		}
+
+		private void CancelTC_Click(object sender, RoutedEventArgs e)
+		{
+			ClearControllers();
+			HideTCButtons();
+			EditTC.Content = "Edit";
 		}
 	}
 }

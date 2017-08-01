@@ -24,6 +24,7 @@ namespace QualityScenariosManager
 
 	public class TestCase
 	{
+		public int TestCaseID { get; set; }
 		public string TestCaseName { get; set; }
 		public string Objective { get; set; }
 		public string Preconditions { get; set; }

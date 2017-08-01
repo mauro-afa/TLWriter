@@ -64,9 +64,9 @@
             <Label Content="Expected Results" Canvas.Top="42" Width="116" Canvas.Left="660"/>
             <Label Content="Keywords" Canvas.Top="42" Width="87" Canvas.Left="885"/>
             <Button x:Name="AddTC" Content="Add" Canvas.Left="54" Canvas.Top="351" Width="75" Click="AddTC_Click" IsEnabled="False"/>
-            <Button x:Name="UpdateTC" Content="Update" Canvas.Left="295" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden"/>
-            <Button x:Name="RemoveTC" Content="Remove" Canvas.Left="516" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden"/>
-            <Button x:Name="CancelTC" Content="Cancel" Canvas.Left="724" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden"/>
+            <Button x:Name="EditTC" Content="Edit" Canvas.Left="295" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden" Click="EditTC_Click"/>
+            <Button x:Name="RemoveTC" Content="Remove" Canvas.Left="516" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden" Click="RemoveTC_Click"/>
+            <Button x:Name="CancelTC" Content="Cancel" Canvas.Left="724" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden" Click="CancelTC_Click"/>
             <Button x:Name="SaveTS" Content="Save" Canvas.Left="949" Canvas.Top="351" Width="75" IsEnabled="False"/>
         </Canvas>
         <Canvas x:Name="TCAdditionCvs" HorizontalAlignment="Left" Height="193" Margin="0,403,0,0" VerticalAlignment="Top" Width="1110">
