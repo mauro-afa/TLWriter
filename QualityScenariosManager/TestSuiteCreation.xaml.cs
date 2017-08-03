@@ -99,8 +99,8 @@ namespace QualityScenariosManager
 					Preconditions = TCPrecon.Text,
 					Actions = TCAction.Text,
 					ExpectedResult = TCExpecRes.Text,
-					Execution = ((ComboBoxItem)TCExecCB.SelectedItem).Content.ToString(),
-					Importance = ((ComboBoxItem)TCPriorityCB.SelectedItem).Content.ToString(),
+					Execution = Int32.Parse(((ComboBoxItem)TCExecCB.SelectedItem).Tag.ToString()),
+					Importance = Int32.Parse(((ComboBoxItem)TCPriorityCB.SelectedItem).Tag.ToString()),
 					Keywords = new List<string>(selectedKeywords)
 				};
 				nTestCaseList.Add(nTestCase);
@@ -120,8 +120,8 @@ namespace QualityScenariosManager
 						TestSuiteID = 1,
 						TestSuiteName = TSNameTB.Text,
 						JiraLink = TSJiraTB.Text,
-						Brand = BrandCB.SelectedItem.ToString(),
-						Version = VersionCB.SelectedItem.ToString()
+						Brand = ((ComboBoxItem)BrandCB.SelectedItem).Tag.ToString(),
+						Version = ((ComboBoxItem)VersionCB.SelectedItem).Tag.ToString()
 					};
 					TSNameTB.IsEnabled = false;
 					TSJiraTB.IsEnabled = false;
@@ -247,8 +247,8 @@ namespace QualityScenariosManager
 				Preconditions = TCPrecon.Text,
 				Actions = TCAction.Text,
 				ExpectedResult = TCExpecRes.Text,
-				Execution = ((ComboBoxItem)TCExecCB.SelectedItem).Content.ToString(),
-				Importance = ((ComboBoxItem)TCPriorityCB.SelectedItem).Content.ToString(),
+				Execution = Int32.Parse(((ComboBoxItem)TCExecCB.SelectedItem).Tag.ToString()),
+				Importance = Int32.Parse(((ComboBoxItem)TCPriorityCB.SelectedItem).Tag.ToString()),
 				Keywords = new List<string>(selectedKeywords)
 			};
 			nTestCaseList[oTC.TestCaseID - 1] = nTestCase;
@@ -269,6 +269,18 @@ namespace QualityScenariosManager
 			ClearControllers();
 			HideTCButtons();
 			EditTC.Content = "Edit";
+		}
+
+		private void SaveTS_Click(object sender, RoutedEventArgs e)
+		{
+			DButils tsdb = DButils.Instance;
+			nTestSuite.TestCases = nTestCaseList;
+			XMLCreator TestSuite = new XMLCreator();
+			nTestSuite.TestSuiteDefinition = TestSuite.CreateXML(nTestSuite).InnerXml;
+			tsdb.SaveTestSuite(nTestSuite);
+			TestCasesDG.ItemsSource = null;
+			TestCasesDG.Items.Refresh();
+
 		}
 	}
 }

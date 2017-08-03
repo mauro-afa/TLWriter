@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace QualityScenariosManager
 		public string Brand { get; set; }
 		public string Version { get; set; }
 		public List<TestCase> TestCases { get; set; }
+		public string TestSuiteDefinition { get; set; }
 
 
 		public void AddTestCase(TestCase oTestCase)
@@ -30,8 +32,8 @@ namespace QualityScenariosManager
 		public string Preconditions { get; set; }
 		public string Actions { get; set; }
 		public string ExpectedResult { get; set; }
-		public string Execution { get; set; }
-		public string Importance { get; set; }
+		public int Execution { get; set; }
+		public int Importance { get; set; }
 		public List<String> Keywords { get; set; }
 	}
 }
