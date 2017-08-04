@@ -115,14 +115,22 @@ namespace QualityScenariosManager
 			{
 				if (TSNameTB.Text != "" && TSJiraTB.Text != "")
 				{
-					nTestSuite = new TestSuite()
+					try
 					{
-						TestSuiteID = 1,
-						TestSuiteName = TSNameTB.Text,
-						JiraLink = TSJiraTB.Text,
-						Brand = ((ComboBoxItem)BrandCB.SelectedItem).Tag.ToString(),
-						Version = ((ComboBoxItem)VersionCB.SelectedItem).Tag.ToString()
-					};
+						nTestSuite = new TestSuite()
+						{
+							TestSuiteID = 1,
+							TestSuiteName = TSNameTB.Text,
+							JiraLink = TSJiraTB.Text,
+							Brand = ((ComboBoxItem)BrandCB.SelectedItem).Tag.ToString(),
+							Version = ((ComboBoxItem)VersionCB.SelectedItem).Tag.ToString()
+						};
+					}
+					catch(NullReferenceException nre)
+					{
+						MessageBox.Show(nre.Message);
+					}
+
 					TSNameTB.IsEnabled = false;
 					TSJiraTB.IsEnabled = false;
 					BrandCB.IsEnabled = false;

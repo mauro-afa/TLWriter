@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QualityScenariosManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1206" WindowStyle="None">
-    <Grid>
+        Title="MainWindow" Height="650" Width="1203" WindowStyle="None">
+    <Grid Margin="0,0,-8,0">
         <Canvas x:Name="Header" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="1192" Background="#FF327A95" MouseDown="Header_MouseDown">
             <Canvas HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="82" Background="#FF45AE7A">
                 <Label Content="QSM" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="78" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" Canvas.Left="4"/>
@@ -14,6 +14,11 @@
             </Canvas>
         </Canvas>
         <StackPanel HorizontalAlignment="Left" Height="596" Margin="0,46,0,0" VerticalAlignment="Top" Width="82" Background="#FF327A95">
+            <Button x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="HomeButton_Click">
+                <StackPanel>
+                    <Image Source="Icons/Home.ico" Stretch="Uniform" Height="30" Width="57" Margin="0,0,4,0"/>
+                </StackPanel>
+            </Button>
             <Button x:Name="CreateTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="CreateTSButton_Click">
                 <StackPanel>
                     <Image Source="Icons/AddTS.png" Stretch="Uniform" Height="30" Width="57" Margin="0,0,4,0"/>
@@ -32,21 +37,6 @@
         </StackPanel>
         <Label Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="34" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" MouseLeftButtonUp="Label_MouseLeftButtonUp" Margin="1158,3,0,0"/>
         <Label Content="_" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="34" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" MouseLeftButtonUp="Label_MouseLeftButtonUp_1" Margin="1119,0,0,0"/>
-        <Canvas x:Name="ContentPanel" HorizontalAlignment="Left" Height="596" Margin="82,46,0,0" VerticalAlignment="Top" Width="1110">
-            <Canvas x:Name="TSCvs" Height="596" Width="555">
-                <DataGrid Height="565" Width="555" Canvas.Top="31"/>
-                <Label Content="Test Suites" Height="31" Width="124"/>
-            </Canvas>
-            <Canvas x:Name="PendingsCvs" Height="596" Canvas.Left="555" Width="555">
-                <Canvas x:Name="PRTICvs" Height="298" Width="555">
-                    <Label Content="Pending P.R.T.I" Height="31" Width="124"/>
-                    <DataGrid Height="267" Width="555" Canvas.Top="31"/>
-                </Canvas>
-                <Canvas x:Name="ExecCvs" Height="298" Width="555" Canvas.Top="298">
-                    <Label Content="Pending Execution" Height="31" Width="124"/>
-                    <DataGrid Height="267" Width="555" Canvas.Top="31"/>
-                </Canvas>
-            </Canvas>
-        </Canvas>
+        <Canvas x:Name="ContentPanel" HorizontalAlignment="Left" Height="596" Margin="82,46,0,0" VerticalAlignment="Top" Width="1110"/>
     </Grid>
 </Window>

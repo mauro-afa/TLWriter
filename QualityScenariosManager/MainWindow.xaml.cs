@@ -23,6 +23,7 @@ namespace QualityScenariosManager
 		public MainWindow()
 		{
 			InitializeComponent();
+			ContentPanel.Children.Add(new Home());
 		}
 
 		private void Label_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -49,6 +50,16 @@ namespace QualityScenariosManager
 			}
 			ContentPanel.Children.Add(new TestSuiteCreation());
 			TitleLabel.Content = "Test suite creation";
+		}
+
+		private void HomeButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (ContentPanel.Children.Count > 0)
+			{
+				ContentPanel.Children.Clear();
+			}
+			ContentPanel.Children.Add(new Home());
+			TitleLabel.Content = "Home";
 		}
 	}
 }
