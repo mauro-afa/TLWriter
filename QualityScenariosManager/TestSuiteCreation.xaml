@@ -19,15 +19,15 @@
                 <ComboBoxItem Content="Brands"/>
                 <ComboBoxItem Content="ADS Chicago" Tag="ADS Chicago"/>
                 <ComboBoxItem Content="ADS Dallas" Tag="ADS Dallas"/>
-                <ComboBoxItem Content="BP"/>
-                <ComboBoxItem Content="Chevron"/>
-                <ComboBoxItem Content="Concord"/>
-                <ComboBoxItem Content="ExxonMobil"/>
-                <ComboBoxItem Content="HPSChicago"/>
-                <ComboBoxItem Content="IOL"/>
-                <ComboBoxItem Content="NBS"/>
-                <ComboBoxItem Content="RBS"/>
-                <ComboBoxItem Content="Shell"/>
+                <ComboBoxItem Content="BP" Tag="BP"/>
+                <ComboBoxItem Content="Chevron" Tag="Chevron"/>
+                <ComboBoxItem Content="Concord" Tag="Concord"/>
+                <ComboBoxItem Content="ExxonMobil" Tag="ExxonMobil"/>
+                <ComboBoxItem Content="HPSChicago" Tag="HPSChicago"/>
+                <ComboBoxItem Content="IOL" Tag="IOL"/>
+                <ComboBoxItem Content="NBS" Tag="NBS"/>
+                <ComboBoxItem Content="RBS" Tag="RBS"/>
+                <ComboBoxItem Content="Shell" Tag="Shell"/>
             </ComboBox>
             <Button x:Name="SaveTSInfo" Content="Save TS Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Canvas.Left="1012" Height="25" Click="SaveTSInfo_Click"/>
         </Canvas>

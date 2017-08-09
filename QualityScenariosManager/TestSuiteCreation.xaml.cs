@@ -65,6 +65,7 @@ namespace QualityScenariosManager
 		TestSuite nTestSuite;
 		List<TestCase> nTestCaseList = new List<TestCase>();
 		private int counter=0;
+		bool bUpdate = false;
 		public TestSuiteCreation()
 		{
 			InitializeComponent();
@@ -72,6 +73,17 @@ namespace QualityScenariosManager
 			{
 				KeywordLB.Items.Add(new Keyword() { KeywordName = key });
 			}
+		}
+
+		public TestSuiteCreation(TestSuite oTestSuite)
+		{
+			InitializeComponent();
+			foreach (string key in KeywordList)
+			{
+				KeywordLB.Items.Add(new Keyword() { KeywordName = key });
+			}
+			nTestSuite = oTestSuite;
+			LoadTestCases();
 		}
 
 		public class Keyword
@@ -111,46 +123,48 @@ namespace QualityScenariosManager
 
 		private void SaveTSInfo_Click(object sender, RoutedEventArgs e)
 		{
+			
 			if(SaveTSInfo.Content.ToString()== "Save TS Info")
 			{
 				if (TSNameTB.Text != "" && TSJiraTB.Text != "")
 				{
+					DButils tsdb = DButils.Instance;
+					int ID = tsdb.getLastID();
 					try
 					{
 						nTestSuite = new TestSuite()
 						{
-							TestSuiteID = 1,
+							TestSuiteID = ++ID,
 							TestSuiteName = TSNameTB.Text,
 							JiraLink = TSJiraTB.Text,
 							Brand = ((ComboBoxItem)BrandCB.SelectedItem).Tag.ToString(),
 							Version = ((ComboBoxItem)VersionCB.SelectedItem).Tag.ToString()
 						};
+						TSNameTB.IsEnabled = false;
+						TSJiraTB.IsEnabled = false;
+						BrandCB.IsEnabled = false;
+						VersionCB.IsEnabled = false;
+						SaveTSInfo.Content = "Change TS info";
+
+						TestCasesDG.IsEnabled = true;
+						TCID_TB.IsEnabled = true;
+						KeywordLB.IsEnabled = true;
+						TCObj.IsEnabled = true;
+						TCPrecon.IsEnabled = true;
+						TCAction.IsEnabled = true;
+						TCExpecRes.IsEnabled = true;
+						TCExecCB.IsEnabled = true;
+						TCPriorityCB.IsEnabled = true;
+						AddTC.IsEnabled = true;
+						EditTC.IsEnabled = true;
+						RemoveTC.IsEnabled = true;
+						CancelTC.IsEnabled = true;
+						SaveTS.IsEnabled = true;
 					}
 					catch(NullReferenceException nre)
 					{
 						MessageBox.Show(nre.Message);
 					}
-
-					TSNameTB.IsEnabled = false;
-					TSJiraTB.IsEnabled = false;
-					BrandCB.IsEnabled = false;
-					VersionCB.IsEnabled = false;
-					SaveTSInfo.Content = "Change TS info";
-
-					TestCasesDG.IsEnabled = true;
-					TCID_TB.IsEnabled = true;
-					KeywordLB.IsEnabled = true;
-					TCObj.IsEnabled = true;
-					TCPrecon.IsEnabled = true;
-					TCAction.IsEnabled = true;
-					TCExpecRes.IsEnabled = true;
-					TCExecCB.IsEnabled = true;
-					TCPriorityCB.IsEnabled = true;
-					AddTC.IsEnabled = true;
-					EditTC.IsEnabled = true;
-					RemoveTC.IsEnabled = true;
-					CancelTC.IsEnabled = true;
-					SaveTS.IsEnabled = true;
 				}
 				else
 				{
@@ -285,10 +299,46 @@ namespace QualityScenariosManager
 			nTestSuite.TestCases = nTestCaseList;
 			XMLCreator TestSuite = new XMLCreator();
 			nTestSuite.TestSuiteDefinition = TestSuite.CreateXML(nTestSuite).InnerXml;
-			tsdb.SaveTestSuite(nTestSuite);
+			tsdb.SaveTestSuite(nTestSuite, bUpdate);
+			bUpdate = false;
 			TestCasesDG.ItemsSource = null;
 			TestCasesDG.Items.Refresh();
 
+		}
+
+		private void LoadTestCases()
+		{
+			DButils tsdb = DButils.Instance;
+			nTestCaseList = new List<TestCase>(tsdb.GetAllTestCases(nTestSuite.TestSuiteID));
+			counter = nTestCaseList.Count();
+			bUpdate = true;
+			ClearControllers();
+			TestCasesDG.ItemsSource = nTestCaseList;
+			TSNameTB.Text = nTestSuite.TestSuiteName;
+			TSJiraTB.Text = nTestSuite.JiraLink;
+			BrandCB.SelectedItem = nTestSuite.Brand;
+			VersionCB.SelectedItem = nTestSuite.Version;
+
+			TSNameTB.IsEnabled = false;
+			TSJiraTB.IsEnabled = false;
+			BrandCB.IsEnabled = false;
+			VersionCB.IsEnabled = false;
+			SaveTSInfo.Content = "Change TS info";
+
+			TestCasesDG.IsEnabled = true;
+			TCID_TB.IsEnabled = true;
+			KeywordLB.IsEnabled = true;
+			TCObj.IsEnabled = true;
+			TCPrecon.IsEnabled = true;
+			TCAction.IsEnabled = true;
+			TCExpecRes.IsEnabled = true;
+			TCExecCB.IsEnabled = true;
+			TCPriorityCB.IsEnabled = true;
+			AddTC.IsEnabled = true;
+			EditTC.IsEnabled = true;
+			RemoveTC.IsEnabled = true;
+			CancelTC.IsEnabled = true;
+			SaveTS.IsEnabled = true;
 		}
 	}
 }

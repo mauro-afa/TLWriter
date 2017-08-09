@@ -24,6 +24,7 @@ namespace QualityScenariosManager
 		{
 			InitializeComponent();
 			ContentPanel.Children.Add(new Home());
+			TitleLabel.Content = "Home";
 		}
 
 		private void Label_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -60,6 +61,41 @@ namespace QualityScenariosManager
 			}
 			ContentPanel.Children.Add(new Home());
 			TitleLabel.Content = "Home";
+		}
+
+		private void EditTSButton_Click(object sender, RoutedEventArgs e)
+		{
+			Home _home = null;
+			bool bContinue = false;
+			foreach (UserControl uc in ContentPanel.Children)
+			{
+				if(uc is Home)
+				{
+					_home = (Home)uc;
+					bContinue = true;
+					break;
+				}
+			}
+
+			if (bContinue)
+			{
+				TestSuite sTestSuite = (TestSuite)_home.TestSuiteDG.SelectedItem;
+				if (sTestSuite is null)
+				{
+					MessageBox.Show("Please select a test suite");
+				}
+				else
+				{
+					if (ContentPanel.Children.Count > 0)
+					{
+						ContentPanel.Children.Clear();
+					}
+					ContentPanel.Children.Add(new TestSuiteCreation(sTestSuite));
+					TitleLabel.Content = "Test suite creation";
+				}
+			}
+			else
+				MessageBox.Show("You need to be in home screen to edit a test suite");
 		}
 	}
 }

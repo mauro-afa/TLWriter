@@ -28,10 +28,10 @@ namespace QualityScenariosManager
 
 		private void UserControl_Loaded(object sender, RoutedEventArgs e)
 		{
-			LoadData();
+			LoadTestSuites();
 		}
 
-		public void LoadData()
+		public void LoadTestSuites()
 		{
 			DButils tsdb = DButils.Instance;
 			List<TestSuite> TSinfo = tsdb.GetAllTestSuites();

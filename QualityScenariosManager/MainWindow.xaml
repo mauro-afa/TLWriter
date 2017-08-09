@@ -24,7 +24,7 @@
                     <Image Source="Icons/AddTS.png" Stretch="Uniform" Height="30" Width="57" Margin="0,0,4,0"/>
                 </StackPanel>
             </Button>
-            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2">
+            <Button x:Name="EditTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="EditTSButton_Click">
                 <StackPanel>
                     <Image Source="Icons/EditTS.png" Stretch="Uniform" Height="30" Width="57" Margin="0,0,7,0"/>
                 </StackPanel>
