@@ -8,10 +8,14 @@ using System.Xml;
 namespace QualityScenariosManager
 {
 	public class XMLCreator
-	{
-		public XmlDocument CreateXML(TestSuite oTS)
+	{ 
+		List<XmlDocument> xmls = new List<XmlDocument>();
+		XmlDocument doc = new XmlDocument();
+		XmlDocument regressionDoc = new XmlDocument();
+		XmlDocument smokeDoc = new XmlDocument();
+
+		public List<XmlDocument> CreateXML(TestSuite oTS)
 		{
-			XmlDocument doc = new XmlDocument();
 			XmlNode nodeDecl = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
 			doc.AppendChild(nodeDecl);
 
@@ -29,12 +33,39 @@ namespace QualityScenariosManager
 			XmlNode nDetails = doc.CreateElement("Details");
 			nDetails.InnerText = oTS.JiraLink;
 
+			regressionDoc = ExtraDoc("REGRESSION");
+			smokeDoc = ExtraDoc("SMOKE");
+
 			foreach(TestCase cTC in oTS.TestCases)
 			{
 				nTestSuite.AppendChild(AppendTestCase(doc, cTC));
 			}
+			xmls.Add(doc);
+			xmls.Add(regressionDoc);
+			xmls.Add(smokeDoc);
 
-			return doc;
+			return xmls;
+		}
+
+		public XmlDocument ExtraDoc(string FileName)
+		{
+			XmlDocument regressionDoc = new XmlDocument();
+
+			XmlNode extraDecl = regressionDoc.CreateXmlDeclaration("1.0", "UTF-8", null);
+			regressionDoc.AppendChild(extraDecl);
+
+			XmlNode eTestSuite = regressionDoc.CreateElement("TestSuite");
+			regressionDoc.AppendChild(eTestSuite);
+
+			XmlAttribute attName = regressionDoc.CreateAttribute("Name");
+			attName.Value = FileName;
+			eTestSuite.Attributes.Append(attName);
+
+			XmlAttribute attInstance = regressionDoc.CreateAttribute("xmlns:xsi");
+			attInstance.Value = "http://www.w3.org/2001/XMLSchema-instance";
+			eTestSuite.Attributes.Append(attInstance);
+
+			return regressionDoc;
 		}
 
 		public XmlNode AppendTestCase (XmlDocument _doc, TestCase lTestCase)
@@ -50,8 +81,25 @@ namespace QualityScenariosManager
 			return nNode;
 		}
 
+		public XmlNode AppendTestCase(XmlDocument _doc, TestCase lTestCase, XmlNode TestCaseNode)
+		{
+			//Creates the TestCase node
+			XmlNode nNode = _doc.CreateElement("TestCase");
+			XmlAttribute attTestCase = _doc.CreateAttribute("Name");
+			attTestCase.Value = lTestCase.TestCaseName;
+			nNode.Attributes.Append(attTestCase);
+
+			//Creates the TestCase information node.
+			XmlNode RegressionNode = TestCaseNode.Clone();
+			_doc.AppendChild(RegressionNode);
+			return nNode;
+		}
+
 		public void GetDefinition(XmlDocument _doc, TestCase lTestCase, XmlNode nNode)
 		{
+			bool bRegression = false, bSmoke = false;
+
+
 			XmlNode nSummary = _doc.CreateElement("Summary");
 			nSummary.InnerText = lTestCase.Objective;
 			nNode.AppendChild(nSummary);
@@ -77,6 +125,10 @@ namespace QualityScenariosManager
 
 			foreach(String keyword in lTestCase.Keywords)
 			{
+				if (keyword == "ADD2REGRESSION")
+					bRegression = true;
+				if (keyword == "SMOKE TEST")
+					bSmoke = true;
 				XmlNode nKeyword = _doc.CreateElement("Keyword");
 				XmlAttribute attKeyword = _doc.CreateAttribute("Name");
 				attKeyword.Value = keyword;
@@ -107,6 +159,18 @@ namespace QualityScenariosManager
 			XmlNode nStepExecutionType = _doc.CreateElement("Execution_type");
 			nStepExecutionType.InnerText = lTestCase.Execution.ToString();
 			nSteps.AppendChild(nStepExecutionType);
+
+			if (bRegression)
+			{
+				XmlNode newNode = regressionDoc.ImportNode(nNode, true);
+				regressionDoc.DocumentElement.AppendChild(newNode);
+			}
+
+			if(bSmoke)
+			{
+				XmlNode newNode = smokeDoc.ImportNode(nNode, true);
+				smokeDoc.DocumentElement.AppendChild(newNode);
+			}
 		}
 	}
 

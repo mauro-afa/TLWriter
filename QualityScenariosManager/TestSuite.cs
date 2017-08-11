@@ -17,7 +17,8 @@ namespace QualityScenariosManager
 		public string Version { get; set; }
 		public List<TestCase> TestCases { get; set; }
 		public string TestSuiteDefinition { get; set; }
-
+		public string RegressionDefinition { get; set; }
+		public string SmokeDefinition { get; set; }
 
 		public void AddTestCase(TestCase oTestCase)
 		{

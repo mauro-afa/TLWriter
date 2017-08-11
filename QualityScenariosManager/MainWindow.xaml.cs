@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace QualityScenariosManager
 {
@@ -92,6 +94,76 @@ namespace QualityScenariosManager
 					}
 					ContentPanel.Children.Add(new TestSuiteCreation(sTestSuite));
 					TitleLabel.Content = "Test suite creation";
+				}
+			}
+			else
+				MessageBox.Show("You need to be in home screen to edit a test suite");
+		}
+
+		private void DeleteTSButton_Click(object sender, RoutedEventArgs e)
+		{
+			Home _home = null;
+			bool bContinue = false;
+			foreach (UserControl uc in ContentPanel.Children)
+			{
+				if (uc is Home)
+				{
+					_home = (Home)uc;
+					bContinue = true;
+					break;
+				}
+			}
+
+			if (bContinue)
+			{
+				TestSuite sTestSuite = (TestSuite)_home.TestSuiteDG.SelectedItem;
+				if (sTestSuite is null)
+				{
+					MessageBox.Show("Please select a test suite");
+				}
+				else
+				{
+					DButils tsdb = DButils.Instance;
+					tsdb.DeleteTestSuite(sTestSuite);
+				}
+			}
+			else
+				MessageBox.Show("You need to be in home screen to edit a test suite");
+		}
+
+		private void ExportTSButton_Click(object sender, RoutedEventArgs e)
+		{
+			Home _home = null;
+			bool bContinue = false;
+			foreach (UserControl uc in ContentPanel.Children)
+			{
+				if (uc is Home)
+				{
+					_home = (Home)uc;
+					bContinue = true;
+					break;
+				}
+			}
+
+			if (bContinue)
+			{
+				TestSuite sTestSuite = (TestSuite)_home.TestSuiteDG.SelectedItem;
+				if (sTestSuite is null)
+				{
+					MessageBox.Show("Please select a test suite");
+				}
+				else
+				{
+					SaveFileDialog sfd = new SaveFileDialog();
+					sfd.FileName = sTestSuite.TestSuiteName;
+					sfd.DefaultExt = ".xml";
+					if (sfd.ShowDialog() == true)
+					{
+						XmlDocument doc = new XmlDocument();
+						doc.LoadXml(sTestSuite.TestSuiteDefinition);
+						doc.Save(sfd.FileName);
+
+					}
 				}
 			}
 			else

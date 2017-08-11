@@ -34,12 +34,21 @@ namespace QualityScenariosManager
 			string sSQL;
 			if (bUpdate)
 				//fix the update
-				sSQL = "UPDATE TestSuite Set (TestSuiteName = '" + oTestSuite.TestSuiteName + "', JiraLink = '" + oTestSuite.JiraLink + "', Brand = '" + oTestSuite.Brand + "', Version = '" + oTestSuite.Version + "', TestCaseDefinition = '" + oTestSuite.TestSuiteDefinition + "' WHERE TestSuiteID = '" + oTestSuite.TestSuiteID + "')";
+				sSQL = "UPDATE TestSuite Set (TestSuiteName = '" + oTestSuite.TestSuiteName + "', JiraLink = '" + oTestSuite.JiraLink + "', Brand = '" + oTestSuite.Brand + "', Version = '" + oTestSuite.Version + "', TestCaseDefinition = '" + oTestSuite.TestSuiteDefinition + "', RegressionDefinition = '"+oTestSuite.RegressionDefinition+"', SmokeDefinition = '"+oTestSuite.SmokeDefinition+"' WHERE TestSuiteID = '" + oTestSuite.TestSuiteID + "')";
 			else
-				sSQL = "Insert INTO TestSuite (TestSuiteID, TestSuiteName, JiraLink, Brand, Version, TestCaseDefinition) values ('" + oTestSuite.TestSuiteID + "','" + oTestSuite.TestSuiteName + "', '" + oTestSuite.JiraLink + "', '" + oTestSuite.Brand + "', '" + oTestSuite.Version + "', '" + oTestSuite.TestSuiteDefinition + "')";
+				sSQL = "Insert INTO TestSuite (TestSuiteID, TestSuiteName, JiraLink, Brand, Version, TestCaseDefinition, RegressionDefinition, SmokeDefinition) values ('" + oTestSuite.TestSuiteID + "','" + oTestSuite.TestSuiteName + "', '" + oTestSuite.JiraLink + "', '" + oTestSuite.Brand + "', '" + oTestSuite.Version + "', '" + oTestSuite.TestSuiteDefinition + "', '"+oTestSuite.RegressionDefinition+"', '"+oTestSuite.SmokeDefinition+"'')";
 			return m_oDBConn.ExecuteNonQuery(sSQL);
 		}
 
+		public bool DeleteTestSuite(TestSuite oTestSuite)
+		{
+			string sSQL = "DELETE FROM TestSuite WHERE TestSuiteID = '" + oTestSuite.TestSuiteID + "'";
+			m_oDBConn.ExecuteNonQuery(sSQL);
+			sSQL = "exec FixTSIDNumber";
+			m_oDBConn.ExecuteNonQuery(sSQL);
+			return true;
+
+		}
 		public List<TestSuite> GetAllTestSuites()
 		{
 			List<TestSuite> lTestSuite = new List<TestSuite>();

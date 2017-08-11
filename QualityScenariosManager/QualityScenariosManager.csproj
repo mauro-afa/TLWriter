@@ -166,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\home.ico" />
+    <Resource Include="Icons\export.ico" />
     <Content Include="Tests.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

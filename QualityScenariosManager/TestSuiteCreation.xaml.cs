@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace QualityScenariosManager
 {
@@ -295,10 +296,14 @@ namespace QualityScenariosManager
 
 		private void SaveTS_Click(object sender, RoutedEventArgs e)
 		{
+			List<XmlDocument> xmls = new List<XmlDocument>();
 			DButils tsdb = DButils.Instance;
 			nTestSuite.TestCases = nTestCaseList;
 			XMLCreator TestSuite = new XMLCreator();
-			nTestSuite.TestSuiteDefinition = TestSuite.CreateXML(nTestSuite).InnerXml;
+			xmls = TestSuite.CreateXML(nTestSuite);
+			nTestSuite.TestSuiteDefinition = xmls[0].InnerXml;
+			nTestSuite.RegressionDefinition = xmls[1].InnerXml;
+			nTestSuite.SmokeDefinition = xmls[2].InnerXml;
 			tsdb.SaveTestSuite(nTestSuite, bUpdate);
 			bUpdate = false;
 			TestCasesDG.ItemsSource = null;

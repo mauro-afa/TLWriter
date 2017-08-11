@@ -29,9 +29,14 @@
                     <Image Source="Icons/EditTS.png" Stretch="Uniform" Height="30" Width="57" Margin="0,0,7,0"/>
                 </StackPanel>
             </Button>
-            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2">
+            <Button x:Name="DeleteTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="DeleteTSButton_Click">
                 <StackPanel>
                     <Image Source="Icons/DeleteTS.png" Height="30" Width="57" Margin="0,0,10,0"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ExportTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Margin="-6,0,0,0" Click="ExportTSButton_Click">
+                <StackPanel>
+                    <Image Source="Icons/export.ico" Height="30" Width="40" Margin="0,0,10,0" HorizontalAlignment="Right"/>
                 </StackPanel>
             </Button>
         </StackPanel>
