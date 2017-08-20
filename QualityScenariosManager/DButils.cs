@@ -63,8 +63,10 @@ namespace QualityScenariosManager
 					JiraLink = (string)reader[2],
 					Brand = (string)reader[3],
 					Version = (string)reader[4],
-					TestSuiteDefinition = (string)reader[5]
-				};
+					TestSuiteDefinition = (string)reader[5],
+                    RegressionDefinition = (string)reader[6],
+                    SmokeDefinition = (string)reader[7],
+                };
 				lTestSuite.Add(oTestSuite);
 			}
 			reader.Close();
@@ -152,5 +154,35 @@ namespace QualityScenariosManager
 				else
 					return (int)reader[0];
 		}
-	}
+
+        public List<String> GetAllKeywords()
+        {
+            List<string> cKeywords = new List<string>();
+
+            string sSQL = "SELECT * FROM St_Keywords";
+            SqlDataReader reader = m_oDBConn.Execute(sSQL);
+            while (reader.Read())
+            {
+                cKeywords.Add((string)reader[1]);
+            }
+            reader.Close();
+
+            return cKeywords;
+        }
+
+        public List<String> GetAllVersions()
+        {
+            List<string> cVersions = new List<string>();
+
+            string sSQL = "SELECT * FROM St_Versions";
+            SqlDataReader reader = m_oDBConn.Execute(sSQL);
+            while (reader.Read())
+            {
+                cVersions.Add((string)reader[1]);
+            }
+            reader.Close();
+
+            return cVersions;
+        }
+    }
 }

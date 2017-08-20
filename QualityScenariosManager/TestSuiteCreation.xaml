@@ -11,12 +11,10 @@
             <TextBox x:Name="TSNameTB" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="Test Suite Name" VerticalAlignment="Top" Width="365"/>
             <TextBox x:Name="TSJiraTB" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="Jira Link" VerticalAlignment="Top" Width="365" Canvas.Left="370"/>
             <ComboBox x:Name="VersionCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Canvas.Left="918" Height="25" SelectedIndex="0">
-                <ComboBoxItem Content="Version"/>
                 <ComboBoxItem Content="v11.02" Tag="11.02"/>
                 <ComboBoxItem Content="v99.99" Tag="99.99"/>
             </ComboBox>
             <ComboBox x:Name="BrandCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="173" Canvas.Left="740" Height="25" SelectedIndex="0">
-                <ComboBoxItem Content="Brands"/>
                 <ComboBoxItem Content="ADS Chicago" Tag="ADS Chicago"/>
                 <ComboBoxItem Content="ADS Dallas" Tag="ADS Dallas"/>
                 <ComboBoxItem Content="BP" Tag="BP"/>

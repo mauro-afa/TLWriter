@@ -131,7 +131,19 @@ namespace QualityScenariosManager
 				MessageBox.Show("You need to be in home screen to edit a test suite");
 		}
 
-		private void ExportTSButton_Click(object sender, RoutedEventArgs e)
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                if (ContentPanel.Children.Count > 0)
+                {
+                    ContentPanel.Children.Clear();
+                }
+                ContentPanel.Children.Add(new Settings());
+                TitleLabel.Content = "Settings";
+            }
+        }
+
+        private void ExportTSButton_Click(object sender, RoutedEventArgs e)
 		{
 			Home _home = null;
 			bool bContinue = false;
@@ -162,12 +174,17 @@ namespace QualityScenariosManager
 						XmlDocument doc = new XmlDocument();
 						doc.LoadXml(sTestSuite.TestSuiteDefinition);
 						doc.Save(sfd.FileName);
-
-					}
+                        doc.LoadXml(sTestSuite.RegressionDefinition);
+                        doc.Save(sfd.FileName.Replace(".xml"," - Regression.xml"));
+                        doc.LoadXml(sTestSuite.SmokeDefinition);
+                        doc.Save(sfd.FileName.Replace(".xml", " - Smoke.xml"));
+                    }
 				}
 			}
 			else
 				MessageBox.Show("You need to be in home screen to edit a test suite");
 		}
-	}
+
+
+    }
 }
