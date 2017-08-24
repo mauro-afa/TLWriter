@@ -26,7 +26,12 @@ namespace QualityScenariosManager
             InitializeComponent();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+		public class Keyword
+		{
+			public string KeywordName { get; set; }
+		}
+
+		private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             PopulateKeywords();
             PopulateVersions();
