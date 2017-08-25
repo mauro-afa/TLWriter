@@ -155,34 +155,48 @@ namespace QualityScenariosManager
 					return (int)reader[0];
 		}
 
-        public List<String> GetAllKeywords()
+        public List<Keyword> GetAllKeywords()
         {
-            List<string> cKeywords = new List<string>();
+            List<Keyword> cKeywords = new List<Keyword>();
 
             string sSQL = "SELECT * FROM St_Keywords";
             SqlDataReader reader = m_oDBConn.Execute(sSQL);
             while (reader.Read())
             {
-                cKeywords.Add((string)reader[1]);
+				cKeywords.Add(new Keyword() { KeywordName = (string)reader[1] });
             }
             reader.Close();
-
-            return cKeywords;
+			return cKeywords;
         }
 
-        public List<String> GetAllVersions()
+        public List<Versions> GetAllVersions()
         {
-            List<string> cVersions = new List<string>();
+            List<Versions> cVersions = new List<Versions>();
 
             string sSQL = "SELECT * FROM St_Versions";
             SqlDataReader reader = m_oDBConn.Execute(sSQL);
             while (reader.Read())
             {
-                cVersions.Add((string)reader[1]);
+				cVersions.Add(new Versions((string)reader[1]));
             }
             reader.Close();
 
             return cVersions;
         }
-    }
+
+		public List<Network> GetAllNetworks()
+		{
+			List<Network> cNetworks = new List<Network>();
+
+			string sSQL = "SELECT * FROM St_Networks";
+			SqlDataReader reader = m_oDBConn.Execute(sSQL);
+			while (reader.Read())
+			{
+				cNetworks.Add(new Network((string)reader[1]));
+			}
+			reader.Close();
+
+			return cNetworks;
+		}
+	}
 }

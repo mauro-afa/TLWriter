@@ -87,12 +87,6 @@ namespace QualityScenariosManager
 			LoadTestCases();
 		}
 
-		public class Keyword
-		{
-			public bool IsChecked { get; set; }
-			public string KeywordName { get; set; }
-		}
-
 		private void AddTC_Click(object sender, RoutedEventArgs e)
 		{
 			TestCasesDG.ItemsSource = null;

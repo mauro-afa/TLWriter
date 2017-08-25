@@ -26,27 +26,30 @@ namespace QualityScenariosManager
             InitializeComponent();
         }
 
-		public class Keyword
-		{
-			public string KeywordName { get; set; }
-		}
-
 		private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             PopulateKeywords();
             PopulateVersions();
-        }
+			PopulateNetworks();
+
+		}
 
         public void PopulateKeywords()
         {
-            List<string> Keywords = new List<string>(st.GetAllKeywords());
+            List<Keyword> Keywords = new List<Keyword>(st.GetAllKeywords());
             KeywordLB.ItemsSource = Keywords;
         }
 
         public void PopulateVersions()
         {
-            List<string> Versions = new List<string>(st.GetAllVersions());
+            List<Versions> Versions = new List<Versions>(st.GetAllVersions());
             VersionLB.ItemsSource = Versions;
         }
+
+		public void PopulateNetworks()
+		{
+			List<Network> Networks = new List<Network>(st.GetAllNetworks());
+			NetworkLB.ItemsSource = Networks;
+		}
     }
 }

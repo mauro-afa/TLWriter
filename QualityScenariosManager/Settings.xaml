@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="1110" Height="596" Background="White" Loaded="UserControl_Loaded">
     <Grid>
-        <Label x:Name="label" Content="Keywords" HorizontalAlignment="Left" Margin="100,0,0,0" VerticalAlignment="Top" Height="27" Width="71"/>
-        <Label x:Name="label_Copy" Content="Versions" HorizontalAlignment="Left" Margin="483,0,0,0" VerticalAlignment="Top" Height="27" Width="71"/>
-        <ListBox x:Name="KeywordLB" HorizontalAlignment="Left" Height="569" Margin="0,27,0,0" VerticalAlignment="Top" Width="270">
+        <Label x:Name="label" Content="Keywords" HorizontalAlignment="Left" Margin="76,0,0,0" VerticalAlignment="Top" Height="27" Width="71"/>
+        <Label x:Name="label_Copy" Content="Versions" HorizontalAlignment="Left" Margin="452,0,0,0" VerticalAlignment="Top" Height="27" Width="70"/>
+        <ListBox x:Name="KeywordLB" HorizontalAlignment="Left" Height="569" Margin="0,27,0,0" VerticalAlignment="Top" Width="242">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -21,20 +21,36 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox x:Name="VersionLB" HorizontalAlignment="Left" Height="569" Margin="398,27,0,0" VerticalAlignment="Top" Width="270">
+        <ListBox x:Name="VersionLB" HorizontalAlignment="Left" Height="569" Margin="370,27,0,0" VerticalAlignment="Top" Width="242">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="200"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Version}"/>
+                        <TextBlock Grid.Column="0" Text="{Binding VersionName}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="34" Margin="270,27,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="128"/>
-        <Label x:Name="label_Copy1" Content="Value" HorizontalAlignment="Left" Margin="294,-5,0,0" VerticalAlignment="Top" Height="27" Width="71"/>
-        <Button x:Name="SetVaue" Content="SetVaue" HorizontalAlignment="Left" Margin="290,61,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="34" Margin="242,27,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="128"/>
+        <Button x:Name="SetVaue" Content="SetVaue" HorizontalAlignment="Left" Margin="264,66,0,0" VerticalAlignment="Top" Width="76"/>
+        <ListBox x:Name="NetworkLB" HorizontalAlignment="Left" Height="569" Margin="740,27,0,0" VerticalAlignment="Top" Width="242">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding NetworkName}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="34" Margin="612,27,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="128"/>
+        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="34" Margin="982,27,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="128"/>
+        <Button x:Name="SetVaue_Copy" Content="SetVaue" HorizontalAlignment="Left" Margin="636,66,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="SetVaue_Copy1" Content="SetVaue" HorizontalAlignment="Left" Margin="1010,66,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="label_Copy2" Content="Networks" HorizontalAlignment="Left" Margin="824,0,0,0" VerticalAlignment="Top" Height="27" Width="70"/>
     </Grid>
 </UserControl>
