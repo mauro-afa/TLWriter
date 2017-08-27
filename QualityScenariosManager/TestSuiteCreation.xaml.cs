@@ -21,48 +21,6 @@ namespace QualityScenariosManager
 	/// </summary>
 	public partial class TestSuiteCreation : UserControl
 	{
-		private string[] KeywordList =
-		{
-			"1GENAC",
-			"2 Wire Over IP",
-			"7-ELEVEN",
-			"7-ELEVEN-Conoco",
-			"7ELEVEN-EXXON",
-			"ADD2REGRESSION",
-			"APPLAUSE",
-			"BP",
-			"CHEVRON",
-			"CHEVRON CA",
-			"CITGO",
-			"CONCORD",
-			"CONTROL CENTER",
-			"CORE",
-			"DASHBOARD",
-			"DEFECT",
-			"Dual Tank Monitor",
-			"EMV",
-			"EXCEPTION",
-			"EXXON",
-			"FDC",
-			"FUNCTIONAL",
-			"HPSC",
-			"HPSD",
-			"HPSD-Generic_brand",
-			"Incomm",
-			"IOL",
-			"Kris Sprint 13 Test Cases",
-			"MARATHON",
-			"NBS",
-			"P66",
-			"PADSS",
-			"PADSS-Lite",
-			"REGRESSION",
-			"SANITY CHECK",
-			"SHELL",
-			"SITE SERVER",
-			"SMOKE TEST",
-			"WORLDPAY"
-		};
 		TestSuite nTestSuite;
 		List<TestCase> nTestCaseList = new List<TestCase>();
 		private int counter=0;
@@ -70,22 +28,29 @@ namespace QualityScenariosManager
 		public TestSuiteCreation()
 		{
 			InitializeComponent();
-			foreach(string key in KeywordList)
-			{
-				KeywordLB.Items.Add(new Keyword() { KeywordName = key });
-			}
-		}
+            LoadEssentials();
+        }
 
 		public TestSuiteCreation(TestSuite oTestSuite)
 		{
 			InitializeComponent();
-			foreach (string key in KeywordList)
-			{
-				KeywordLB.Items.Add(new Keyword() { KeywordName = key });
-			}
-			nTestSuite = oTestSuite;
+            LoadEssentials();
+            nTestSuite = oTestSuite;
 			LoadTestCases();
 		}
+
+        public void LoadEssentials()
+        {
+            DButils tsdb = DButils.Instance;
+            List<Keyword> Keywords = new List<Keyword>(tsdb.GetAllKeywords());
+            KeywordLB.ItemsSource = Keywords;
+
+            List<Versions> Versions = new List<Versions>(tsdb.GetAllVersions());
+            VersionCB.ItemsSource = Versions;
+
+            List<Network> Networks = new List<Network>(tsdb.GetAllNetworks());
+            BrandCB.ItemsSource = Networks;
+        }
 
 		private void AddTC_Click(object sender, RoutedEventArgs e)
 		{
@@ -124,7 +89,7 @@ namespace QualityScenariosManager
 				if (TSNameTB.Text != "" && TSJiraTB.Text != "")
 				{
 					DButils tsdb = DButils.Instance;
-					int ID = tsdb.getLastID();
+					int ID = tsdb.getLastID("TestSuite");
 					try
 					{
 						nTestSuite = new TestSuite()
@@ -132,8 +97,8 @@ namespace QualityScenariosManager
 							TestSuiteID = ++ID,
 							TestSuiteName = TSNameTB.Text,
 							JiraLink = TSJiraTB.Text,
-							Brand = ((ComboBoxItem)BrandCB.SelectedItem).Tag.ToString(),
-							Version = ((ComboBoxItem)VersionCB.SelectedItem).Tag.ToString()
+							Brand = ((Network)BrandCB.SelectedItem).NetworkTag.ToString(),
+							Version = ((Versions)VersionCB.SelectedItem).VersionTag.ToString()
 						};
 						TSNameTB.IsEnabled = false;
 						TSJiraTB.IsEnabled = false;

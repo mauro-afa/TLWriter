@@ -139,20 +139,42 @@ namespace QualityScenariosManager
 			}
 			return temp;
 		}
-		public int getLastID()
+		public int getLastID(string tableName)
 		{
-			string sSQL = "SELECT MAX(TestSuiteID) FROM TestSuite";
+            string fieldName = "";
+            switch(tableName)
+            {
+                case "St_Keywords":
+                case "St_Versions":
+                case "St_Networks":
+                    fieldName = "Id";
+                    break;
+                case "TestSuites":
+                    fieldName = "TestSuiteId";
+                    break;
+            }
+			string sSQL = "SELECT MAX("+fieldName+") FROM "+tableName+"";
 			SqlDataReader reader = m_oDBConn.Execute(sSQL);
 			reader.Read();
 			if (reader[0] is DBNull)
 			{
+                reader.Close();
 				return 0;
 			}
 			else
-				if ((int)reader[0] == 0)
-					return 0;
-				else
-					return (int)reader[0];
+            {
+                if ((int)reader[0] == 0)
+                {
+                    reader.Close();
+                    return 0;
+                }
+                else
+                {
+                    int id = (int)reader[0];
+                    reader.Close();
+                    return id;
+                }
+            }
 		}
 
         public List<Keyword> GetAllKeywords()
@@ -198,5 +220,12 @@ namespace QualityScenariosManager
 
 			return cNetworks;
 		}
-	}
+
+        public bool SaveKeword(Keyword Name)
+        {
+            int lastID = getLastID("St_Keywords");
+            string sSQL = "Insert INTO St_Keywords (Id, KeywordName) values ("+lastID+",'"+Name.KeywordName+"')";
+            return m_oDBConn.ExecuteNonQuery(sSQL);
+        }
+    }
 }

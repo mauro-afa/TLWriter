@@ -11,21 +11,22 @@
             <TextBox x:Name="TSNameTB" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="Test Suite Name" VerticalAlignment="Top" Width="365"/>
             <TextBox x:Name="TSJiraTB" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="Jira Link" VerticalAlignment="Top" Width="365" Canvas.Left="370"/>
             <ComboBox x:Name="VersionCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Canvas.Left="918" Height="25" SelectedIndex="0">
-                <ComboBoxItem Content="v11.02" Tag="11.02"/>
-                <ComboBoxItem Content="v99.99" Tag="99.99"/>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBoxItem Content="{Binding VersionName}" Tag="{Binding VersionTag}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox x:Name="BrandCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="173" Canvas.Left="740" Height="25" SelectedIndex="0">
-                <ComboBoxItem Content="ADS Chicago" Tag="ADS Chicago"/>
-                <ComboBoxItem Content="ADS Dallas" Tag="ADS Dallas"/>
-                <ComboBoxItem Content="BP" Tag="BP"/>
-                <ComboBoxItem Content="Chevron" Tag="Chevron"/>
-                <ComboBoxItem Content="Concord" Tag="Concord"/>
-                <ComboBoxItem Content="ExxonMobil" Tag="ExxonMobil"/>
-                <ComboBoxItem Content="HPSChicago" Tag="HPSChicago"/>
-                <ComboBoxItem Content="IOL" Tag="IOL"/>
-                <ComboBoxItem Content="NBS" Tag="NBS"/>
-                <ComboBoxItem Content="RBS" Tag="RBS"/>
-                <ComboBoxItem Content="Shell" Tag="Shell"/>
+            <ComboBox IsEditable="False" x:Name="BrandCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="173" Canvas.Left="740" Height="25" SelectedIndex="0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBoxItem Content="{Binding NetworkName}" Tag="{Binding NetworkTag}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
             <Button x:Name="SaveTSInfo" Content="Save TS Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Canvas.Left="1012" Height="25" Click="SaveTSInfo_Click"/>
         </Canvas>
@@ -56,11 +57,11 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Label Content="Objective" Canvas.Top="42" Width="87"/>
-            <Label Content="Preconditions" Canvas.Top="42" Width="87" Canvas.Left="220"/>
-            <Label Content="Actions" Canvas.Top="42" Width="87" Canvas.Left="440"/>
-            <Label Content="Expected Results" Canvas.Top="42" Width="116" Canvas.Left="660"/>
-            <Label Content="Keywords" Canvas.Top="42" Width="87" Canvas.Left="885"/>
+            <Label Content="Objective" Canvas.Top="42" Width="87" FontWeight="Bold"/>
+            <Label Content="Preconditions" Canvas.Top="42" Width="87" Canvas.Left="220" FontWeight="Bold"/>
+            <Label Content="Actions" Canvas.Top="42" Width="87" Canvas.Left="440" FontWeight="Bold"/>
+            <Label Content="Expected Results" Canvas.Top="42" Width="116" Canvas.Left="660" FontWeight="Bold"/>
+            <Label Content="Keywords" Canvas.Top="42" Width="87" Canvas.Left="885" FontWeight="Bold"/>
             <Button x:Name="AddTC" Content="Add" Canvas.Left="54" Canvas.Top="351" Width="75" Click="AddTC_Click" IsEnabled="False"/>
             <Button x:Name="EditTC" Content="Edit" Canvas.Left="295" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden" Click="EditTC_Click"/>
             <Button x:Name="RemoveTC" Content="Remove" Canvas.Left="516" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden" Click="RemoveTC_Click"/>

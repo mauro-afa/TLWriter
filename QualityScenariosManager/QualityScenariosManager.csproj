@@ -76,8 +76,6 @@
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Keyword.cs" />
-    <Compile Include="Network.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
@@ -90,7 +88,6 @@
     <Compile Include="TestSuiteCreation.xaml.cs">
       <DependentUpon>TestSuiteCreation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Version.cs" />
     <Compile Include="XMLCreator.cs" />
     <Page Include="Home.xaml">
       <SubType>Designer</SubType>

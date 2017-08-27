@@ -21,6 +21,7 @@ namespace QualityScenariosManager
     public partial class Settings : UserControl
     {
         DButils st = DButils.Instance;
+        List<Keyword> Keywords = new List<Keyword>();
         public Settings()
         {
             InitializeComponent();
@@ -51,5 +52,44 @@ namespace QualityScenariosManager
 			List<Network> Networks = new List<Network>(st.GetAllNetworks());
 			NetworkLB.ItemsSource = Networks;
 		}
+
+        private void KeywordLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void VersionLB_Copy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CancelKeyword_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddNetwork_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void VersionLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void AddKeyword_Click(object sender, RoutedEventArgs e)
+        {
+            Keyword newKey = new Keyword() { KeywordName = KeywordTB.Text };
+            bool bSuccess = st.SaveKeword(newKey);
+            if (bSuccess)
+            {
+                Keywords.Add(newKey);
+                KeywordLB.Items.Refresh();
+            }
+            else
+            {
+            }
+        }
     }
 }

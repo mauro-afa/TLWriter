@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QualityScenariosManager"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1203" WindowStyle="None">
-    <Grid Margin="0,0,-8,0">
+    <Grid>
         <Canvas x:Name="Header" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="1192" Background="#FF327A95" MouseDown="Header_MouseDown">
             <Canvas HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="82" Background="#FF45AE7A">
                 <Label Content="QSM" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="78" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" Canvas.Left="4"/>

@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300" Width="1100" Height="596" Loaded="UserControl_Loaded">
     <Grid Background="White">
         <Grid HorizontalAlignment="Left" Height="596" VerticalAlignment="Top" Width="595">
-            <Label Content="Test Suites" Height="31" Width="124" Margin="0,0,471,565"/>
+            <Label Content="Test Suites" Height="31" Width="124" Margin="0,0,471,565" FontWeight="Bold"/>
             <DataGrid x:Name="TestSuiteDG" Height="565" Margin="0,31,0,0" AutoGenerateColumns="False" SelectionMode="Extended" CanUserAddRows="False" CanUserDeleteRows="False" x:FieldModifier="public">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="TestSuiteName" Binding="{Binding TestSuiteName}" Width="*"/>
@@ -19,9 +19,9 @@
             </DataGrid>
         </Grid>
         <Grid HorizontalAlignment="Right" Height="596" VerticalAlignment="Top" Width="500">
-            <Label Content="Pending P.R.T.I" Height="31" Width="124" Margin="0,0,376,565"/>
+            <Label Content="Pending P.R.T.I" Height="31" Width="124" Margin="0,0,376,565" FontWeight="Bold"/>
             <DataGrid Height="267" Canvas.Top="31" Margin="0,31,0,298"/>
-            <Label Content="Pending Execution" Height="31" Width="124" Margin="0,298,376,267"/>
+            <Label Content="Pending Execution" Height="31" Width="124" Margin="0,298,376,267" FontWeight="Bold"/>
             <DataGrid Height="267" Canvas.Top="31" Margin="0,329,0,0"/>
         </Grid>
     </Grid>
