@@ -32,6 +32,7 @@ namespace QualityScenariosManager
 
 			XmlNode nDetails = doc.CreateElement("Details");
 			nDetails.InnerText = oTS.JiraLink;
+			nTestSuite.AppendChild(nDetails);
 
 			regressionDoc = ExtraDoc("REGRESSION");
 			smokeDoc = ExtraDoc("SMOKE");

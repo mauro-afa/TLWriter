@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QSM", "TLWriter\QSM.csproj", "{E338A2C6-DFFA-48EA-9148-EC9104119490}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QualityScenariosManager", "QualityScenariosManager\QualityScenariosManager.csproj", "{7D285F44-C7BA-484E-9B51-372C67452F70}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{5DF807F1-3D25-4BE7-8421-C78D828C2429}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,16 +13,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E338A2C6-DFFA-48EA-9148-EC9104119490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E338A2C6-DFFA-48EA-9148-EC9104119490}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E338A2C6-DFFA-48EA-9148-EC9104119490}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E338A2C6-DFFA-48EA-9148-EC9104119490}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D285F44-C7BA-484E-9B51-372C67452F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D285F44-C7BA-484E-9B51-372C67452F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D285F44-C7BA-484E-9B51-372C67452F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D285F44-C7BA-484E-9B51-372C67452F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DF807F1-3D25-4BE7-8421-C78D828C2429}.Debug|Any CPU.ActiveCfg = Debug
+		{5DF807F1-3D25-4BE7-8421-C78D828C2429}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15EBE0DE-5E28-49B2-B458-AB1A09A72FBA}
 	EndGlobalSection
 EndGlobal

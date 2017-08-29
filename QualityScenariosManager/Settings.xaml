@@ -23,9 +23,9 @@
         </ListBox>
         <TextBox x:Name="KeywordTB" HorizontalAlignment="Left" Height="20" Margin="13,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="325"/>
         <Button x:Name="AddKeyword" Content="Add" HorizontalAlignment="Left" Margin="13,54,0,0" VerticalAlignment="Top" Width="70" Click="AddKeyword_Click"/>
-        <Button x:Name="UpdateKeyword" Content="Update" HorizontalAlignment="Left" Margin="98,54,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="1.143,0.49"/>
-        <Button x:Name="RemoveKeyword" Content="Remove" HorizontalAlignment="Left" Margin="183,54,0,0" VerticalAlignment="Top" Width="70"/>
-        <Button x:Name="CancelKeyword" Content="Cancel" HorizontalAlignment="Left" Margin="268,54,0,0" VerticalAlignment="Top" Width="70" Click="CancelKeyword_Click"/>
+        <Button x:Name="UpdateKeyword" Content="Update" HorizontalAlignment="Left" Margin="98,54,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="1.143,0.49" Click="UpdateKeyword_Click"/>
+        <Button x:Name="RemoveKeyword" Content="Remove" HorizontalAlignment="Left" Margin="183,54,0,0" VerticalAlignment="Top" Width="70" Click="RemoveKeyword_Click"/>
+        <Button x:Name="CancelKeyword" Content="Cancel" HorizontalAlignment="Left" Margin="268,54,0,0" VerticalAlignment="Top" Width="70"/>
         <ListBox x:Name="VersionLB" HorizontalAlignment="Left" Height="516" Margin="375,80,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="VersionLB_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -39,11 +39,11 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <TextBox x:Name="VersionTB" HorizontalAlignment="Left" Height="20" Margin="383,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="325"/>
-        <Button x:Name="AddVersion" Content="Add" HorizontalAlignment="Left" Margin="383,55,0,0" VerticalAlignment="Top" Width="70"/>
-        <Button x:Name="UpdateVersion" Content="Update" HorizontalAlignment="Left" Margin="468,55,0,0" VerticalAlignment="Top" Width="70"/>
-        <Button x:Name="CancelVersion" Content="Cancel" HorizontalAlignment="Left" Margin="638,55,0,0" VerticalAlignment="Top" Width="70"/>
-        <Button x:Name="RemoveVersion" Content="Remove" HorizontalAlignment="Left" Margin="553,55,0,0" VerticalAlignment="Top" Width="70"/>
-        <ListBox x:Name="NetworkLB" HorizontalAlignment="Left" Height="516" Margin="745,80,0,0" VerticalAlignment="Top" Width="340">
+        <Button x:Name="AddVersion" Content="Add" HorizontalAlignment="Left" Margin="383,55,0,0" VerticalAlignment="Top" Width="70" Click="AddVersion_Click"/>
+        <Button x:Name="UpdateVersion" Content="Update" HorizontalAlignment="Left" Margin="468,55,0,0" VerticalAlignment="Top" Width="70" Click="UpdateVersion_Click"/>
+        <Button x:Name="CancelVersion" Content="Cancel" HorizontalAlignment="Left" Margin="638,55,0,0" VerticalAlignment="Top" Width="70" Click="CancelVersion_Click"/>
+        <Button x:Name="RemoveVersion" Content="Remove" HorizontalAlignment="Left" Margin="553,55,0,0" VerticalAlignment="Top" Width="70" Click="RemoveVersion_Click"/>
+        <ListBox x:Name="NetworkLB" HorizontalAlignment="Left" Height="516" Margin="745,80,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="NetworkLB_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -57,9 +57,9 @@
         </ListBox>
         <TextBox x:Name="NetworkTB" HorizontalAlignment="Left" Height="20" Margin="754,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="325"/>
         <Button x:Name="AddNetwork" Content="Add" HorizontalAlignment="Left" Margin="754,54,0,0" VerticalAlignment="Top" Width="70" Click="AddNetwork_Click"/>
-        <Button x:Name="UpdateNetwork" Content="Update" Margin="839,54,201.4,0" VerticalAlignment="Top"/>
+        <Button x:Name="UpdateNetwork" Content="Update" Margin="839,54,201.4,0" VerticalAlignment="Top" Click="UpdateNetwork_Click"/>
         <Button x:Name="CancelNetwork" Content="Cancel" HorizontalAlignment="Left" Margin="1009,54,0,0" VerticalAlignment="Top" Width="70"/>
-        <Button x:Name="RemoveNetwork" Content="Remove" HorizontalAlignment="Left" Margin="924,54,0,0" VerticalAlignment="Top" Width="70"/>
+        <Button x:Name="RemoveNetwork" Content="Remove" HorizontalAlignment="Left" Margin="924,54,0,0" VerticalAlignment="Top" Width="70" Click="RemoveNetwork_Click"/>
         <Label x:Name="label_Copy2" Content="Networks" HorizontalAlignment="Left" Margin="888,0,0,0" VerticalAlignment="Top" Height="27" Width="70" FontWeight="Bold"/>
         <Rectangle Fill="#FF327A95" HorizontalAlignment="Left" Height="596" Margin="352,0,0,0" Stroke="#FF327A95" VerticalAlignment="Top" Width="18"/>
         <Rectangle Fill="#FF327A95" HorizontalAlignment="Left" Height="596" Margin="722,0,0,0" Stroke="#FF327A95" VerticalAlignment="Top" Width="18"/>

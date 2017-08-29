@@ -149,7 +149,7 @@ namespace QualityScenariosManager
                 case "St_Networks":
                     fieldName = "Id";
                     break;
-                case "TestSuites":
+                case "TestSuite":
                     fieldName = "TestSuiteId";
                     break;
             }
@@ -221,11 +221,61 @@ namespace QualityScenariosManager
 			return cNetworks;
 		}
 
-        public bool SaveKeword(Keyword Name)
+        public bool SaveKeyword(Keyword Name)
         {
             int lastID = getLastID("St_Keywords");
             string sSQL = "Insert INTO St_Keywords (Id, KeywordName) values ("+lastID+",'"+Name.KeywordName+"')";
             return m_oDBConn.ExecuteNonQuery(sSQL);
         }
-    }
+
+		public bool DeleteKeyword(Keyword Name)
+		{
+			string sSQL = "DELETE FROM St_Keywords WHERE KeywordName = '" + Name.KeywordName + "'";
+			return m_oDBConn.ExecuteNonQuery(sSQL);
+		}
+
+		public bool UpdateKeyword(Keyword oldKeyword, string newKeyword)
+		{
+			string sSQL = "UPDATE St_Keywords SET KeywordName = '" + newKeyword + "' WHERE KeywordName = '" + oldKeyword.KeywordName + "'";
+			return m_oDBConn.ExecuteNonQuery(sSQL);
+		}
+
+		public bool SaveVersion(Versions Name)
+		{
+			int lastID = getLastID("St_Versions");
+			string sSQL = "Insert INTO St_Versions (Id, Version) values (" + lastID + ",'" + Name.VersionName + "')";
+			return m_oDBConn.ExecuteNonQuery(sSQL);
+		}
+
+		public bool DeleteVersion(Versions Name)
+		{
+			string sSQL = "DELETE FROM St_Versions WHERE Version = '"+Name.VersionName+"'";
+			return m_oDBConn.ExecuteNonQuery(sSQL);
+		}
+
+		public bool UpdateVersion(Versions oldVersion, string newVersion)
+		{
+			string sSQL = "UPDATE St_Versions SET Version = '"+newVersion+"' WHERE Version = '" + oldVersion.VersionName + "'";
+			return m_oDBConn.ExecuteNonQuery(sSQL);
+		}
+
+		public bool SaveNetwork(Network Name)
+		{
+			int lastID = getLastID("St_Networks");
+			string sSQL = "Insert INTO St_Networks (Id, NetworkName) values (" + lastID + ",'" + Name.NetworkName + "')";
+			return m_oDBConn.ExecuteNonQuery(sSQL);
+		}
+
+		public bool DeleteNetwork(Network Name)
+		{
+			string sSQL = "DELETE FROM St_Networks WHERE NetworkName = '" + Name.NetworkName + "'";
+			return m_oDBConn.ExecuteNonQuery(sSQL);
+		}
+
+		public bool UpdateNetwork(Network oldVersion, string newNetwork)
+		{
+			string sSQL = "UPDATE St_Networks SET NetworkName = '" + newNetwork + "' WHERE NetworkName = '" + oldVersion.NetworkName + "'";
+			return m_oDBConn.ExecuteNonQuery(sSQL);
+		}
+	}
 }
