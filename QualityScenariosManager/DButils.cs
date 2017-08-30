@@ -92,50 +92,53 @@ namespace QualityScenariosManager
 			List<TestCase> temp = new List<TestCase>();
 			XmlDocument doc = new XmlDocument();
 			doc.LoadXml(TSD);
-			XmlNode TestCaseNodes = doc.SelectNodes("TestSuite")[0];
-
+			XmlNode TestCaseNodes = doc.SelectNodes("testsuite")[0];
 			foreach (XmlNode child in TestCaseNodes)
 			{
-				TestCase nTestCase = new TestCase();
-				nTestCase.TestCaseName = child.Attributes["Name"].Value;
-				foreach (XmlNode step in child)
+				if(child.Name != "details")
 				{
-					switch(step.Name)
+					TestCase nTestCase = new TestCase();
+					nTestCase.TestCaseName = child.Attributes["name"].Value;
+					foreach (XmlNode step in child)
 					{
-						case "Summary":
-							nTestCase.Objective = step.InnerText;
-							break;
-						case "Preconditions":
-							nTestCase.Preconditions = step.InnerText;
-							break;
-						case "Execution_type":
-							nTestCase.Execution = Int32.Parse(step.InnerText);
-							break;
-						case "Keywords":
-							List<string> Keywords = new List<string>();
-							foreach (XmlNode keyword in step)
-							{;
-								Keywords.Add(keyword.Attributes["Name"].Value);
-							}
-							nTestCase.Keywords = new List<string>(Keywords);
-							break;
-						case "Steps":
-							foreach(XmlNode steps in step.FirstChild)
-							{
-								switch(steps.Name)
+						switch (step.Name)
+						{
+							case "summary":
+								nTestCase.Objective = step.InnerText;
+								break;
+							case "preconditions":
+								nTestCase.Preconditions = step.InnerText;
+								break;
+							case "execution_type":
+								nTestCase.Execution = Int32.Parse(step.InnerText);
+								break;
+							case "keywords":
+								List<string> Keywords = new List<string>();
+								foreach (XmlNode keyword in step)
 								{
-									case "Actions":
-										nTestCase.Actions = steps.InnerText;
-										break;
-									case "expectedresults":
-										nTestCase.ExpectedResult = steps.InnerText;
-										break;
+									;
+									Keywords.Add(keyword.Attributes["name"].Value);
 								}
-							}
-							break;
+								nTestCase.Keywords = new List<string>(Keywords);
+								break;
+							case "steps":
+								foreach (XmlNode steps in step.FirstChild)
+								{
+									switch (steps.Name)
+									{
+										case "actions":
+											nTestCase.Actions = steps.InnerText;
+											break;
+										case "expectedresults":
+											nTestCase.ExpectedResult = steps.InnerText;
+											break;
+									}
+								}
+								break;
+						}
 					}
+					temp.Add(nTestCase);
 				}
-				temp.Add(nTestCase);
 			}
 			return temp;
 		}
