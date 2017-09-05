@@ -37,5 +37,10 @@ namespace QualityScenariosManager
 			List<TestSuite> TSinfo = tsdb.GetAllTestSuites();
 			TestSuiteDG.ItemsSource = TSinfo;
 		}
+
+		private void TestSuiteDG_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
 	}
 }

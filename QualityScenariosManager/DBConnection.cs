@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace QualityScenariosManager
 {
@@ -37,8 +38,13 @@ namespace QualityScenariosManager
 			{
 				Disconnect();
 			}
-
+#if DEBUG
 			string connectionString = QualityScenariosManager.Properties.Settings.Default.TestsConnectionString;
+#else
+			AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+			string connectionString = QualityScenariosManager.Properties.Settings.Default.TestsConnectionString;
+#endif
+
 			m_oSQLConn = new SqlConnection(connectionString);
 			try
 			{
@@ -87,7 +93,7 @@ namespace QualityScenariosManager
 			}
 			catch (SqlException ex)
 			{
-				m_sErrorDescription = "Can't execute query! SQL: " + strSQL + " - Error: " + ex.Message;
+				MessageBox.Show(m_sErrorDescription = "Can't execute query! SQL: " + strSQL + " - Error: " + ex.Message);
 			}
 			return false;
 		}

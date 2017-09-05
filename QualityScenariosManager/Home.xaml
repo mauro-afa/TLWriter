@@ -9,7 +9,7 @@
     <Grid Background="White">
         <Grid HorizontalAlignment="Left" Height="596" VerticalAlignment="Top" Width="595">
             <Label Content="Test Suites" Height="31" Width="124" Margin="0,0,471,565" FontWeight="Bold"/>
-            <DataGrid x:Name="TestSuiteDG" Height="565" Margin="0,31,0,0" AutoGenerateColumns="False" SelectionMode="Extended" CanUserAddRows="False" CanUserDeleteRows="False" x:FieldModifier="public">
+            <DataGrid x:Name="TestSuiteDG" Height="565" Margin="0,31,0,0" AutoGenerateColumns="False" SelectionMode="Extended" CanUserAddRows="False" CanUserDeleteRows="False" x:FieldModifier="public" SelectionChanged="TestSuiteDG_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="TestSuiteName" Binding="{Binding TestSuiteName}" Width="*"/>
                     <DataGridTextColumn Header="JiraLink" Binding="{Binding JiraLink}" Width="*"/>

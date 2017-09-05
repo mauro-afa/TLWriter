@@ -134,7 +134,25 @@ namespace QualityScenariosManager
 			else
 			{
 				SaveTSInfo.Content = "Save TS Info";
+				TSNameTB.IsEnabled = true;
+				TSJiraTB.IsEnabled = true;
+				BrandCB.IsEnabled = true;
+				VersionCB.IsEnabled = true;
 
+				TestCasesDG.IsEnabled = false;
+				TCID_TB.IsEnabled = false;
+				KeywordLB.IsEnabled = false;
+				TCObj.IsEnabled = false;
+				TCPrecon.IsEnabled = false;
+				TCAction.IsEnabled = false;
+				TCExpecRes.IsEnabled = false;
+				TCExecCB.IsEnabled = false;
+				TCPriorityCB.IsEnabled = false;
+				AddTC.IsEnabled = false;
+				EditTC.IsEnabled = false;
+				RemoveTC.IsEnabled = false;
+				CancelTC.IsEnabled = false;
+				SaveTS.IsEnabled = false;
 			}
 		}
 
@@ -233,10 +251,9 @@ namespace QualityScenariosManager
 				Importance = Int32.Parse(((ComboBoxItem)TCPriorityCB.SelectedItem).Tag.ToString()),
 				Keywords = new List<string>(selectedKeywords)
 			};
-			nTestCaseList[oTC.TestCaseID - 1] = nTestCase;
+			nTestCaseList[oTC.TestCaseID] = nTestCase;
 			ClearControllers();
 			TestCasesDG.Items.Refresh();
-			//TestCasesDG.ItemsSource = nTestCaseList;
 		}
 
 		private void HideTCButtons()

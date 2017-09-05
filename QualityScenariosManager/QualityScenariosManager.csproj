@@ -176,6 +176,7 @@
     <Resource Include="Icons\home.ico" />
     <Resource Include="Icons\export.ico" />
     <Resource Include="Icons\settings.ico" />
+    <Resource Include="Icons\Import.ico" />
     <Content Include="Tests.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

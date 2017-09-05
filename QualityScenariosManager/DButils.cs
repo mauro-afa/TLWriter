@@ -75,72 +75,19 @@ namespace QualityScenariosManager
 
 		public List<TestCase> GetAllTestCases(int TSID)
 		{
+			XMLCreator xCreator = new XMLCreator();
 			List<TestCase> lTestCases = new List<TestCase>();
 			string sSQL = "SELECT * FROM TestSuite WHERE TestSuiteID = '"+TSID+"'";
 			SqlDataReader reader = m_oDBConn.Execute(sSQL);
 			while(reader.Read())
 			{
-				lTestCases = new List<TestCase>(GetTestCases((string)reader[5]));
+				XmlDocument doc = new XmlDocument();
+				doc.LoadXml((string)reader[5]);
+				lTestCases = new List<TestCase>(xCreator.GetTestCases(doc));
 			}
 			reader.Close();
 
 			return lTestCases;
-		}
-
-		public List<TestCase> GetTestCases(string TSD)
-		{
-			List<TestCase> temp = new List<TestCase>();
-			XmlDocument doc = new XmlDocument();
-			doc.LoadXml(TSD);
-			XmlNode TestCaseNodes = doc.SelectNodes("testsuite")[0];
-			foreach (XmlNode child in TestCaseNodes)
-			{
-				if(child.Name != "details")
-				{
-					TestCase nTestCase = new TestCase();
-					nTestCase.TestCaseName = child.Attributes["name"].Value;
-					foreach (XmlNode step in child)
-					{
-						switch (step.Name)
-						{
-							case "summary":
-								nTestCase.Objective = step.InnerText;
-								break;
-							case "preconditions":
-								nTestCase.Preconditions = step.InnerText;
-								break;
-							case "execution_type":
-								nTestCase.Execution = Int32.Parse(step.InnerText);
-								break;
-							case "keywords":
-								List<string> Keywords = new List<string>();
-								foreach (XmlNode keyword in step)
-								{
-									;
-									Keywords.Add(keyword.Attributes["name"].Value);
-								}
-								nTestCase.Keywords = new List<string>(Keywords);
-								break;
-							case "steps":
-								foreach (XmlNode steps in step.FirstChild)
-								{
-									switch (steps.Name)
-									{
-										case "actions":
-											nTestCase.Actions = steps.InnerText;
-											break;
-										case "expectedresults":
-											nTestCase.ExpectedResult = steps.InnerText;
-											break;
-									}
-								}
-								break;
-						}
-					}
-					temp.Add(nTestCase);
-				}
-			}
-			return temp;
 		}
 		public int getLastID(string tableName)
 		{

@@ -170,6 +170,73 @@ namespace QualityScenariosManager
 				smokeDoc.DocumentElement.AppendChild(newNode);
 			}
 		}
+
+		public List<TestCase> GetTestCases(XmlDocument TSD)
+		{
+			List<TestCase> temp = new List<TestCase>();
+			XmlNode TestCaseNodes = TSD.SelectNodes("testsuite")[0];
+			foreach (XmlNode child in TestCaseNodes)
+			{
+				if (child.Name != "details")
+				{
+					TestCase nTestCase = new TestCase();
+					nTestCase.TestCaseName = child.Attributes["name"].Value;
+					foreach (XmlNode step in child)
+					{
+						switch (step.Name)
+						{
+							case "summary":
+								nTestCase.Objective = step.InnerText;
+								break;
+							case "preconditions":
+								nTestCase.Preconditions = step.InnerText;
+								break;
+							case "execution_type":
+								nTestCase.Execution = Int32.Parse(step.InnerText);
+								break;
+							case "keywords":
+								List<string> Keywords = new List<string>();
+								foreach (XmlNode keyword in step)
+								{
+									;
+									Keywords.Add(keyword.Attributes["name"].Value);
+								}
+								nTestCase.Keywords = new List<string>(Keywords);
+								break;
+							case "steps":
+								foreach (XmlNode steps in step.FirstChild)
+								{
+									switch (steps.Name)
+									{
+										case "actions":
+											nTestCase.Actions = steps.InnerText;
+											break;
+										case "expectedresults":
+											nTestCase.ExpectedResult = steps.InnerText;
+											break;
+									}
+								}
+								break;
+						}
+					}
+					temp.Add(nTestCase);
+				}
+			}
+			return temp;
+		}
+
+		public TestSuite GetTestSuiteInformation(XmlDocument importedXML)
+		{
+			TestSuite nTestSuite = new TestSuite();
+
+			XmlNode TestCaseNodes = importedXML.SelectNodes("testsuite")[0];
+			nTestSuite.TestSuiteName = TestCaseNodes.Attributes[1].Value;
+			TestCaseNodes = TestCaseNodes.FirstChild;
+			nTestSuite.JiraLink = TestCaseNodes.InnerText;
+			nTestSuite.TestCases = new List<TestCase>(GetTestCases(importedXML));
+			nTestSuite.TestSuiteDefinition = importedXML.InnerXml;
+			return nTestSuite;
+		}
 	}
 
 }

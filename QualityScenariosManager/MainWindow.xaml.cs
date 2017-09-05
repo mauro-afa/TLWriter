@@ -185,6 +185,30 @@ namespace QualityScenariosManager
 				MessageBox.Show("You need to be in home screen to edit a test suite");
 		}
 
+		private void ImportTSButton_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			if (ofd.ShowDialog() == true)
+			{
+				XmlDocument doc = new XmlDocument();
+				using (var myStream = ofd.OpenFile())
+				{
+					try
+					{
+						doc.Load(myStream);
+						XMLCreator xmlImporter = new XMLCreator();
+						TestSuite nTestSuite = xmlImporter.GetTestSuiteInformation(doc);
 
-    }
+						DButils tsdb = DButils.Instance;
+
+						nTestSuite.TestSuiteID = tsdb.getLastID("TestSuite") + 1;
+						tsdb.SaveTestSuite(nTestSuite, false);
+					}
+					catch
+					{
+					}
+				}
+			}
+		}
+	}
 }
