@@ -68,8 +68,8 @@
             <Button x:Name="CancelTC" Content="Cancel" Canvas.Left="724" Canvas.Top="351" Width="75" IsEnabled="False" Visibility="Hidden" Click="CancelTC_Click"/>
             <Button x:Name="SaveTS" Content="Save" Canvas.Left="949" Canvas.Top="351" Width="75" IsEnabled="False" Click="SaveTS_Click"/>
         </Canvas>
-        <Canvas x:Name="TCAdditionCvs" HorizontalAlignment="Left" Height="193" Margin="0,403,0,0" VerticalAlignment="Top" Width="1110">
-            <DataGrid x:Name="TestCasesDG" Height="193" Width="1110" AutoGenerateColumns="False" SelectionMode="Extended" SelectionChanged="TestCasesDG_SelectionChanged">
+        <Grid x:Name="TCAdditionCvs" HorizontalAlignment="Left" Height="193" Margin="0,403,0,0" VerticalAlignment="Top" Width="1110">
+            <DataGrid x:Name="TestCasesDG" Height="193" Width="1110" AutoGenerateColumns="False" SelectionMode="Extended" SelectionChanged="TestCasesDG_SelectionChanged" GridLinesVisibility="Horizontal">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="TestCaseName" Binding="{Binding TestCaseName}" Width="*"/>
                     <DataGridTextColumn Header="Objective" Binding="{Binding Objective}" Width="*"/>
@@ -78,9 +78,9 @@
                     <DataGridTextColumn Header="ExpectedResult" Binding="{Binding ExpectedResult}" Width="*"/>
                     <DataGridTextColumn Header="Execution" Binding="{Binding Execution}" Width="*"/>
                     <DataGridTextColumn Header="Importance" Binding="{Binding Importance}" Width="*"/>
-                    <DataGridTextColumn Header="Keywords" Binding="{Binding Keywords}" Width="*"/>
+                    <DataGridTextColumn Header="Keywords" Binding="{Binding Keywords}" Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
-        </Canvas>
+        </Grid>
     </Grid>
 </UserControl>

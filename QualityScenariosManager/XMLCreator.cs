@@ -191,6 +191,9 @@ namespace QualityScenariosManager
 							case "preconditions":
 								nTestCase.Preconditions = step.InnerText;
 								break;
+							case "importance":
+								nTestCase.Importance = Int32.Parse(step.InnerText);
+								break;
 							case "execution_type":
 								nTestCase.Execution = Int32.Parse(step.InnerText);
 								break;
@@ -228,13 +231,12 @@ namespace QualityScenariosManager
 		public TestSuite GetTestSuiteInformation(XmlDocument importedXML)
 		{
 			TestSuite nTestSuite = new TestSuite();
-
 			XmlNode TestCaseNodes = importedXML.SelectNodes("testsuite")[0];
 			nTestSuite.TestSuiteName = TestCaseNodes.Attributes[1].Value;
 			TestCaseNodes = TestCaseNodes.FirstChild;
 			nTestSuite.JiraLink = TestCaseNodes.InnerText;
 			nTestSuite.TestCases = new List<TestCase>(GetTestCases(importedXML));
-			nTestSuite.TestSuiteDefinition = importedXML.InnerXml;
+			nTestSuite.TestSuiteDefinition = importedXML.InnerXml.Replace("\r", "").Replace("\n","").Replace("'","");
 			return nTestSuite;
 		}
 	}

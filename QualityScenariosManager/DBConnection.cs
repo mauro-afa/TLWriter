@@ -93,7 +93,7 @@ namespace QualityScenariosManager
 			}
 			catch (SqlException ex)
 			{
-				MessageBox.Show(m_sErrorDescription = "Can't execute query! SQL: " + strSQL + " - Error: " + ex.Message);
+				MessageBox.Show(m_sErrorDescription = "Can't execute query! SQL: Incorrect syntax, a not allowed character may be written in a test case");
 			}
 			return false;
 		}
