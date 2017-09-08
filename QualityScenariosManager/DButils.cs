@@ -34,7 +34,7 @@ namespace QualityScenariosManager
 			string sSQL;
 			if (bUpdate)
 				//fix the update
-				sSQL = "UPDATE TestSuite Set TestSuiteName = '" + oTestSuite.TestSuiteName + "', JiraLink = '" + oTestSuite.JiraLink + "', Brand = '" + oTestSuite.Brand + "', Version = '" + oTestSuite.Version + "', TestCaseDefinition = '" + oTestSuite.TestSuiteDefinition + "', RegressionDefinition = '" + oTestSuite.RegressionDefinition + "', SmokeDefinition = '" + oTestSuite.SmokeDefinition + "' WHERE TestSuiteID = '" + oTestSuite.TestSuiteID + "'";
+				sSQL = "UPDATE TestSuite Set TestSuiteName = '" + oTestSuite.TestSuiteName + "', JiraLink = '" + oTestSuite.JiraLink + "', Brand = '" + oTestSuite.Brand + "', Version = '" + oTestSuite.Version + "', TestCaseDefinition = '" + oTestSuite.TestSuiteDefinition + "', RegressionDefinition = '" + oTestSuite.RegressionDefinition + "', SmokeDefinition = '" + oTestSuite.SmokeDefinition + "' WHERE TestSuiteID = " + (oTestSuite.TestSuiteID-1) + "";
 			else
 				sSQL = "Insert INTO TestSuite (TestSuiteID, TestSuiteName, JiraLink, Brand, Version, TestCaseDefinition, RegressionDefinition, SmokeDefinition) values ('" + oTestSuite.TestSuiteID + "','" + oTestSuite.TestSuiteName + "', '" + oTestSuite.JiraLink + "', '" + oTestSuite.Brand + "', '" + oTestSuite.Version + "', '" + oTestSuite.TestSuiteDefinition + "', '"+oTestSuite.RegressionDefinition+"', '"+oTestSuite.SmokeDefinition+"')";
 			return m_oDBConn.ExecuteNonQuery(sSQL);

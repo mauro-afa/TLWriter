@@ -1,18 +1,7 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
 
 namespace QualityScenariosManager
@@ -68,18 +57,10 @@ namespace QualityScenariosManager
 		private void EditTSButton_Click(object sender, RoutedEventArgs e)
 		{
 			Home _home = null;
-			bool bContinue = false;
-			foreach (UserControl uc in ContentPanel.Children)
-			{
-				if(uc is Home)
-				{
-					_home = (Home)uc;
-					bContinue = true;
-					break;
-				}
-			}
+			bool bSuccess = false;
+			_home = GetHome(out bSuccess);
 
-			if (bContinue)
+			if (bSuccess)
 			{
 				TestSuite sTestSuite = (TestSuite)_home.TestSuiteDG.SelectedItem;
 				if (sTestSuite is null)
@@ -103,18 +84,10 @@ namespace QualityScenariosManager
 		private void DeleteTSButton_Click(object sender, RoutedEventArgs e)
 		{
 			Home _home = null;
-			bool bContinue = false;
-			foreach (UserControl uc in ContentPanel.Children)
-			{
-				if (uc is Home)
-				{
-					_home = (Home)uc;
-					bContinue = true;
-					break;
-				}
-			}
+			bool bSuccess = false;
+			_home = GetHome(out bSuccess);
 
-			if (bContinue)
+			if (bSuccess)
 			{
 				TestSuite sTestSuite = (TestSuite)_home.TestSuiteDG.SelectedItem;
 				if (sTestSuite is null)
@@ -125,6 +98,7 @@ namespace QualityScenariosManager
 				{
 					DButils tsdb = DButils.Instance;
 					tsdb.DeleteTestSuite(sTestSuite);
+					_home.LoadTestSuites();
 				}
 			}
 			else
@@ -146,18 +120,10 @@ namespace QualityScenariosManager
         private void ExportTSButton_Click(object sender, RoutedEventArgs e)
 		{
 			Home _home = null;
-			bool bContinue = false;
-			foreach (UserControl uc in ContentPanel.Children)
-			{
-				if (uc is Home)
-				{
-					_home = (Home)uc;
-					bContinue = true;
-					break;
-				}
-			}
+			bool bSuccess = false;
+			_home = GetHome(out bSuccess);
 
-			if (bContinue)
+			if (bSuccess)
 			{
 				TestSuite sTestSuite = (TestSuite)_home.TestSuiteDG.SelectedItem;
 				if (sTestSuite is null)
@@ -187,28 +153,54 @@ namespace QualityScenariosManager
 
 		private void ImportTSButton_Click(object sender, RoutedEventArgs e)
 		{
-			OpenFileDialog ofd = new OpenFileDialog();
-			if (ofd.ShowDialog() == true)
+			Home _home = null;
+			bool bSuccess = false;
+			_home = GetHome(out bSuccess);
+
+			if (bSuccess)
 			{
-				XmlDocument doc = new XmlDocument();
-				using (var myStream = ofd.OpenFile())
+				OpenFileDialog ofd = new OpenFileDialog();
+				if (ofd.ShowDialog() == true)
 				{
-					try
+					XmlDocument doc = new XmlDocument();
+					using (var myStream = ofd.OpenFile())
 					{
-						doc.Load(myStream);
-						XMLCreator xmlImporter = new XMLCreator();
-						TestSuite nTestSuite = xmlImporter.GetTestSuiteInformation(doc);
+						try
+						{
+							doc.Load(myStream);
+							XMLCreator xmlImporter = new XMLCreator();
+							TestSuite nTestSuite = xmlImporter.GetTestSuiteInformation(doc);
 
-						DButils tsdb = DButils.Instance;
+							DButils tsdb = DButils.Instance;
 
-						nTestSuite.TestSuiteID = tsdb.getLastID("TestSuite") + 1;
-						tsdb.SaveTestSuite(nTestSuite, false);
-					}
-					catch
-					{
+							nTestSuite.TestSuiteID = tsdb.getLastID("TestSuite") + 1;
+							tsdb.SaveTestSuite(nTestSuite, false);
+
+							_home.LoadTestSuites();
+						}
+						catch
+						{
+						}
 					}
 				}
 			}
+			else
+				MessageBox.Show("You need to be in home screen to import a test suite");
+		}
+		public Home GetHome(out bool bSuccess)
+		{
+			bSuccess = false;
+			Home _home = null;
+			foreach (UserControl uc in ContentPanel.Children)
+			{
+				if (uc is Home)
+				{
+					_home = (Home)uc;
+					bSuccess = true;
+					break;
+				}
+			}
+			return _home;
 		}
 	}
 }

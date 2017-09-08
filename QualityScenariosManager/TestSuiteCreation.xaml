@@ -78,7 +78,13 @@
                     <DataGridTextColumn Header="ExpectedResult" Binding="{Binding ExpectedResult}" Width="*"/>
                     <DataGridTextColumn Header="Execution" Binding="{Binding Execution}" Width="*"/>
                     <DataGridTextColumn Header="Importance" Binding="{Binding Importance}" Width="*"/>
-                    <DataGridTextColumn Header="Keywords" Binding="{Binding Keywords}" Width="*" />
+                    <DataGridTemplateColumn Header="Keywords">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ItemsControl ItemsSource="{Binding Keywords}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

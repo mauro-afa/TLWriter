@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
 
 namespace QualityScenariosManager
@@ -272,6 +263,7 @@ namespace QualityScenariosManager
 
 		private void SaveTS_Click(object sender, RoutedEventArgs e)
 		{
+			bool bSuccess = true;
 			List<XmlDocument> xmls = new List<XmlDocument>();
 			DButils tsdb = DButils.Instance;
 			nTestSuite.TestCases = nTestCaseList;
@@ -280,11 +272,13 @@ namespace QualityScenariosManager
 			nTestSuite.TestSuiteDefinition = xmls[0].InnerXml;
 			nTestSuite.RegressionDefinition = xmls[1].InnerXml;
 			nTestSuite.SmokeDefinition = xmls[2].InnerXml;
-			tsdb.SaveTestSuite(nTestSuite, bUpdate);
+			bSuccess = tsdb.SaveTestSuite(nTestSuite, bUpdate);
 			bUpdate = false;
-			TestCasesDG.ItemsSource = null;
-			TestCasesDG.Items.Refresh();
-
+			if(bSuccess)
+			{
+				TestCasesDG.ItemsSource = null;
+				TestCasesDG.Items.Refresh();
+			}
 		}
 
 		private void LoadTestCases()
