@@ -15,17 +15,7 @@ namespace QualityScenariosManager
 		{
 			InitializeComponent();
 			ContentPanel.Children.Add(new Home());
-			TitleLabel.Content = "Home";
-		}
 
-		private void Label_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			Close();
-		}
-
-		private void Label_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
-		{
-			this.WindowState = WindowState.Minimized;
 		}
 
 		private void Header_MouseDown(object sender, MouseButtonEventArgs e)
@@ -202,5 +192,15 @@ namespace QualityScenariosManager
 			}
 			return _home;
 		}
-	}
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+    }
 }
