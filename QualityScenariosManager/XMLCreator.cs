@@ -173,6 +173,7 @@ namespace QualityScenariosManager
 
 		public List<TestCase> GetTestCases(XmlDocument TSD)
 		{
+			int counter = 1;
 			List<TestCase> temp = new List<TestCase>();
 			XmlNode TestCaseNodes = TSD.SelectNodes("testsuite")[0];
 			foreach (XmlNode child in TestCaseNodes)
@@ -180,6 +181,7 @@ namespace QualityScenariosManager
 				if (child.Name != "details")
 				{
 					TestCase nTestCase = new TestCase();
+					nTestCase.TestCaseID = counter++;
 					nTestCase.TestCaseName = child.Attributes["name"].Value;
 					foreach (XmlNode step in child)
 					{

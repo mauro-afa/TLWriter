@@ -34,6 +34,7 @@ namespace QualityScenariosManager
 
     public class Keyword
     {
+
         public bool IsChecked { get; set; }
         public string KeywordName { get; set; }
     }

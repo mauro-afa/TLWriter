@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QualityScenariosManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1203" WindowStyle="None">
-    <Grid>
-        <Canvas x:Name="Header" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="1192" Background="#FF327A95" MouseDown="Header_MouseDown">
+        Title="MainWindow" Height="720" Width="1207" MinHeight="720" MinWidth="1207" WindowStyle="None" >
+    <Grid Width="Auto" Height="Auto" Background="White" Margin="0,0,0,-8">
+        <Grid x:Name="Header" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="1192" Background="#FF327A95" MouseDown="Header_MouseDown">
             <Canvas HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="82" Background="#FF45AE7A">
                 <Label Content="QSM" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="78" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" Canvas.Left="4"/>
                 <Label x:Name="TitleLabel" Content="Dashboard" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="3" Height="43" Width="606" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" Canvas.Left="116"/>
             </Canvas>
-        </Canvas>
-        <StackPanel HorizontalAlignment="Left" Height="596" Margin="0,46,0,0" VerticalAlignment="Top" Width="82" Background="#FF327A95">
+        </Grid>
+        <StackPanel HorizontalAlignment="Left" Height="658" Margin="0,46,0,0" VerticalAlignment="Top" Width="82" Background="#FF327A95">
             <Button x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="HomeButton_Click">
                 <StackPanel>
                     <Image Source="Icons/Home.ico" Stretch="Uniform" Height="30" Width="57" Margin="0,0,4,0"/>
@@ -52,6 +52,6 @@
         </StackPanel>
         <Label Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="34" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" MouseLeftButtonUp="Label_MouseLeftButtonUp" Margin="1158,3,0,0"/>
         <Label Content="_" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="34" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" MouseLeftButtonUp="Label_MouseLeftButtonUp_1" Margin="1119,0,0,0"/>
-        <Canvas x:Name="ContentPanel" HorizontalAlignment="Left" Height="596" Margin="82,46,0,0" VerticalAlignment="Top" Width="1110"/>
+        <Grid x:Name="ContentPanel" HorizontalAlignment="Left" Height="658" Margin="82,46,0,0" VerticalAlignment="Top" Width="1110"/>
     </Grid>
 </Window>

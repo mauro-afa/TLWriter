@@ -83,6 +83,7 @@ namespace QualityScenariosManager
 					int ID = tsdb.getLastID("TestSuite");
 					try
 					{
+						//test comment
 						nTestSuite = new TestSuite()
 						{
 							TestSuiteID = ++ID,
@@ -162,15 +163,8 @@ namespace QualityScenariosManager
 			KeywordLB.Items.Refresh();
 		}
 
-		private void TestCasesDG_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			EditTC.Visibility = System.Windows.Visibility.Visible;
-			RemoveTC.Visibility = System.Windows.Visibility.Visible;
-		}
-
 		private void EditTC_Click(object sender, RoutedEventArgs e)
 		{
-			CancelTC.Visibility = System.Windows.Visibility.Visible;
 			TestCase currentTC = (TestCase)TestCasesDG.SelectedItem;
 			if (EditTC.Content.ToString()=="Edit")
 			{
@@ -181,7 +175,6 @@ namespace QualityScenariosManager
 			{
 				UpdateTestCase(currentTC);
 				EditTC.Content = "Edit";
-				HideTCButtons();
 			}
 		}
 
@@ -194,6 +187,8 @@ namespace QualityScenariosManager
 			TCPrecon.Text = oTC.Preconditions;
 			TCAction.Text = oTC.Actions;
 			TCExpecRes.Text = oTC.ExpectedResult;
+			TCExecCB.SelectedIndex = oTC.Execution-1;
+			TCPriorityCB.SelectedIndex = oTC.Importance - 1;
 
 			foreach(Keyword oKeyword in KeywordLB.Items)
 			{
@@ -242,42 +237,45 @@ namespace QualityScenariosManager
 				Importance = Int32.Parse(((ComboBoxItem)TCPriorityCB.SelectedItem).Tag.ToString()),
 				Keywords = new List<string>(selectedKeywords)
 			};
-			nTestCaseList[oTC.TestCaseID] = nTestCase;
+			nTestCaseList[oTC.TestCaseID - 1] = nTestCase;
 			ClearControllers();
 			TestCasesDG.Items.Refresh();
-		}
-
-		private void HideTCButtons()
-		{
-			EditTC.Visibility = System.Windows.Visibility.Hidden;
-			RemoveTC.Visibility = System.Windows.Visibility.Hidden;
-			CancelTC.Visibility = System.Windows.Visibility.Hidden;
 		}
 
 		private void CancelTC_Click(object sender, RoutedEventArgs e)
 		{
 			ClearControllers();
-			HideTCButtons();
 			EditTC.Content = "Edit";
 		}
 
 		private void SaveTS_Click(object sender, RoutedEventArgs e)
 		{
-			bool bSuccess = true;
-			List<XmlDocument> xmls = new List<XmlDocument>();
-			DButils tsdb = DButils.Instance;
-			nTestSuite.TestCases = nTestCaseList;
-			XMLCreator TestSuite = new XMLCreator();
-			xmls = TestSuite.CreateXML(nTestSuite);
-			nTestSuite.TestSuiteDefinition = xmls[0].InnerXml;
-			nTestSuite.RegressionDefinition = xmls[1].InnerXml;
-			nTestSuite.SmokeDefinition = xmls[2].InnerXml;
-			bSuccess = tsdb.SaveTestSuite(nTestSuite, bUpdate);
-			bUpdate = false;
-			if(bSuccess)
+			if(TestCasesDG.ItemsSource is null)
 			{
-				TestCasesDG.ItemsSource = null;
-				TestCasesDG.Items.Refresh();
+				MessageBox.Show("You must add at least one test case before you save the test suite");
+			}
+			else
+			{
+				bool bSuccess = true;
+				List<XmlDocument> xmls = new List<XmlDocument>();
+				DButils tsdb = DButils.Instance;
+				nTestSuite.TestCases = nTestCaseList;
+				XMLCreator TestSuite = new XMLCreator();
+				xmls = TestSuite.CreateXML(nTestSuite);
+				nTestSuite.TestSuiteDefinition = xmls[0].InnerXml;
+				nTestSuite.RegressionDefinition = xmls[1].InnerXml;
+				nTestSuite.SmokeDefinition = xmls[2].InnerXml;
+				bSuccess = tsdb.SaveTestSuite(nTestSuite, bUpdate);
+				bUpdate = false;
+				if (bSuccess)
+				{
+					TestCasesDG.ItemsSource = null;
+					TestCasesDG.Items.Refresh();
+					TSNameTB.Clear();
+					TSJiraTB.Clear();
+					VersionCB.SelectedIndex = 0;
+					BrandCB.SelectedIndex = 0;
+				}
 			}
 		}
 
