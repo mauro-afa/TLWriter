@@ -18,16 +18,6 @@ namespace QualityScenariosManager
 			TitleLabel.Content = "Home";
 		}
 
-		private void Label_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			Close();
-		}
-
-		private void Label_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
-		{
-			this.WindowState = WindowState.Minimized;
-		}
-
 		private void Header_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			if (e.ChangedButton == MouseButton.Left)
@@ -201,6 +191,16 @@ namespace QualityScenariosManager
 				}
 			}
 			return _home;
+		}
+
+		private void btClose_Click(object sender, RoutedEventArgs e)
+		{
+			Close();
+		}
+
+		private void btMinimize_Click(object sender, RoutedEventArgs e)
+		{
+			this.WindowState = WindowState.Minimized;
 		}
 	}
 }

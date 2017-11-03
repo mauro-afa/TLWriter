@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityScenariosManager"
              mc:Ignorable="d" 
-             d:DesignHeight="658" d:DesignWidth="1100" Width="1110" Height="658" Background="White" Loaded="UserControl_Loaded">
+             d:DesignHeight="658" d:DesignWidth="1100" Width="1110" Height="671" Background="White" Loaded="UserControl_Loaded">
     <Grid>
         <Label x:Name="label" Content="Keywords" HorizontalAlignment="Left" Margin="138,0,0,0" VerticalAlignment="Top" Height="27" Width="71" FontWeight="Bold"/>
         <Label x:Name="label_Copy" Content="Versions" HorizontalAlignment="Left" Margin="513,0,0,0" VerticalAlignment="Top" Height="27" Width="70" RenderTransformOrigin="1.12,0.63" FontWeight="Bold"/>
-        <ListBox x:Name="KeywordLB" HorizontalAlignment="Left" Height="578" Margin="7,80,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="KeywordLB_SelectionChanged">
+        <ListBox x:Name="KeywordLB" HorizontalAlignment="Left" Height="591" Margin="7,80,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="KeywordLB_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -26,7 +26,7 @@
         <Button x:Name="UpdateKeyword" Content="Update" HorizontalAlignment="Left" Margin="98,54,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="1.143,0.49" Click="UpdateKeyword_Click"/>
         <Button x:Name="RemoveKeyword" Content="Remove" HorizontalAlignment="Left" Margin="183,54,0,0" VerticalAlignment="Top" Width="70" Click="RemoveKeyword_Click"/>
         <Button x:Name="CancelKeyword" Content="Cancel" HorizontalAlignment="Left" Margin="268,54,0,0" VerticalAlignment="Top" Width="70"/>
-        <ListBox x:Name="VersionLB" HorizontalAlignment="Left" Height="578" Margin="375,80,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="VersionLB_SelectionChanged">
+        <ListBox x:Name="VersionLB" HorizontalAlignment="Left" Height="591" Margin="375,80,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="VersionLB_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -43,7 +43,7 @@
         <Button x:Name="UpdateVersion" Content="Update" HorizontalAlignment="Left" Margin="468,55,0,0" VerticalAlignment="Top" Width="70" Click="UpdateVersion_Click"/>
         <Button x:Name="CancelVersion" Content="Cancel" HorizontalAlignment="Left" Margin="638,55,0,0" VerticalAlignment="Top" Width="70" Click="CancelVersion_Click"/>
         <Button x:Name="RemoveVersion" Content="Remove" HorizontalAlignment="Left" Margin="553,55,0,0" VerticalAlignment="Top" Width="70" Click="RemoveVersion_Click"/>
-        <ListBox x:Name="NetworkLB" HorizontalAlignment="Left" Height="578" Margin="745,80,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="NetworkLB_SelectionChanged">
+        <ListBox x:Name="NetworkLB" HorizontalAlignment="Left" Height="591" Margin="745,80,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="NetworkLB_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -61,8 +61,8 @@
         <Button x:Name="CancelNetwork" Content="Cancel" HorizontalAlignment="Left" Margin="1009,54,0,0" VerticalAlignment="Top" Width="70"/>
         <Button x:Name="RemoveNetwork" Content="Remove" HorizontalAlignment="Left" Margin="924,54,0,0" VerticalAlignment="Top" Width="70" Click="RemoveNetwork_Click"/>
         <Label x:Name="label_Copy2" Content="Networks" HorizontalAlignment="Left" Margin="888,0,0,0" VerticalAlignment="Top" Height="27" Width="70" FontWeight="Bold"/>
-        <Rectangle Fill="#FF327A95" HorizontalAlignment="Left" Height="658" Margin="352,0,0,0" Stroke="#FF327A95" VerticalAlignment="Top" Width="18"/>
-        <Rectangle Fill="#FF327A95" HorizontalAlignment="Left" Height="658" Margin="722,0,0,0" Stroke="#FF327A95" VerticalAlignment="Top" Width="18"/>
-        <Rectangle Fill="#FF327A95" HorizontalAlignment="Left" Height="658" Margin="1092,0,0,0" Stroke="#FF327A95" VerticalAlignment="Top" Width="18"/>
+        <Rectangle Fill="#FF327A95" HorizontalAlignment="Left" Height="671" Margin="352,0,0,0" Stroke="#FF327A95" VerticalAlignment="Top" Width="18"/>
+        <Rectangle Fill="#FF327A95" HorizontalAlignment="Left" Height="671" Margin="722,0,0,0" Stroke="#FF327A95" VerticalAlignment="Top" Width="18"/>
+        <Rectangle Fill="#FF327A95" HorizontalAlignment="Left" Height="671" Margin="1092,0,0,0" Stroke="#FF327A95" VerticalAlignment="Top" Width="18"/>
     </Grid>
 </UserControl>

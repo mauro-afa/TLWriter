@@ -5,30 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityScenariosManager"
              mc:Ignorable="d" 
-             d:DesignHeight="658" d:DesignWidth="1100" Width="1110" Height="658" Background="White">
-    <Grid Background="White" Width="Auto" Height="Auto">
-        <Grid x:Name="TCAdditionCvs" HorizontalAlignment="Left" Height="228" VerticalAlignment="Top" Width="Auto" Margin="0,430,0,0">
-            <DataGrid x:Name="TestCasesDG" Width="1110" AutoGenerateColumns="False" SelectionMode="Extended" GridLinesVisibility="Horizontal">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="TestCaseName" Binding="{Binding TestCaseName}" Width="*"/>
-                    <DataGridTextColumn Header="Objective" Binding="{Binding Objective}" Width="*"/>
-                    <DataGridTextColumn Header="Preconditions" Binding="{Binding Preconditions}" Width="*"/>
-                    <DataGridTextColumn Header="Actions" Binding="{Binding Actions}" Width="*"/>
-                    <DataGridTextColumn Header="ExpectedResult" Binding="{Binding ExpectedResult}" Width="*"/>
-                    <DataGridTextColumn Header="Execution" Binding="{Binding Execution}" Width="*"/>
-                    <DataGridTextColumn Header="Importance" Binding="{Binding Importance}" Width="*"/>
-                    <DataGridTemplateColumn Header="Keywords">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <ItemsControl ItemsSource="{Binding Keywords}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
-        <Button x:Name="SaveTSInfo" Content="Save TS Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="25" Click="SaveTSInfo_Click" Margin="1032,24,0,0"/>
-        <ComboBox IsEditable="False" x:Name="BrandCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="25" SelectedIndex="0" Margin="877,24,0,0">
+             d:DesignHeight="658" d:DesignWidth="1100" Width="1110" Height="671" Background="White">
+    <Grid Background="White" Width="Auto" Height="671" VerticalAlignment="Top">
+        <DataGrid x:Name="TestCasesDG" AutoGenerateColumns="False" SelectionMode="Extended" GridLinesVisibility="Horizontal" Margin="0,432,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="TestCaseName" Binding="{Binding TestCaseName}" Width="*"/>
+                <DataGridTextColumn Header="Objective" Binding="{Binding Objective}" Width="*"/>
+                <DataGridTextColumn Header="Preconditions" Binding="{Binding Preconditions}" Width="*"/>
+                <DataGridTextColumn Header="Actions" Binding="{Binding Actions}" Width="*"/>
+                <DataGridTextColumn Header="ExpectedResult" Binding="{Binding ExpectedResult}" Width="*"/>
+                <DataGridTextColumn Header="Execution" Binding="{Binding Execution}" Width="*"/>
+                <DataGridTextColumn Header="Importance" Binding="{Binding Importance}" Width="*"/>
+                <DataGridTemplateColumn Header="Keywords">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ItemsControl ItemsSource="{Binding Keywords}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="SaveTSInfo" Content="Save TS Info" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="22" Click="SaveTSInfo_Click" Margin="1017,23,0,0"/>
+        <ComboBox IsEditable="False" x:Name="BrandCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Height="22" SelectedIndex="0" Margin="877,23,0,0">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -37,7 +35,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <ComboBox x:Name="VersionCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Height="25" SelectedIndex="0" Margin="783,23,0,0">
+        <ComboBox x:Name="VersionCB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="89" Height="22" SelectedIndex="0" Margin="783,23,0,0">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -46,25 +44,25 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBox x:Name="TSJiraTB" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="331" Margin="447,24,0,0"/>
-        <TextBox x:Name="TSNameTB" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="442" Margin="0,24,0,0"/>
-        <Label Content="Test Suite Name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label Content="Jira Link" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="447,0,0,0"/>
-        <Label Content="Version" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="783,0,0,0"/>
-        <Label Content="Network" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="877,-2,0,0"/>
-        <TextBox x:Name="TCID_TB" TextWrapping="Wrap" Text="Test Case ID" IsEnabled="False" Margin="0,82,376,553"/>
-        <ComboBox x:Name="TCExecCB" SelectedIndex="0" IsEnabled="False" Margin="749,82,212,554">
+        <TextBox x:Name="TSJiraTB" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="331" Margin="447,24,0,0"/>
+        <TextBox x:Name="TSNameTB" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="442" Margin="0,24,0,0"/>
+        <Label Content="Test Suite Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Jira Link" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="447,0,0,0" FontWeight="Bold"/>
+        <Label Content="Version" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="783,0,0,0" FontWeight="Bold"/>
+        <Label Content="Network" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="877,-2,0,0" FontWeight="Bold"/>
+        <TextBox x:Name="TCID_TB" TextWrapping="Wrap" Text="Test Case ID" IsEnabled="False" Margin="0,76,376,571" Height="23"/>
+        <ComboBox x:Name="TCExecCB" SelectedIndex="0" IsEnabled="False" Margin="749,78,212,571" Height="22">
             <ComboBoxItem Content="Manual" Tag="1"/>
             <ComboBoxItem Content="Automated" Tag="2"/>
         </ComboBox>
-        <ComboBox x:Name="TCPriorityCB" SelectedIndex="0" IsEnabled="False" Margin="903,82,98,554">
+        <ComboBox x:Name="TCPriorityCB" SelectedIndex="0" IsEnabled="False" Margin="903,78,98,571" Height="22">
             <ComboBoxItem Content="Low" Tag="1"/>
             <ComboBoxItem Content="Medium" Tag="2"/>
             <ComboBoxItem Content="High" Tag="3"/>
         </ComboBox>
-        <Label Content="Test Case ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,51,0,0"/>
-        <Label Content="Execution type" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="749,51,0,0"/>
-        <Label Content="Priority" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="903,51,0,0"/>
+        <Label Content="Test Case ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,51,0,0" FontWeight="Bold"/>
+        <Label Content="Execution type" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="749,51,0,0" FontWeight="Bold"/>
+        <Label Content="Priority" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="903,51,0,0" FontWeight="Bold"/>
         <TextBox x:Name="TCObj" TextWrapping="Wrap" AcceptsReturn="True" IsEnabled="False" Margin="0,131,895,269"/>
         <TextBox x:Name="TCPrecon" TextWrapping="Wrap" AcceptsReturn="True" IsEnabled="False" Margin="220,131,675,269"/>
         <TextBox x:Name="TCAction" TextWrapping="Wrap" AcceptsReturn="True" IsEnabled="False" Margin="440,131,455,269"/>
@@ -86,10 +84,10 @@
         <Label Content="Actions" FontWeight="Bold" Margin="440,105,583,527"/>
         <Label Content="Expected Results" FontWeight="Bold" Margin="660,105,334,527"/>
         <Label Content="Keywords" FontWeight="Bold" Margin="885,105,138,527"/>
-        <Button x:Name="AddTC" Content="Add" Click="AddTC_Click" IsEnabled="False" Margin="53,399,982,237"/>
-        <Button x:Name="EditTC" Content="Edit" IsEnabled="False" Click="EditTC_Click" Margin="281,399,754,237"/>
-        <Button x:Name="RemoveTC" Content="Remove" IsEnabled="False" Click="RemoveTC_Click" Margin="509,399,526,237"/>
-        <Button x:Name="CancelTC" Content="Cancel" IsEnabled="False" Click="CancelTC_Click" Margin="724,399,311,237"/>
-        <Button x:Name="SaveTS" Content="Save" IsEnabled="False" Click="SaveTS_Click" Margin="952,399,83,237"/>
+        <Button x:Name="AddTC" Content="Add" Click="AddTC_Click" IsEnabled="False" Margin="53,399,982,237" Height="22"/>
+        <Button x:Name="EditTC" Content="Edit" IsEnabled="False" Click="EditTC_Click" Margin="281,399,754,237" Height="22"/>
+        <Button x:Name="RemoveTC" Content="Remove" IsEnabled="False" Click="RemoveTC_Click" Margin="509,399,526,237" Height="22"/>
+        <Button x:Name="CancelTC" Content="Cancel" IsEnabled="False" Click="CancelTC_Click" Margin="724,399,311,237" Height="22"/>
+        <Button x:Name="SaveTS" Content="Save" IsEnabled="False" Click="SaveTS_Click" Margin="952,399,83,237" Height="22"/>
     </Grid>
 </UserControl>

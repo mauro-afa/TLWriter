@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityScenariosManager"
              mc:Ignorable="d" 
-             d:DesignHeight="1100" d:DesignWidth="658" Width="1100" Height="658" Loaded="UserControl_Loaded">
+             d:DesignHeight="1100" d:DesignWidth="671" Width="1100" Height="671" Loaded="UserControl_Loaded">
     <Grid Background="White" Width="Auto" Height="Auto">
-        <Grid HorizontalAlignment="Left" Height="658" VerticalAlignment="Top" Width="595">
+        <Grid HorizontalAlignment="Left" Height="661" VerticalAlignment="Top" Width="595">
             <Label Content="Test Suites" Height="31" Width="124" Margin="0,0,471,627" FontWeight="Bold"/>
             <DataGrid x:Name="TestSuiteDG" Margin="0,31,0,0" AutoGenerateColumns="False" SelectionMode="Extended" CanUserAddRows="False" CanUserDeleteRows="False" x:FieldModifier="public" SelectionChanged="TestSuiteDG_SelectionChanged">
                 <DataGrid.Columns>
@@ -18,7 +18,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Grid HorizontalAlignment="Right" Height="658" VerticalAlignment="Top" Width="500">
+        <Grid HorizontalAlignment="Right" Height="661" VerticalAlignment="Top" Width="500">
             <Label Content="Pending P.R.T.I" Height="31" Width="124" Margin="0,0,376,627" FontWeight="Bold"/>
             <DataGrid Canvas.Top="31" Margin="0,31,0,329"/>
             <Label Content="Pending Execution" Height="31" Width="124" Margin="0,298,376,267" FontWeight="Bold"/>

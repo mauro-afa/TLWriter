@@ -6,52 +6,26 @@
         xmlns:local="clr-namespace:QualityScenariosManager"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1207" MinHeight="720" MinWidth="1207" WindowStyle="None" >
-    <Grid Width="Auto" Height="Auto" Background="White" Margin="0,0,0,-8">
-        <Grid x:Name="Header" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="1192" Background="#FF327A95" MouseDown="Header_MouseDown">
-            <Canvas HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="82" Background="#FF45AE7A">
-                <Label Content="QSM" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="78" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" Canvas.Left="4"/>
-                <Label x:Name="TitleLabel" Content="Dashboard" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="3" Height="43" Width="606" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" Canvas.Left="116"/>
-            </Canvas>
+    <Grid>
+        <Grid Height="Auto" Width="Auto">
+            <Grid x:Name="Header" Height="33" VerticalAlignment="Top" Background="#FF327A95" MouseDown="Header_MouseDown" Margin="82,0,7,0">
+                <Label x:Name="TitleLabel" Content="Dashboard" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Width="Auto" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" Margin="0,-5,0,0"/>
+                <Button x:Name="btMinimize" Content="__" HorizontalAlignment="Right" Margin="0,0,35,0" VerticalAlignment="Top" FontSize="12" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Height="33" Click="btMinimize_Click" FontFamily="Arial Rounded MT Bold" Width="35"/>
+                <Button x:Name="btClose" Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="12" Height="33" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btClose_Click" FontFamily="Arial Rounded MT Bold" Width="35"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="Auto" Margin="0,33,0,0" Width="82" Background="#FF327A95">
+                <Button Content="Home" x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="HomeButton_Click" Height="33"/>
+                <Button Content="Create" x:Name="CreateTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="CreateTSButton_Click" Margin="0,33,0,0" Height="33"/>
+                <Button Content="Edit" x:Name="EditTSButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="EditTSButton_Click" Margin="0,66,0,0" Height="33"/>
+                <Button Content="Delete" x:Name="DeleteTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="DeleteTSButton_Click" Margin="0,99,0,0" Height="33"/>
+                <Button Content="Export" x:Name="ExportTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Margin="0,132,0,0" Click="ExportTSButton_Click" Height="33"/>
+                <Button Content="Import" x:Name="ImportTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Margin="0,165,0,0" Click="ImportTSButton_Click" Height="33"/>
+                <Button Content="Settings" x:Name="SettingsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Margin="0,198,0,0" Click="SettingsButton_Click" Height="33"/>
+            </Grid>
+            <Grid x:Name="ContentPanel" Height="671" Margin="82,33,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1110"/>
+            <Grid HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="82" Background="#FF45AE7A" Margin="0,-2,0,0">
+                <Label Content="QSM" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Width="Auto" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White"/>
+            </Grid>
         </Grid>
-        <StackPanel HorizontalAlignment="Left" Height="658" Margin="0,46,0,0" VerticalAlignment="Top" Width="82" Background="#FF327A95">
-            <Button x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="HomeButton_Click">
-                <StackPanel>
-                    <Image Source="Icons/Home.ico" Stretch="Uniform" Height="30" Width="57" Margin="0,0,4,0"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="CreateTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="CreateTSButton_Click">
-                <StackPanel>
-                    <Image Source="Icons/AddTS.png" Stretch="Uniform" Height="30" Width="57" Margin="0,0,4,0"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="EditTSButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="EditTSButton_Click">
-                <StackPanel>
-                    <Image Source="Icons/EditTS.png" Stretch="Uniform" Height="30" Width="57" Margin="0,0,7,0"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="DeleteTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Click="DeleteTSButton_Click">
-                <StackPanel>
-                    <Image Source="Icons/DeleteTS.png" Height="30" Width="57" Margin="0,0,10,0"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="ExportTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Margin="-6,0,0,0" Click="ExportTSButton_Click">
-                <StackPanel>
-                    <Image Source="Icons/export.ico" Height="30" Width="40" Margin="0,0,10,0" HorizontalAlignment="Right"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="ImportTSButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Margin="-6,0,0,0" Click="ImportTSButton_Click">
-                <StackPanel>
-                    <Image Source="Icons/Import.ico" Height="30" Width="40" Margin="0,0,6,0" HorizontalAlignment="Right"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="SettingsButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="White" Foreground="White" Padding="2" Margin="-6,0,0,0" Click="SettingsButton_Click">
-                <StackPanel>
-                    <Image Source="Icons/settings.ico" Height="30" Width="40" Margin="0,0,10,0" HorizontalAlignment="Right"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
-        <Label Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="34" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" MouseLeftButtonUp="Label_MouseLeftButtonUp" Margin="1158,3,0,0"/>
-        <Label Content="_" HorizontalAlignment="Left" VerticalAlignment="Top" Height="43" Width="34" FontSize="24" FontFamily="Arial Rounded MT Bold" Foreground="White" MouseLeftButtonUp="Label_MouseLeftButtonUp_1" Margin="1119,0,0,0"/>
-        <Grid x:Name="ContentPanel" HorizontalAlignment="Left" Height="658" Margin="82,46,0,0" VerticalAlignment="Top" Width="1110"/>
     </Grid>
 </Window>
